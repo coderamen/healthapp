@@ -19,7 +19,8 @@ class MatchStatus < ApplicationRecord
     end
   end
 
-  def create_new_match
+  def created_new_match?
+    byebug
     user1_pending = Pending.find(self.pending_viewer_id)
     user2_pending = Pending.find(self.pending_viewed_id)
 
@@ -31,10 +32,9 @@ class MatchStatus < ApplicationRecord
     )
 
     if match.save
-      flash[:success] = "Match found!"
-      redirect_to user_match_path(user_id: current_user.id, id: match.id)
+      return match
     else
-      flash[:danger] = "Unable to create match"
+      return false
     end
   end
   

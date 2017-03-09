@@ -6,7 +6,7 @@
 <h1>All available matches</h1>
 
 <% @pending.potential_matches.each do |potential_match| %>
-  <%= potential_match.user.name %>
+  <%= potential_match.user.email %>
   <%= potential_match.city %>
   <%= potential_match.datetime.to_date %>
   <%= button_to "Accept", pending_match_statuses_path(potential_match), method: :post, 

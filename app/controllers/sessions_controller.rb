@@ -2,7 +2,6 @@ class SessionsController < Clearance::SessionsController
   # new and destroy are already inherited from clearance
 
   def create
-    byebug
     @user = authenticate(params)
 
     sign_in(@user) do |status|
