@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309101601) do
+ActiveRecord::Schema.define(version: 20170309112041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170309101601) do
     t.integer  "user2_pending_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["user1_pending_id", "user2_pending_id"], name: "index_matches_on_user1_pending_id_and_user2_pending_id", unique: true, using: :btree
   end
 
   create_table "pendings", force: :cascade do |t|
