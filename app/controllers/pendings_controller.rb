@@ -1,12 +1,15 @@
-class PendingController < ApplicationController
+class PendingsController < ApplicationController
   def new
     @pending = Pending.new
   end
 
   def create
+    byebug
     @pending = Pending.new(pending_params)
+    @pending.status = "waiting"
+    @pending.user_id = current_user.id
 
-    if @pending
+    if @pending.save
       redirect_to pending_path(@pending)
     else
       redirect_to new_pending_path
@@ -40,6 +43,6 @@ class PendingController < ApplicationController
       return_hash[:activity_id] = params[:pending][:activity].to_i
     end
 
+    return return_hash
   end
-
 end
