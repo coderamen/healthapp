@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308100358) do
+
+ActiveRecord::Schema.define(version: 20170309031526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,12 +68,20 @@ ActiveRecord::Schema.define(version: 20170308100358) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "email",                          null: false
-    t.string   "encrypted_password", limit: 128
-    t.string   "confirmation_token", limit: 128
-    t.string   "remember_token",     limit: 128, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "email",                                  null: false
+    t.string   "encrypted_password",         limit: 128
+    t.string   "confirmation_token",         limit: 128
+    t.string   "remember_token",             limit: 128, null: false
+    t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.integer  "age_range"
+    t.integer  "physique"
+    t.string   "additional_health_problems"
+    t.integer  "weekly_activity_hours"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
