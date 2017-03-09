@@ -1,29 +1,15 @@
-<nav class="navbar navbar-default">
-  <div class="container">
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "", "/auth/facebook", class: "fa fa-facebook-square fa-2x" %></li>
-    </ul>
-<!-- side-navigation -->
-    <div id= "Sidenav" class="navbar-left sidenav">
-      <%= link_to "", "#", class: "fa fa-bars fa-2x closebtn", style: "margin-top: 10px; color: #5e5e5e;" %>
-      <%= link_to "BRAND", "#", id: "Brandnav" %>
-      <%= link_to "FEATURED", "#" %>
-      <%= link_to "VISION", "#" %>
-      <%= link_to "CONTACT", "#" %>
-      <%= link_to "ICONS", "#" %>
-    </div>
 
+<% if signed_in? %>
+  <p>Current User id: <%= current_user.id %></p>
+<% end %>
 
+<% if signed_in? %>
+  <%= link_to "Sign Out", sign_out_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign In", sign_in_path %>
+  <%= link_to "Sign Up", new_user_path %>
+<% end %>
 
+<br>
 
-
-
-  </div>
-</nav>
-
-<div class="jumbotron">
-    <div class="container">
-        <h1>Hello, world!</h1>
-        <p>Learn more</p>
-    </div>
-</div>
+<%= link_to "Sign in with Facebook", "/auth/facebook" %>
