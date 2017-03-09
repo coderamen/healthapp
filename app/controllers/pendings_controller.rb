@@ -17,10 +17,7 @@ class PendingsController < ApplicationController
   end
 
   def show
-    pending = Pending.find(params[:id])
-
-    # this variable has all the potential matches for this particular pending
-    @available_pendings = pending.potential_matches
+    @pending = Pending.find(params[:id])
   end
 
   def destroy

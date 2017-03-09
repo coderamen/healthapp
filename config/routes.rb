@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :pendings, only: [:new, :create, :show, :destroy]
   end
 
+  resources :pendings, only: [] do
+    resources :match_statuses, only: [:create]
+  end
+
   # these are routes from clearance
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   # resource :session, controller: "clearance/sessions", only: [:create]
