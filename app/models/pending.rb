@@ -33,4 +33,15 @@ class Pending < ApplicationRecord
 
     return all_similar_pendings.where.not(id: all_declined_pendings_id)
   end
+
+  def delete_related_matches_matchstatuses
+    # delete all related matchstatus to this pending
+    MatchStatus.where(pending_viewer_id: self.id).delete_all
+    MatchStatus.where(pending_viewed_id: self.id).delete_all
+
+    # delete all related matches to this pending
+    Match.where(user1_pending_id: self.id).delete_all
+    Match.where(user2_pending_id: self.id).delete_all
+  end
+  
 end
