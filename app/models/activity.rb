@@ -2,5 +2,5 @@ class Activity < ApplicationRecord
   has_many :pendings
   has_many :confirmed_activities
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end

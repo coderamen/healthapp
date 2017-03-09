@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # route for facebook callback, for when the user has already signed_in from fb and are returning from fb
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+  # routes for pending matches
+  resources :pendings, only: [:new, :create, :show, :destroy]
+
   # these are routes from clearance
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   # resource :session, controller: "clearance/sessions", only: [:create]
