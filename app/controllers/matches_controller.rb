@@ -5,9 +5,9 @@ class MatchesController < ApplicationController
     current_user_authorised?(params[:user_id], root_path)
 
     match = Match.find_by_id(params[:id])
-    user_in_match? = current_user.id == @match.user1_id || current_user.id == @match.user2_id
+    user_in_match = current_user.id == match.user1_id || current_user.id == match.user2_id
 
-    if user_in_match?
+    if user_in_match
       @match = match
     else
       flash[:danger] = "Unauthorised action."
