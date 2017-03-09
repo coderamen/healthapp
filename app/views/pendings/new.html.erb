@@ -1,0 +1,10 @@
+<%= form_for @pending, url: pendings_path do |f| %>
+  <%= f.text_field :city, placeholder: "City" %>
+  <%= f.date_field :datetime, placeholder: "Date Time" %>
+  <%= f.select :activity do %>
+    <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
+    <%= options_for_select(activity_array) %>
+  <% end %>
+  <%= f.submit %> 
+
+<% end %>

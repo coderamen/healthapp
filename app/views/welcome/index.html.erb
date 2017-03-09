@@ -1,3 +1,4 @@
+
 <div class="jumbotron">
   <div class="container">
   </div>
@@ -30,3 +31,18 @@
     Roof party live-edge gochujang, aesthetic woke vape forage 3 wolf moon ethical tilde organic.<br />
   </p><br />
 </div>
+
+<% if signed_in? %>
+  <p>Current User id: <%= current_user.id %></p>
+<% end %>
+
+<% if signed_in? %>
+  <%= link_to "Sign Out", sign_out_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign In", sign_in_path %>
+  <%= link_to "Sign Up", new_user_path %>
+<% end %>
+
+<br>
+
+<%= link_to "Sign in with Facebook", "/auth/facebook" %>
