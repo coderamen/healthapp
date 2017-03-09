@@ -11,8 +11,7 @@
   <body>
     <header>
       <nav class="navbar navbar-default">
-        <%= link_to "Fit.buds", root_path, class: "navbar-brand" %>
-        <img alt="Brand" src="/images/fitbuds-clear_bg.png">
+        <%= link_to image_tag("fitbuds-clear_bg.png"), root_path, id="logo" %>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Vission</a></li>
           <li><%= link_to "Log In with Facebook", "/auth/facebook" %></li>
