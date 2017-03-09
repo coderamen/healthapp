@@ -4,6 +4,9 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+
+
+
 # Use for omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -15,6 +18,8 @@ gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+# Use for bootstrap
+gem 'bootstrap-sass', '~> 3.3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
