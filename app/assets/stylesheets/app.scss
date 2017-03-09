@@ -12,12 +12,15 @@ html, body {
 
 #Sidenav {
   height: 100%;
-  width: 240px;
+  width: 0;
   position: fixed;
   top: 0;
   left: 0;
-  background: #111;
+  background: linear-gradient(to bottom left, #07ecae, #007d95);
   padding-top: 60px;
+  z-index: 1;
+  transition: 0.5s;
+  overflow-x: hidden;
 }
 
 .sidenav a {
@@ -25,10 +28,11 @@ html, body {
   padding: 8px 8px 8px 80px;
   color: #fff;
   text-decoration: none;
+  transition: 0.3s;
 }
 
-.sidenav a:hover, .offcanvas {
-  background: #ff6868;
+.sidenav a:hover, .offcanvas a:focus {
+  color: #ff6868;
 }
 
 .sidenav .closebtn {
@@ -41,7 +45,25 @@ html, body {
 
 
 #Brandnav {
-  margin-top: 200px;
+  margin-top: 100px;
   color: #fff;
   font-size: 20px;
+}
+
+#main {
+  // width: 80%;
+  right: 0;
+  // position: fixed;
+  transition: margin-left .5s;
+}
+
+.custom-cont {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.img-circle {
+  border: 2px solid #fff;
+  margin-top: 30px;
+  margin-left: 50px;
 }
