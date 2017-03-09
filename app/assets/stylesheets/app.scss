@@ -1,0 +1,47 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  margin-bottom: 0;
+  background: #ccc;
+  border-radius: 0;
+}
+
+#Sidenav {
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #111;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  display: block;
+  padding: 8px 8px 8px 80px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidenav a:hover, .offcanvas {
+  background: #ff6868;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+#Brandnav {
+  margin-top: 200px;
+  color: #fff;
+  font-size: 20px;
+}
