@@ -1,7 +1,10 @@
 class MatchStatusesController < ApplicationController
   before_action :require_login
-  
+
   def create
+    pending = Pending.find_by_id(params[:pending_viewer_id])
+    current_user_authorised?(pending.user_id, root_path)
+
     @match_status = MatchStatus.new(match_status_params)
 
     if @match_status.save

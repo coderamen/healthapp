@@ -7,7 +7,6 @@ class UsersController < Clearance::UsersController
   end
 
   def create
-    byebug
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
@@ -20,14 +19,20 @@ class UsersController < Clearance::UsersController
   end
 
   def show
+    current_user_authorised?(params[:id], root_path)
+
     @user = User.find(params[:id])
   end
 
   def edit
+    current_user_authorised?(params[:id], root_path)
+
     @user = User.find(params[:id])
   end
 
   def update
+    current_user_authorised?(params[:id], root_path)
+
     @user = User.find(params[:id])
 
     if @user.update(user_params)
@@ -41,6 +46,8 @@ class UsersController < Clearance::UsersController
   end
 
   def destroy
+    current_user_authorised?(params[:id], root_path)
+    
 		user = User.find_by_id(params[:id])
 		sign_out
 		user.authentications.delete_all
