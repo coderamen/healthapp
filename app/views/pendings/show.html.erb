@@ -1,0 +1,9 @@
+<!-- show page for all the available pendings to accept/decline for this particular pending -->
+
+<% @available_pendings.each do |pending| %>
+  <%= pending.user.email %>
+  <br>
+  <%= pending.datetime %>
+<% end %>
+
+<%= link_to "Delete pending", user_pending_path, method: :delete %>
