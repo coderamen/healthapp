@@ -1,4 +1,6 @@
 class PendingsController < ApplicationController
+  before_action :require_login
+  
   def new
     @pending = Pending.new
   end

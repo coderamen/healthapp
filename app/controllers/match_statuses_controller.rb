@@ -1,4 +1,6 @@
 class MatchStatusesController < ApplicationController
+  before_action :require_login
+  
   def create
     @match_status = MatchStatus.new(match_status_params)
 
