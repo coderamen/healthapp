@@ -15,7 +15,17 @@ Rails.application.routes.draw do
 
   # routes for pending matches
   resources :users, only: [] do
-    resources :pendings, only: [:new, :create, :show, :destroy]
+    resources :pendings, only: [:index, :new, :create, :show, :destroy]
+  end
+
+  # route for creating match_statuses
+  resources :pendings, only: [] do
+    resources :match_statuses, only: [:create]
+  end
+
+  #routes for matches
+  resources :users, only: [] do
+    resources :matches, only: [:index, :show]
   end
 
   # these are routes from clearance

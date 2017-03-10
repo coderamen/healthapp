@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_user_details
+    if current_user.has_nil_attributes
+      flash[:danger] = "You're missing some details"
+      redirect_to edit_user_path(current_user)
+    end
+  end
+
   def current_user_authorised?(id, path)
     if current_user.id != id.to_i
       flash[:danger] = "Unathorised action."
