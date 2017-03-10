@@ -9,6 +9,22 @@ class Match < ApplicationRecord
     if Match.find_by(user1_pending_id: user2_pending_id, user2_pending_id: user1_pending_id)
       errors.add(user1_pending_id, "Match already exists for this particular combinaton of pendings")
     end
-  end  
+  end
+
+  def user1
+    User.find_by_id(self.user1_id)
+  end
+
+  def user2
+    User.find_by_id(self.user2_id)
+  end
+
+  def user1_pending
+    Pending.find_by_id(self.user1_pending_id)
+  end
+
+  def user2_pending
+    Pending.find_by_id(self.user2_pending_id)
+  end
 end
 
