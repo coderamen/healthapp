@@ -8,41 +8,47 @@
       <%= link_to "", "#", class: "fa fa-arrow-left fa-2x closebtn", onclick: "closeNav()" %>
       <%= image_tag "profile.png", width: "150px", height: "140px", class: "img-circle"%>
     <div id=""></div>
-      <%= link_to "BRAND", "#", id: "Brandnav" %>
-      <%= link_to "PROFILE", "#" %>
-      <%= link_to "MESSAGES", "#" %>
-      <%= link_to "SETTINGS", "#" %>
-      <%= link_to "SIGN OUT", "#" %>
+      <%= link_to "dashboard", "#", id: "Brandnav" %>
+      <%= link_to "create new match", "#" %>
+      <%= link_to "current matches", "#" %>
+      <%= link_to "all pending matches", "#" %>
     </div>
     <span onclick="openNav()" class="fa fa-bars fa-2x" style="margin-top: 10px;"></span>
   </div>
 </nav>
 
-
-<div id="main">
-  <div class="jumbotron" >
-    <div class="container">
-      <h1>Hello, world!</h1>
-      <p>Learn more</p>
-    </div>
-  </div>
-
-  <div class="custom-cont">
+<div class="dashbox">
+    <h1 style= "margin-left: 15px; font-weight: 300;">Dashboard</h1>
+    <hr>
+  <section class="content">
     <div class="row">
-      <div class="col-md-4">
-        Heirloom tacos art party, seitan distillery letterpress blue bottle. Gastropub hexagon health goth, narwhal irony celiac echo park offal ennui food truck etsy hell of. Craft beer meditation stumptown whatever VHS sustainable. Brunch food truck XOXO kale chips crucifix, keffiyeh retro copper mug woke salvia fam. Air plant occupy waistcoat, tumblr skateboard brunch ethical. Live-edge unicorn umami cornhole jianbing XOXO. Before they sold out woke farm-to-table, tote bag pop-up la croix meggings helvetica skateboard hell of gochujang.
+      <div class="col-sm-4">
+        <p class="lead" style="font-size: 15px; margin-bottom: 7px;">Venue</p>
+        <%= text_field_tag "Venue", " ", class: "form-control", placeholder: "Venue" %>
       </div>
-      <div class="col-md-4">
-        Heirloom tacos art party, seitan distillery letterpress blue bottle. Gastropub hexagon health goth, narwhal irony celiac echo park offal ennui food truck etsy hell of. Craft beer meditation stumptown whatever VHS sustainable. Brunch food truck XOXO kale chips crucifix, keffiyeh retro copper mug woke salvia fam. Air plant occupy waistcoat, tumblr skateboard brunch ethical. Live-edge unicorn umami cornhole jianbing XOXO. Before they sold out woke farm-to-table, tote bag pop-up la croix meggings helvetica skateboard hell of gochujang.
+      <div class="col-sm-4">
+        <p class="lead" style="font-size: 15px; margin-bottom: 7px;">Time</p>
+        <%= text_field_tag "Venue", " ", class: "form-control", placeholder: "Time" %>
       </div>
-      <div class="col-md-4">
-        Heirloom tacos art party, seitan distillery letterpress blue bottle. Gastropub hexagon health goth, narwhal irony celiac echo park offal ennui food truck etsy hell of. Craft beer meditation stumptown whatever VHS sustainable. Brunch food truck XOXO kale chips crucifix, keffiyeh retro copper mug woke salvia fam. Air plant occupy waistcoat, tumblr skateboard brunch ethical. Live-edge unicorn umami cornhole jianbing XOXO. Before they sold out woke farm-to-table, tote bag pop-up la croix meggings helvetica skateboard hell of gochujang.
+      <div class="col-lg-8">
+        <p class="lead" style="font-size: 15px; margin-bottom: 7px; margin-top: 10px;">Activity</p>
+        <%= text_field_tag "Venue", " ", class: "form-control", placeholder: "Activity" %>
       </div>
     </div>
-  </div>
+    </div>
+
+  </section>
 </div>
 
-<script>
+
+
+
+<div id="main">
+
+</div>
+
+
+<!-- <script>
   window.onload = function() {
     openNav();
     console.log("opened");
@@ -58,4 +64,4 @@ function closeNav() {
   document.getElementById("Sidenav").style.width = "0";
   document.getElementById("Sidenav").marginLeft = "0";
 }
-</script>
+</script> -->
