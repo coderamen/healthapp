@@ -43,7 +43,14 @@ class UsersController < Clearance::UsersController
 
     update_hash = update_user_params
 
-    if update_hash[:remove_avatar]
+    # if update_hash == false due to passwords that do not match
+    unless update_hash
+      flash[:danger] = "Passwords do not match!"
+      return redirect_to edit_user_path(params[:id])
+    end
+    
+    # if remove_avatar is true
+    if update_hash[:remove_avatar] == "1"
       @user.remove_avatar!
       @user.save
     end
@@ -77,15 +84,21 @@ class UsersController < Clearance::UsersController
   def update_user_params
     attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours, :avatar, :remove_avatar)
 
+    # convert string to integers for these attributes
     attr[:age_range] = params[:user][:age_range].to_i
     attr[:stamina] = attr[:stamina].to_i
     attr[:strength] = attr[:strength].to_i
     attr[:agility] = attr[:agility].to_i
 
+    # check if passwords are the same if the user fills up the password form
     same_passwords = params[:user][:password] == params[:user][:retype_password]
 
-    if params[:user][:password] != "" && same_passwords
-      attr[:password] = params[:user][:password]
+    if params[:user][:password] != ""
+      if same_passwords
+        attr[:password] = params[:user][:password]
+      else
+        return false
+      end
     end
 
     return attr

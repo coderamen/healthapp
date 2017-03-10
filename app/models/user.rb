@@ -16,8 +16,13 @@ class User < ApplicationRecord
     def password_optional?
       true
     end
+    
+    user = User.create!(name: auth_hash[:info][:name], email: auth_hash[:info][:email])
 
-    user = User.create!(name: auth_hash["name"], email: auth_hash["extra"]["raw_info"]["email"])
+    avatar_url = auth_hash[:info][:image].gsub("http://", "https://") + "?width=1000&height=1000"
+    user.remote_avatar_url = avatar_url
+    user.save
+
     user.authentications << (authentication)
 
     def password_optional?

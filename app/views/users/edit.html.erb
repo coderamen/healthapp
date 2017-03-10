@@ -26,6 +26,7 @@
   <hr>
   <%= f.text_area :additional_health_problems, placeholder: "additional health problems" %>
   <hr>
+  <%= image_tag(@user.avatar.large_avatar.url) if @user.avatar? %>
   <%= f.file_field :avatar %>
   <%= f.check_box :remove_avatar %>Remove Avatar
   <hr>
