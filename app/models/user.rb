@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :authentications
   has_many :pendings
   has_many :confirmed_activities
+  mount_uploader :avatar, AvatarUploader
   
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = User.create!(name: auth_hash["name"], email: auth_hash["extra"]["raw_info"]["email"], password: "password")
@@ -15,7 +16,5 @@ class User < ApplicationRecord
     x = self.authentications.where(:provider => :facebook).first
     return x.token unless x.nil?
   end
-
-  mount_uploader :avatar, AvatarUploader
 
 end
