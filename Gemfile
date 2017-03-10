@@ -4,6 +4,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+
+gem 'carrierwave', '~> 1.0'
 # Use for omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'
