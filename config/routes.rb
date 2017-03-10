@@ -28,6 +28,11 @@ Rails.application.routes.draw do
     resources :matches, only: [:index, :show]
   end
 
+  #routes for messages
+  resources :matches, only: [] do
+    resources :messages, only: [:create]
+  end
+
   # these are routes from clearance
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   # resource :session, controller: "clearance/sessions", only: [:create]
