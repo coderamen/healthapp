@@ -1,30 +1,35 @@
 <!-- edit user here front end team! -->
-<h1>Edit Page</h1>
-
-<%= form_for @user, url: user_path(@user), method: :patch do |f| %>
-  <%= f.text_field :name, placeholder: "Name" %>
-  <%= f.email_field :email, placeholder: "Email" %>
-  <%= f.password_field :password, placeholder: "Password" %>
-  <%= f.password_field :retype_password, placeholder: "Re-type Password" %>
-  <hr>
-  <%= f.text_field :city, placeholder: "City" %>
-  <%= f.text_field :state, placeholder: "State" %>
-  <%= f.text_field :country, placeholder: "Country" %>
-  <hr>
-  <%= f.label "Targeted hours of exercise per week" %>
-  <%= f.number_field :weekly_activity_hours %>
-  <%= f.label "Age Range" %>
-  <%= f.select :age_range, User.age_ranges %>
-  <hr>
-  <% rating_range = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]] %>
-  <%= f.label "Stamina" %>
-  <%= f.select :stamina, rating_range %>
-  <%= f.label "Strength" %>
-  <%= f.select :strength, rating_range %>
-  <%= f.label "Agility" %>
-  <%= f.select :agility, rating_range %>
-  <hr>
-  <%= f.text_area :additional_health_problems, placeholder: "additional health problems" %>
-  <hr>
-  <%= f.submit %>
-<% end %>
+<div class="container" >
+    <div class="col-md-12" >
+        <div id="logbox"  >
+          <h1>Edit User Profile</h1>
+            <%= form_for @user, id: "edit-user", url: user_path(@user), method: :patch do |f| %>
+              <%= f.text_field :name, placeholder: "Name", class: "input pass" %>
+              <%= f.email_field :email, placeholder: "Email", class: "input pass" %>
+              <%= f.password_field :password, placeholder: "Password", class: "input pass" %>
+              <%= f.password_field :retype_password, placeholder: "Re-type Password", class: "input pass" %>
+              <hr>
+              <%= f.text_field :city, placeholder: "City", class: "input pass" %>
+              <%= f.text_field :state, placeholder: "State", class: "input pass" %>
+              <%= f.text_field :country, placeholder: "Country", class: "input pass" %>
+              <hr>
+              <%= f.label "Targeted hours of exercise per week" %>
+              <%= f.number_field :weekly_activity_hours, class: "input pass" %>
+              <%= f.label "Age Range" %>
+              <%= f.select :age_range, User.age_ranges, class: "input pass" %>
+              <hr>
+              <% rating_range = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]] %>
+              <%= f.label "Stamina" %>
+              <%= f.select :stamina, rating_range, class: "input pass" %>
+              <%= f.label "Strength" %>
+              <%= f.select :strength, rating_range, class: "input pass" %>
+              <%= f.label "Agility" %>
+              <%= f.select :agility, rating_range, class: "input pass" %>
+              <hr>
+              <%= f.text_area :additional_health_problems, placeholder: "additional health problems", class: "input pass" %>
+              <hr>
+              <%= f.submit "Enter", class: "inputButton" %>
+            <% end %>
+        </div>
+    </div>
+</div>
