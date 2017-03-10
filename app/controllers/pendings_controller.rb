@@ -1,9 +1,16 @@
 class PendingsController < ApplicationController
+  before_action :require_login
+  before_action :require_user_details
+
   def new
+    current_user_authorised?(params[:user_id], root_path)
+
     @pending = Pending.new
   end
 
   def create
+    current_user_authorised?(params[:user_id], root_path)
+
     @pending = Pending.new(pending_params)
     @pending.status = "waiting"
     @pending.user_id = current_user.id
@@ -17,13 +24,14 @@ class PendingsController < ApplicationController
   end
 
   def show
-    pending = Pending.find(params[:id])
+    current_user_authorised?(params[:user_id], root_path)
 
-    # this variable has all the potential matches for this particular pending
-    @available_pendings = pending.potential_matches
+    @pending = Pending.find(params[:id])
   end
 
   def destroy
+    current_user_authorised?(params[:user_id], root_path)
+    
     pending = Pending.find(params[:id])
 
     pending.delete_related_matches_matchstatuses

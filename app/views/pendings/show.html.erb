@@ -1,9 +1,22 @@
 <!-- show page for all the available pendings to accept/decline for this particular pending -->
-
-<% @available_pendings.each do |pending| %>
-  <%= pending.user.email %>
-  <br>
-  <%= pending.datetime %>
-<% end %>
-
+<h1>This Pending</h1>
+<%= @pending %>
 <%= link_to "Delete pending", user_pending_path, method: :delete %>
+
+<h1>All available matches</h1>
+
+<% @pending.potential_matches.each do |potential_match| %>
+  <%= potential_match.user.email %>
+  <%= potential_match.city %>
+  <%= potential_match.datetime.to_date %>
+  <%= button_to "Accept", pending_match_statuses_path(potential_match), method: :post, 
+        params: { status: "accepted",
+                  pending_viewer_id: @pending.id,
+                  pending_viewed_id: potential_match.id }
+  %>
+  <%= button_to "Decline", pending_match_statuses_path(potential_match), method: :post,
+        params: { status: "declined",
+                  pending_viewer_id: @pending.id,
+                  pending_viewed_id: potential_match.id }
+  %>
+<% end %>
