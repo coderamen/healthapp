@@ -82,5 +82,6 @@ class UsersController < Clearance::UsersController
     end
 
     return attr
+
   end
 end

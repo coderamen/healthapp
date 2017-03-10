@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :confirmed_activities
   has_many :messages
 
+  mount_uploader :avatar, AvatarUploader
+  
   def self.create_with_auth_and_hash(authentication, auth_hash)
     def password_optional?
       true
@@ -29,6 +31,7 @@ class User < ApplicationRecord
     return x.token unless x.nil?
   end
 
+<<<<<<< HEAD
   def has_nil_attributes
     !self.encrypted_password || !self.name || !self.city || !self.state || !self.country || !self.age_range || !self.strength || !self.stamina || !self.agility
   end
@@ -40,4 +43,6 @@ class User < ApplicationRecord
       return false
     end
   end
+=======
+>>>>>>> 8385b2b140ef0c8f9a2589474d53bcfbd75fd729
 end
