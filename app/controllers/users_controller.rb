@@ -64,11 +64,11 @@ class UsersController < Clearance::UsersController
   private
 
   def new_user_params
-    params.require(:user).permit(:email, :password, :name, :city, :state, :country, :age_range, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours)
+    params.require(:user).permit(:email, :password, :name, :city, :state, :country, :age_range, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours, :avatar)
   end
 
   def update_user_params
-    attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours)
+    attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours, :avatar)
 
     attr[:age_range] = params[:user][:age_range].to_i
     attr[:stamina] = attr[:stamina].to_i

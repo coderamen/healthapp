@@ -31,7 +31,6 @@ class User < ApplicationRecord
     return x.token unless x.nil?
   end
 
-<<<<<<< HEAD
   def has_nil_attributes
     !self.encrypted_password || !self.name || !self.city || !self.state || !self.country || !self.age_range || !self.strength || !self.stamina || !self.agility
   end
@@ -43,6 +42,4 @@ class User < ApplicationRecord
       return false
     end
   end
-=======
->>>>>>> 8385b2b140ef0c8f9a2589474d53bcfbd75fd729
 end
