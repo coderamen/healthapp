@@ -9,7 +9,11 @@
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps:400,700" rel="stylesheet">
   </head>
   <body>
-
+  <div id="flash">
+    <% flash.each do |key, msg| %>
+      <%= content_tag :div, msg, class: "alert alert-#{key}" %>
+    <% end %>
+  </div>
     <%= yield %>
   </body>
 </html>
