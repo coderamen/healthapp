@@ -14,7 +14,7 @@ class Pending < ApplicationRecord
 
   # get datetime object from separated date and time values
   def self.get_datetime(params)
-    DateTime.new(params[:year].to_i, params[:month].to_i, params[:day].to_i, params[:hour].to_i, params[:minute].to_i, 0, '+8')
+    Time.local(params[:year].to_i, params[:month].to_i, params[:day].to_i, params[:hour].to_i, params[:minute].to_i, 0)
   end
 
   # since we've got 2 pending table joins in matches table, we need to create a method to get a pending's matches
