@@ -1,15 +1,25 @@
 
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  // background-color: #40414A;
+}
+
 .container {
+    // background-color: black;
     display: -webkit-flex;
     display: flex;
-    height: 100%;
+    height: 80%;
+    width: 80%;
 }
 
 #logbox {
-
     padding: 10px;
-    margin: 50px auto;
-    width: 340px;
+    margin-top: 30%;
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 100%;
     background-color: #fff;
     -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
@@ -28,6 +38,7 @@ h1, input {
 }
 
 .input {
+    text-align: center;
     width: 75%;
     height: 50px;
     display: block;
@@ -38,7 +49,7 @@ h1, input {
 }
 .input:focus {
     outline: none;
-    border-bottom-color: #3CC !important;
+    border-bottom-color: #01b6d1 !important;
 }
 .input:hover {
     border-bottom-color: #dcdcdc;
@@ -62,17 +73,17 @@ h1, input {
   display: block;
   margin: 30px auto 30px;
   color: white;
-  background-color: #3CC;
+  background-color: #01b6d1;
   border: none;
-  -webkit-box-shadow: 0 5px 0 #2CADAD;
-  -moz-box-shadow: 0 5px 0 #2CADAD;
-  box-shadow: 0 5px 0 #2CADAD;
+  -webkit-box-shadow: 0 5px 0 #258f9f;
+  -moz-box-shadow: 0 5px 0 #258f9f;
+  box-shadow: 0 5px 0 #258f9f;
 }
 .inputButton:hover {
   top: 2px;
-  -webkit-box-shadow: 0 3px 0 #2CADAD;
-  -moz-box-shadow: 0 3px 0 #2CADAD;
-  box-shadow: 0 3px 0 #2CADAD;
+  -webkit-box-shadow: 0 3px 0 #258f9f;
+  -moz-box-shadow: 0 3px 0 #258f9f;
+  box-shadow: 0 3px 0 #258f9f;
 }
 .inputButton:active {
   top: 5px;

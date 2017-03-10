@@ -1,5 +1,12 @@
-<%= form_for :session, url: sessions_path do |f| %>
-  <%= f.email_field :email, placeholder: "Email" %>
-  <%= f.password_field :password, placeholder: "Password" %>
-  <%= f.submit %>
-<% end %>
+<div class="container" >
+    <div class="col-md-6" >
+        <div id="logbox"  >
+          <h1>Sign In</h1>
+            <%= form_for :session, id: "signin", url: sessions_path do |f| %>
+              <%= f.email_field :email, placeholder: "Email", type: "email", class: "input pass" %>
+              <%= f.password_field :password, placeholder: "Password", type: "password", class: "input pass" %>
+              <%= f.submit "Sign In", class: "inputButton" %>
+            <% end %>
+        </div>
+    </div>
+</div>

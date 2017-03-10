@@ -17,9 +17,7 @@ root "welcome#index"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # routes for pending matches
-  resources :users, only: [] do
-    resources :pendings, only: [:new, :create, :show, :destroy]
-  end
+  resources :pendings, only: [:new, :create, :show, :destroy]
 
   # these are routes from clearance
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
