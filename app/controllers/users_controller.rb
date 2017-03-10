@@ -41,7 +41,14 @@ class UsersController < Clearance::UsersController
     
     @user = User.find(params[:id])
 
-    if @user.update(update_user_params)
+    update_hash = update_user_params
+
+    if update_hash[:remove_avatar]
+      @user.remove_avatar!
+      @user.save
+    end
+
+    if @user.update(update_hash)
       flash[:success] = "Update successful"
       redirect_to user_path(@user)
     else
@@ -64,11 +71,11 @@ class UsersController < Clearance::UsersController
   private
 
   def new_user_params
-    params.require(:user).permit(:email, :password, :name, :city, :state, :country, :age_range, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours)
+    params.require(:user).permit(:email, :password, :name, :city, :state, :country, :age_range, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours, :avatar)
   end
 
   def update_user_params
-    attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours)
+    attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours, :avatar, :remove_avatar)
 
     attr[:age_range] = params[:user][:age_range].to_i
     attr[:stamina] = attr[:stamina].to_i
@@ -82,5 +89,6 @@ class UsersController < Clearance::UsersController
     end
 
     return attr
+
   end
 end

@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170310080642) do
     t.integer  "stamina"
     t.integer  "strength"
     t.integer  "agility"
+    t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end

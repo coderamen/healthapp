@@ -1,3 +1,5 @@
 <!-- show user here front end team -->
 <p>Profile</p>
 <%= @user.email %>
+<h3>profile pic</h3>
+<%= image_tag(@user.avatar.large_avatar.url) if @user.avatar? %>
