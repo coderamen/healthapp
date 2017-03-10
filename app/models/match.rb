@@ -3,6 +3,8 @@ class Match < ApplicationRecord
   validates :user1_pending_id, uniqueness: { scope: :user2_pending_id }
   validate :reversed_unique_ids
 
+  has_many :messages
+
   def reversed_unique_ids
     if Match.find_by(user1_pending_id: user2_pending_id, user2_pending_id: user1_pending_id)
       errors.add(user1_pending_id, "Match already exists for this particular combinaton of pendings")

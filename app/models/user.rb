@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :authentications
   has_many :pendings
   has_many :confirmed_activities
+  has_many :messages
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
     def password_optional?

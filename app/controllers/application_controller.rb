@@ -22,5 +22,14 @@ class ApplicationController < ActionController::Base
       return redirect_to path
     end
   end
+
+  def current_user_authorised_for_match?(match)
+    if match && (current_user.id == match.user1_id || current_user.id == match.user2_id)
+      return true
+    else
+      flash[:danger] = "Unathorised action."
+      return redirect_to root_path
+    end
+  end
   
 end

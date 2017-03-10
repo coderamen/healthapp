@@ -33,3 +33,26 @@
 <% end %>
 
 <h1>Chat Panel goes below here</h1>
+
+<div class="chatbox">
+  <ol class="chat">
+    <% @match.messages.order('created_at').each do |msg| %>
+      <% if msg.user.id == current_user.id %>
+        <li class="self">
+      <% else %>
+        <li class="other">
+      <% end %>
+          <div class="msg">
+            <p><%= msg.content %></p>
+          </div>
+        </li>
+    <% end %>
+  </ol>
+
+  <div class="reply-msg">
+    <%= form_for :message, url: match_messages_path(@match) do |f| %>
+      <%= f.text_field :content, placeholder: "Message" %>
+      <%= f.submit "Send" %>
+    <% end %>
+  </div>
+</div>

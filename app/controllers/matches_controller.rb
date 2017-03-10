@@ -26,11 +26,8 @@ class MatchesController < ApplicationController
 
     match = Match.find_by_id(params[:id])
 
-    if match && (current_user.id == match.user1_id || current_user.id == match.user2_id)
+    if current_user_authorised_for_match?(match)
       @match = match
-    else
-      flash[:danger] = "Unauthorised action."
-      redirect_to root_path
     end
   end
 
