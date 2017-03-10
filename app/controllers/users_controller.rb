@@ -9,7 +9,7 @@ class UsersController < Clearance::UsersController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(new_user_params)
     if @user.save
       sign_in(@user)
       flash[:success] = "healthapp account has been successfully created"
@@ -30,14 +30,18 @@ class UsersController < Clearance::UsersController
     current_user_authorised?(params[:id], root_path)
 
     @user = User.find(params[:id])
+
+    if @user.has_no_password
+      flash[:danger] = "You need to have a password"
+    end
   end
 
   def update
     current_user_authorised?(params[:id], root_path)
-
+    byebug
     @user = User.find(params[:id])
 
-    if @user.update(user_params)
+    if @user.update(update_user_params)
       flash[:success] = "Update successful"
       redirect_to user_path(@user)
     else
@@ -59,7 +63,25 @@ class UsersController < Clearance::UsersController
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :password, :name, :city, :state, :country, :age_range, :physique, :additional_health_problems, :weekly_activity_hours)
+  def new_user_params
+    params.require(:user).permit(:email, :password, :name, :city, :state, :country, :age_range, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours)
+  end
+
+  def update_user_params
+    byebug
+    attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours)
+
+    attr[:age_range] = params[:user][:age_range].to_i
+    attr[:stamina] = attr[:stamina].to_i
+    attr[:strength] = attr[:strength].to_i
+    attr[:agility] = attr[:agility].to_i
+
+    same_passwords = params[:user][:password] == params[:user][:retype_password]
+
+    if params[:user][:password] != "" && same_passwords
+      attr[:password] = params[:user][:password]
+    end
+
+    return attr
   end
 end
