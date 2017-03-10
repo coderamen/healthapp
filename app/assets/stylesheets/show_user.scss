@@ -1,3 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#f-logo img {
+  margin-left: 15px;
+  margin-top: 0;
+  height: 80px;
+  padding: 0;
+}
+
+#f-logo img:hover {
+  -webkit-box-shadow: 0 3px 0 lightgrey;
+  -moz-box-shadow: 0 3px 0 lightgrey;
+  box-shadow: 0 3px 0 lightgrey;
+}
+
 .sidenav {
     height: 100%;
     width: 0;
@@ -38,6 +57,6 @@
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {padding-top: 0;}
   .sidenav a {font-size: 18px;}
 }

@@ -7,23 +7,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet"> 
   </head>
 
   <body>
-      <header>
-        <nav class="navbar navbar-default">
-          <%= link_to image_tag("fitbuds-clear_bg.png"), root_path , id: "logo"%>
-          <ul class="nav navbar-nav navbar-right">
-            <% if signed_in? %>
-              <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
-            <% else %>
-            <li><%= link_to "Log In with Facebook", "/auth/facebook" %></li>
-            <li><%= link_to "Sign In", sign_in_path %></li>
-            <li><%= link_to "Sign Up", new_user_path %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </header>
+
     <%= yield %>
 
   </body>

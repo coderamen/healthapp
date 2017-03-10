@@ -1,11 +1,24 @@
+<header>
+  <nav class="navbar navbar-default">
+    <%= link_to image_tag("fitbuds-clear_bg.png"), root_path , id: "logo"%>
+    <ul class="nav navbar-nav navbar-right" id="margin-right">
+      <% if signed_in? %>
+        <li><%= link_to "User Profile", user_path(current_user.id) %></li>
+        <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to "Log In with Facebook", "/auth/facebook" %></li>
+      <li><%= link_to "Sign In", sign_in_path %></li>
+      <li><%= link_to "Sign Up", new_user_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
 
 <div class="jumbotron">
   <div class="container-fluid">
-    <div class="text-in-img">
-      <div class="container-fluid">
-        <div class="col-xl-1">
-          <h1>Find a bud to sports with</h1>
-        </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 id="middle-text">Find a bud to sports with</h1>
       </div>
     </div>
   </div>
@@ -46,3 +59,10 @@
     </p>
   </div>
 </div>
+
+<footer class="navbar navbar-default" id="footer">
+  <ul class="nav navbar-nav" id="footer">
+    <li><%= link_to "Vission" %></li>
+    <li><%= link_to "Contacts" %></li>
+  </ul>
+</footer>
