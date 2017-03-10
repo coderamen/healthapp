@@ -1,5 +1,6 @@
 class PendingsController < ApplicationController
   before_action :require_login
+  before_action :require_user_details
 
   def new
     current_user_authorised?(params[:user_id], root_path)

@@ -15,4 +15,8 @@ class User < ApplicationRecord
     x = self.authentications.where(:provider => :facebook).first
     return x.token unless x.nil?
   end
+
+  def has_nil_attributes
+    !self.name || !self.city || !self.state || !self.country || !self.age_range || !self.physique
+  end
 end

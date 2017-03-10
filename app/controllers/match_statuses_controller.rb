@@ -1,5 +1,6 @@
 class MatchStatusesController < ApplicationController
   before_action :require_login
+  before_action :require_user_details
 
   def create
     pending = Pending.find_by_id(params[:pending_viewer_id])
