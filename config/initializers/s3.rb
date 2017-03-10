@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
       provider:                            'AWS',
-      aws_access_key_id:          'AKIAITFIOKBMXRA4WDNA',
-      aws_secret_access_key:   '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',
+      aws_access_key_id:          ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key:   ENV['AWS_SECRET_ACCESS_KEY'],
       region:                               'ap-southeast-1'
   }
   config.fog_directory  = 'fitbuds'
