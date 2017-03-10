@@ -1,4 +1,4 @@
-<%= form_for @pending, url: user_pendings_path do |f| %>
+<%= form_for @pending, url: user_pendings_path(current_user) do |f| %>
   <%= f.text_field :city, placeholder: "City" %>
   <hr>
   <%= f.label "Date and Time" %>

@@ -10,10 +10,15 @@ class MatchesController < ApplicationController
 
     # have an array of all matches where the user is involved
     @matches = user_in_user1
-    @matches << user_in_user2
+    @matches << user_in_user2 if !user_in_user2
 
-    # order the matches based on created_at
-    @matches = @matches.order('created_at desc')
+    if @matches != []
+      # order the matches based on created_at
+      @matches = @matches.order('created_at desc')
+    else
+      flash[:danger] = "No matches available"
+      redirect_to root_path
+    end
   end
 
   def show
