@@ -1,0 +1,12 @@
+<%= form_for @pending, url: user_pendings_path do |f| %>
+  <%= f.text_field :city, placeholder: "City" %>
+  <%= f.date_field :datetime, placeholder: "Date Time" %>
+  <%= f.select :activity_id do %>
+    <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
+    <%= options_for_select([['Others', 0]]) %>
+    <%= options_for_select(activity_array) %>
+  <% end %>
+  <%= f.text_field :activity, placeholder: "If selected 'Other', please specify" %>
+  <%= f.submit %> 
+
+<% end %>

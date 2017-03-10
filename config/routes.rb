@@ -6,12 +6,27 @@ Rails.application.routes.draw do
   resources :users
 
   # routes for sessions
-  get "/session/new" => "sessions#new", as: "sign_in"
+  get "/sessions/new" => "sessions#new", as: "sign_in"
   post "/sessions" => "sessions#create"
   delete "sessions" => "sessions#destroy", as: "sign_out"
 
   # route for facebook callback, for when the user has already signed_in from fb and are returning from fb
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+  # routes for pending matches
+  resources :users, only: [] do
+    resources :pendings, only: [:index, :new, :create, :show, :destroy]
+  end
+
+  # route for creating match_statuses
+  resources :pendings, only: [] do
+    resources :match_statuses, only: [:create]
+  end
+
+  #routes for matches
+  resources :users, only: [] do
+    resources :matches, only: [:index, :show]
+  end
 
   # these are routes from clearance
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
