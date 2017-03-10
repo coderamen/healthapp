@@ -29,11 +29,11 @@ class User < ApplicationRecord
   end
 
   def has_nil_attributes
-    !self.password || !self.name || !self.city || !self.state || !self.country || !self.age_range || !self.physique
+    !self.encrypted_password || !self.name || !self.city || !self.state || !self.country || !self.age_range || !self.strength || !self.stamina || !self.agility
   end
 
   def has_no_password
-    if self.password == nil
+    if self.encrypted_password == nil
       return true
     else
       return false
