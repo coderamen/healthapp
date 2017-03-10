@@ -4,7 +4,9 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+# photo resizing
+gem "mini_magick"
+# file upload solution
 gem 'carrierwave', '~> 1.0'
 # Use for omniauth
 gem 'omniauth'
