@@ -1,0 +1,10 @@
+<ul>
+  <% @pendings.each do |pending| %>
+    <li>
+      <p><%= pending.activity.name %></p>
+      <p><%= pending.datetime.localtime %></p>
+      <p><%= pending.city %></p>
+      <%= link_to "Go to Pending", user_pending_path(current_user,  pending) %>
+    </li>
+  <% end %>
+</ul>

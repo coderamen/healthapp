@@ -5,12 +5,6 @@ class Match < ApplicationRecord
 
   has_many :messages
 
-  def reversed_unique_ids
-    if Match.find_by(user1_pending_id: user2_pending_id, user2_pending_id: user1_pending_id)
-      errors.add(user1_pending_id, "Match already exists for this particular combinaton of pendings")
-    end
-  end
-
   def user1
     User.find_by_id(self.user1_id)
   end
@@ -26,5 +20,17 @@ class Match < ApplicationRecord
   def user2_pending
     Pending.find_by_id(self.user2_pending_id)
   end
+
+  def reversed_unique_ids
+    if Match.find_by(user1_pending_id: user2_pending_id, user2_pending_id: user1_pending_id)
+      errors.add(user1_pending_id, "Match already exists for this particular combinaton of pendings")
+    end
+  end
+
+  def mark_both_pendings_success
+    user1_pending.update(status: "successful")
+    user2_pending.update(status: "successful")
+  end
+
 end
 

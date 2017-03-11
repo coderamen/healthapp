@@ -2,6 +2,12 @@ class PendingsController < ApplicationController
   before_action :require_login
   before_action :require_user_details
   
+  def index
+    current_user_authorised?(params[:user_id], root_path)
+
+    @pendings = Pending.where(user_id: params[:user_id], status: "waiting").order('created_at desc')
+  end
+
   def new
     current_user_authorised?(params[:user_id], root_path)
 

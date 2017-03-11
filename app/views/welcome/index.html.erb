@@ -4,6 +4,9 @@
 
 <% if signed_in? %>
   <%= link_to "Sign Out", sign_out_path, method: :delete %>
+  <%= link_to "Pendings", user_pendings_path(current_user) %>
+  <%= link_to "Matches", user_matches_path(current_user) %>
+  
 <% else %>
   <%= link_to "Sign In", sign_in_path %>
   <%= link_to "Sign Up", new_user_path %>

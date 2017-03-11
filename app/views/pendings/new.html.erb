@@ -6,7 +6,7 @@
   <%= f.select :month, (1..12).each.map { |num| [num, num] }, prompt: "Month" %>
   <%= f.select :day, (1..31).each .map { |num| [num, num] }, prompt: "Day" %>
   <%= f.select :hour, (0..23).each.map { |num| [num, num] }, prompt: "Hour" %>
-  <%= f.select :minute, (0..59).each.map { |num| [num, num] }, prompt: "Minute" %>
+  <%= f.select :minute, [0, 10, 20, 30, 40, 50, 60].each.map { |num| [num, num] }, prompt: "Minute" %>
   <hr>
   <%= f.select :activity_id do %>
     <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
