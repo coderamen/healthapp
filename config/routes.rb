@@ -28,9 +28,10 @@ Rails.application.routes.draw do
     resources :matches, only: [:index, :show]
   end
 
-  #routes for messages
+  #routes for messages and confirmed_activities
   resources :matches, only: [] do
     resources :messages, only: [:create]
+    resources :confirmed_activities, only: [:create, :update]
   end
 
   # these are routes from clearance

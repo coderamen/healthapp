@@ -4,6 +4,7 @@ class Match < ApplicationRecord
   validate :reversed_unique_ids
 
   has_many :messages
+  has_many :confirmed_activities
 
   def user1
     User.find_by_id(self.user1_id)

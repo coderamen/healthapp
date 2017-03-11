@@ -56,3 +56,25 @@
     <% end %>
   </div>
 </div>
+
+<h1>Form for confirmed activity goes below</h1>
+
+<%= form_for @confirmed_activity, url: match_confirmed_activities_path(@match) do |f| %>
+  <%= f.select :activity_id do %>
+    <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
+    <%= options_for_select([['Others', 0]]) %>
+    <%= options_for_select(activity_array) %>
+  <% end %>
+  <%= f.text_field :activity, placeholder: "If selected 'Other', please specify" %>
+  <hr>
+  <%= f.text_field :location, placeholder: "Location" %>
+  <hr>
+  <%= f.select :year, [[2017, 2017]], prompt: "Year" %>
+  <%= f.select :month, (1..12).each.map { |num| [num, num] }, prompt: "Month" %>
+  <%= f.select :day, (1..31).each .map { |num| [num, num] }, prompt: "Day" %>
+  <%= f.select :hour, (0..23).each.map { |num| [num, num] }, prompt: "Hour" %>
+  <%= f.select :minute, [0, 10, 20, 30, 40, 50, 60].each.map { |num| [num, num] }, prompt: "Minute" %>
+  <hr>
+  <%= f.number_field :duration_in_hours, placeholder: "Activity Duration" %>
+  <%= f.submit %>
+<% end %>
