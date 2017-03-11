@@ -60,6 +60,12 @@
 <h1>Form for confirmed activity goes below</h1>
 
 <%= form_for @confirmed_activity, url: match_confirmed_activities_path(@match) do |f| %>
+  <!-- for user confirmation based on the current_user -->
+  <% if current_user == @match.user1 %>
+    <%= hidden_field :user1_confirm, value: true %>
+  <% else %>
+    <%= hidden_field :user2_confirm, value: true %>
+  <% end %>
   <%= f.select :activity_id do %>
     <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
     <%= options_for_select([['Others', 0]]) %>
