@@ -19,11 +19,13 @@ class MatchStatusesController < ApplicationController
           match.mark_both_pendings_success
           
           flash[:success] = "Match created!"
-          redirect_to user_match_path(user_id: pending.user_id, id: match.id)
+          return redirect_to user_match_path(user_id: pending.user_id, id: match.id)
         else
           flash[:danger] = "Unable to create match"
         end
       end
+
+      redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i)
     else
       flash[:danger] = "Unable to make changes"
       redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i)

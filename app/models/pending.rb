@@ -22,7 +22,7 @@ class Pending < ApplicationRecord
     all_unavailable_id = get_unavailable_matches_id
     # add the current pending id into declined_pendings_id because we don't want the user to be able to accept him/herself
     all_unavailable_id << self.id
-    byebug
+
     all_similar_pendings = Pending.joins(:user).where(
       activity_id: self.activity_id,
       city: self.city,
