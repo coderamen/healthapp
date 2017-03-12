@@ -36,7 +36,7 @@ body {
   background: #DEDCDE;
 }
 
-.jumbotron {
+#index-bg {
   background-image: url('bg.jpg');
   background-size: cover;
   height: 850px;
@@ -54,8 +54,7 @@ body {
   margin-right: auto;
   text-align: center;
   margin-top: 180px;
-  font-family: 'PT Sans', sans-serif;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Droid Serif', serif;
   // font-weight: lighter;
   opacity: 0.7;
   // font-size: px;
@@ -86,4 +85,8 @@ body {
   // margin-top: 100%;
   margin-bottom: 0;
   // left: 0;
+}
+
+ul {
+  text-align: center;
 }

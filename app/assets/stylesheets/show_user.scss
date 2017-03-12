@@ -4,59 +4,35 @@ html, body {
   height: 100%;
 }
 
-#f-logo img {
-  margin-left: 15px;
-  margin-top: 0;
-  height: 80px;
+// #username {
+//   padding: 8px 8px 8px 32px;
+//   text-decoration: none;
+//   font-size: 25px;
+//   color: #818181;
+//   display: block;
+//   transition: 0.3s
+// }
+
+#main {
+  margin: 0;
   padding: 0;
 }
 
-#f-logo img:hover {
-  -webkit-box-shadow: 0 3px 0 lightgrey;
-  -moz-box-shadow: 0 3px 0 lightgrey;
-  box-shadow: 0 3px 0 lightgrey;
+.user-details {
+  margin-top: 20px;
+  margin-left: 25px;
 }
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+#welcome-username {
+  margin-top: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  color: #525252;
+  font-weight: 300;
 }
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s
-}
-
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 0;}
-  .sidenav a {font-size: 18px;}
+.attributes {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  color: #757575;
 }
