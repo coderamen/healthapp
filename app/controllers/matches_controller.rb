@@ -23,6 +23,7 @@ class MatchesController < ApplicationController
 
     if current_user_authorised_for_match?(match)
       @match = match
+      @confirmed_activity = ConfirmedActivity.new
     end
   end
 

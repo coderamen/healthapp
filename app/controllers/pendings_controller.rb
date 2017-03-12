@@ -58,7 +58,7 @@ class PendingsController < ApplicationController
 
   def pending_params
     return_hash = params.require(:pending).permit(:city)
-    return_hash[:datetime] = Pending.get_datetime(params[:pending])
+    return_hash[:datetime] = get_datetime(params[:pending])
 
     if params[:pending][:activity_id] == "0"
       # condition for when an other activity is specified or none
