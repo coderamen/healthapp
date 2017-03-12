@@ -72,13 +72,15 @@
     <% if activity.user1_confirm %>
       <p><strong>Waiting for other user to confirm!</strong></p>
     <% else %>
-      <p><strong><%= button_to "Confirm", match_confirmed_activity_path(@match, activity), value: 1 %></strong></p>
+      <p><strong><%= button_to "Confirm", match_confirmed_activity_path(@match, activity), method: :post %></strong></p>
+      <p><strong><%= button_to "Decline", match_confirmed_activity_path(@match, activity), method: :delete %></strong></p>
     <% end %>
   <% elsif current_user == @match.user2 %>
     <% if activity.user2_confirm %>
       <p><strong>Waiting for other user to confirm!</strong></p>
     <% else %>
-      <p><strong><%= button_to "Confirm", match_confirmed_activity_path(@match, activity), value: 2 %></strong></p>
+      <p><strong><%= button_to "Confirm", match_confirmed_activity_path(@match, activity), method: :post %></strong></p>
+      <p><strong><%= button_to "Decline", match_confirmed_activity_path(@match, activity), method: :delete %></strong></p>
     <% end %>
   <% end %>
 
@@ -86,9 +88,9 @@
   <%= form_for @confirmed_activity, url: match_confirmed_activities_path(@match) do |f| %>
     <!-- for user confirmation based on the current_user -->
     <% if current_user == @match.user1 %>
-      <%= hidden_field :user1_confirm, value: true %>
+      <%= f.hidden_field :user1_confirm, value: true %>
     <% else %>
-      <%= hidden_field :user2_confirm, value: true %>
+      <%= f.hidden_field :user2_confirm, value: true %>
     <% end %>
     <%= f.select :activity_id do %>
       <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>

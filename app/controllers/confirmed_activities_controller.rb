@@ -25,14 +25,34 @@ class ConfirmedActivitiesController < ApplicationController
   end
 
   def destroy
+    current_user_authorised_for_match?(Match.find_by_id(params[:match_id]))
+
+    confirmed_activity = ConfirmedActivity.find(params[:id])
+    confirmed_activity.destroy
+
+    flash[:success] = "You declined the confirmed_activity. Please create another one."
+    redirect_to user_match_path(current_user, Match.find(params[:match_id]))
+
   end
 
   def confirm
+    current_user_authorised_for_match?(Match.find_by_id(params[:match_id]))
+
+    confirmed_activity = ConfirmedActivity.find(params[:id])
+    match = confirmed_activity.match
+
+    if current_user == match.user1
+      confirmed_activity.user1_confirm = true
+    elsif current_user == match.user2
+      confirmed_activity.user2_confirm = true
+    end
+
   end
 
   private
 
   def confirmed_activities_params
+    byebug
     attr_hash = {
       duration_in_hours: params[:confirmed_activity][:duration_in_hours].to_i,
       location: params[:confirmed_activity][:location],
