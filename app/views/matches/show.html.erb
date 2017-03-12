@@ -33,8 +33,11 @@
 <% end %>
 
 <h1>Chat Panel goes below here</h1>
-
-<div class="chatbox">
+<% if current_user == @match.user1 %>
+  <div class="chatbox" data-match-id="<%= @match.id %>" data-self="<%= @match.user1.id %>" data-other="<%= @match.user2.id %>">
+<% else %>
+  <div class="chatbox" data-match-id="<%= @match.id %>" data-self="<%= @match.user2.id %>" data-other="<%= @match.user1.id %>">
+<% end %>
   <ol class="chat">
     <% @match.messages.order('created_at').each do |msg| %>
       <% if msg.user.id == current_user.id %>
@@ -50,7 +53,7 @@
   </ol>
 
   <div class="reply-msg">
-    <%= form_for :message, url: match_messages_path(@match) do |f| %>
+    <%= form_for :message, url: match_messages_path(@match), remote: true do |f| %>
       <%= f.text_field :content, placeholder: "Message" %>
       <%= f.submit "Send" %>
     <% end %>
