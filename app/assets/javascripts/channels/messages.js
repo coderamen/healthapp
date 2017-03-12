@@ -2,16 +2,18 @@ $(document).ready(function() {
 
   App.messages = App.cable.subscriptions.create({channel: 'MessagesChannel', match_id: $('.chatbox').data('match-id')}, {
     received: function(data) {
-      var $newMessage = $('<li><p></p></li>');
+      var $newMessage = $('<li></li>');
 
       if (data.user_id === $('.chatbox').data('self')) {
         $newMessage.addClass('self');
       }
       else if (data.user_id === $('.chatbox').data('other')) {
-        $newMessage.addCLass('other');
+        $newMessage.addClass('other');
       }
+      $newMessage.append('<div></div>');
+      $newMessage.children().addClass('msg');
 
-      $newMessage.html('<p>' + data.message + '</p>');
+      $newMessage.children().html('<p>' + data.message + '</p>');
       $('ol.chat').append($newMessage);
     }
   });
