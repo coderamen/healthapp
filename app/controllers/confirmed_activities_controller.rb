@@ -14,7 +14,7 @@ class ConfirmedActivitiesController < ApplicationController
       flash[:danger] = "You need to specify an activity!"
       return redirect_to user_match_path(current_user.id, params[:match_id])
     end
-    byebug
+    
     if @confirmed_activity.save
       flash[:success] = "Created activity! Now waiting for other user to confirm."
     else
@@ -52,7 +52,6 @@ class ConfirmedActivitiesController < ApplicationController
   private
 
   def confirmed_activities_params
-    byebug
     attr_hash = {
       duration_in_hours: params[:confirmed_activity][:duration_in_hours].to_i,
       location: params[:confirmed_activity][:location],
