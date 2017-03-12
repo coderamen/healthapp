@@ -15,8 +15,15 @@ $(document).ready(function() {
 
       $newMessage.children().html('<p>' + data.message + '</p>');
       $('ol.chat').append($newMessage);
+
+      // scroll to bottom of chat panel with animation
+      $('.chat').animate({
+        scrollTop: $('.chat').prop('scrollHeight')
+      }, 500);
     }
   });
+
+
 
   $(document).on('turbolinks:load', function() {
     $('.reply-msg > form').submit(function() {
