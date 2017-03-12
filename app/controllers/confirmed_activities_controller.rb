@@ -24,7 +24,10 @@ class ConfirmedActivitiesController < ApplicationController
     redirect_to user_match_path(current_user.id, params[:match_id])
   end
 
-  def update
+  def destroy
+  end
+
+  def confirm
   end
 
   private
