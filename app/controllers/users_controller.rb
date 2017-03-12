@@ -38,7 +38,7 @@ class UsersController < Clearance::UsersController
 
   def update
     current_user_authorised?(params[:id], root_path)
-    byebug
+
     @user = User.find(params[:id])
 
     if @user.update(update_user_params)
@@ -53,7 +53,7 @@ class UsersController < Clearance::UsersController
 
   def destroy
     current_user_authorised?(params[:id], root_path)
-    
+
 		user = User.find_by_id(params[:id])
 		sign_out
 		user.authentications.delete_all
@@ -68,7 +68,7 @@ class UsersController < Clearance::UsersController
   end
 
   def update_user_params
-    byebug
+
     attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours)
 
     attr[:age_range] = params[:user][:age_range].to_i

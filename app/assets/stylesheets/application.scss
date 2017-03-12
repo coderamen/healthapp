@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
 *= require font-awesome
+*= require bootstrap-select
+*= require material_icons
  */
 
 @import "bootstrap-sprockets";
