@@ -6,6 +6,7 @@ class SessionsController < Clearance::SessionsController
 
     sign_in(@user) do |status|
       if status.success?
+        cookies.signed[:user_id] = @user.id
         redirect_back_or root_path
       else
         flash[:danger] = "Unable to log in"
@@ -23,7 +24,7 @@ class SessionsController < Clearance::SessionsController
       user = authentication.user
       authentication.update_token(auth_hash)
       @next = root_url
-      @notice = "Signed in!"
+      @notice = "You are now signed in"
     else
      user = User.create_with_auth_and_hash(authentication, auth_hash)
       @next = edit_user_path(user)
@@ -31,6 +32,8 @@ class SessionsController < Clearance::SessionsController
     end
 
     sign_in(user)
+    cookies.signed[:user_id] = @user.id
+
     redirect_to @next, :notice => @notice
   end
 

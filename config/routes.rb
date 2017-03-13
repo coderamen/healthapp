@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  #root page
-  root "welcome#index"
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'welcome#index'
+
+  get '/users/:id/dashboard' => "welcome#dashboard", as: "dashboard"
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # routes for user
   resources :users
@@ -27,6 +31,16 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :matches, only: [:index, :show]
   end
+
+  #routes for messages and confirmed_activities
+  resources :matches, only: [] do
+    resources :messages, only: [:create]
+    resources :confirmed_activities, only: [:create, :destroy]
+    post "/confirmed_activities/:id/confirm" => "confirmed_activities#confirm"
+  end
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => "/cable"
 
   # these are routes from clearance
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
