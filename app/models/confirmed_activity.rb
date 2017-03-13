@@ -6,6 +6,6 @@ class ConfirmedActivity < ApplicationRecord
   validates :match_id, uniqueness: true
 
   # accessor for new pending form
-  attr_accessor :year, :month, :day, :hour, :minute
+  attr_accessor :date, :time
   
 end

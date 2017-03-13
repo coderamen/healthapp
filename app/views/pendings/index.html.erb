@@ -2,9 +2,10 @@
   <% @pendings.each do |pending| %>
     <li>
       <p><%= pending.activity.name %></p>
-      <p><%= pending.datetime.localtime %></p>
+      <p>Date: <%= pending.datetime.localtime.strftime("%A, %d %b %Y") %></p>
+      <p>Time: <%= pending.datetime.localtime.strftime("%I:%M%p") %></p>
       <p><%= pending.city %></p>
-      <%= link_to "Go to Pending", user_pending_path(current_user,  pending) %>
+      <%= link_to "Go to Pending", user_pending_path(current_user, pending) %>
     </li>
   <% end %>
 </ul>

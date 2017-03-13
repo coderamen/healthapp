@@ -10,18 +10,15 @@ class Pending < ApplicationRecord
   validates :activity_id, :user_id, :city, :datetime, :status, presence: true
 
   # accessor for new pending form
-  attr_accessor :year, :month, :day, :hour, :minute
+  attr_accessor :date, :time
 
   # since we've got 2 pending table joins in matches table, we need to create a method to get a pending's matches
   def potential_matches
     all_unavailable_id = get_unavailable_matches_id
-    # add the current pending id into declined_pendings_id because we don't want the user to be able to accept him/herself
-    all_unavailable_id << self.id
 
     all_similar_pendings = Pending.joins(:user).where(
       activity_id: self.activity_id,
       city: self.city,
-      datetime: self.datetime,
       status: "waiting",
       # user attributes
       users: {
@@ -32,7 +29,10 @@ class Pending < ApplicationRecord
       }
     )
 
-    return all_similar_pendings.where.not(id: all_unavailable_id)
+    all_similar_pendings = filter_by_date_only(all_similar_pendings)
+
+    # return pendings that are available and not the user's own pendings
+    return all_similar_pendings.where.not(id: all_unavailable_id, user_id: self.user_id)
   end
 
   def delete_related_matches_matchstatuses
@@ -58,6 +58,22 @@ class Pending < ApplicationRecord
     end
 
     return responded_by_user
+  end
+
+  def filter_by_date_only(pendings)
+    same_date = []
+
+    pendings.each do |pending|
+      p_date = pending.datetime
+      s_date = self.datetime
+
+      if p_date.year == s_date.year && p_date.month == s_date.month && p_date.day == s_date.day
+        same_date << pending.id
+      end
+    end
+
+    Pending.where(id: same_date)
+
   end
   
 end
