@@ -1,6 +1,6 @@
 <header class="topbar clearfix">
   <div class="topbar-left pull-left">
-    <%= image_tag "brand4.png", class: "brand", style: "width: 128px; height: 55px;" %>
+    <a href="/users/<%= current_user.id %>/dashboard"><%= image_tag "brand4.png", class: "brand", style: "width: 128px; height: 55px;" %></a>
     <span onclick="openNav()" class="fa fa-bars fa-2x" style="position: relative; bottom: 3.6em; left: .5em; color: #fff;"></span>
     <span onclick="openNav()" class="fa fa-sign-out fa-2x" style="position: relative; left: 41em; top: 10px; font-weight: 300; color: #fff;"></span>
   </div>
@@ -38,16 +38,16 @@
             <li style="text-align: center;"><%= current_user.agility %></li>
           </ul>
           <ul style="text-transform: capitalize; border-top: 1px solid rgba(0, 0, 0, 0.12);">
-            <li style="float:left; margin-left: 18px; width: 100px; margin-right: 40px; margin-top: 10px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">location_city</i>City</li>
-            <li style="margin-top: 10px;"><%= current_user.city %></li>
-            <li style="float:left; margin-left: 18px; width: 100px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">location_city</i>State</li>
-            <li><%= current_user.state %></li>
-            <li style="float:left; margin-left: 18px; width: 100px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">location_city</i>Country</li>
-            <li><%= current_user.country %></li>
-            <li style="float:left; margin-left: 18px; width: 100px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">local_activity</i>Activity</li>
+            <li style="margin-left: 20px; width: 200px; margin-top: 10px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:5px; font-size: 14px; line-height: 12px;">location_city</i>City/State/Country</li>
+              <li style="margin-left: 20px;"><%= current_user.city %></li>
+              <li style="margin-left: 20px;"><%= current_user.state %></li>
+              <li style="margin-left: 20px;"><%= current_user.country %></li>
+
+
+            <!-- <li style="float:left; margin-left: 18px; width: 100px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">local_activity</i>Activity</li>
             <li><%= current_user.weekly_activity_hours %></li>
             <li style="float:left; margin-left: 18px; width: 200px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">local_hospital</i>Health Issue</li>
-            <li><%= current_user.additional_health_problems %></li>
+            <li><%= current_user.additional_health_problems %></li> -->
             <li>
               <%= link_to( "edit", { class: "btn btn-default", style: "vertical-align: middle;width: 100%; margin-left: 10px; margin-top: 10px; border-radius: 0;"} ) do %>
               <i class="material-icons md-18" style="line-height: 14px; vertical-align: middle; padding-right: 21px; ">mode_edit</i>Edit
@@ -56,9 +56,8 @@
           </ul>
         </div>
         <ul class="list-profile" style="display: block; margin-top: 12px;">
-          <li class="active"><i class="fa fa-handshake-o" style="margin-right: 10px;"></i><%= link_to "create new match", "#", class: "list-style"%></li>
-          <li><%= image_tag "icon1.png", width: "17px", height: "17px", style: "margin-right: 10px;" %><%= link_to "current matches", "#", class: "list-style" %></li>
-          <li><i class="material-icons md-18" style="vertical-align: middle; margin-right: 10px;  ">recent_actors</i><%= link_to "all pending matches", "#", class: "list-style" %></li>
+          <li><%= image_tag "icon1.png", width: "13px", height: "13px", style: "margin-right: 5px;" %><%= link_to "waiting/pending matches", "#", class: "list-style" %></li>
+          <li><i class="material-icons md-18" style="vertical-align: middle; margin-right: 5px; font-size: 15px;">recent_actors</i><%= link_to "matches", "#", class: "list-style" %></li>
         </ul>
         <div id=""></div>
         <!-- </div> -->
@@ -74,7 +73,7 @@
 <div class="dashbox">
   <div class="row">
     <div class="col-lg-12">
-      <h1 style="margin-bottom: 30px; border-bottom: 1px solid #fff; border-top: 1px solid #fff; width: 300px;">Create Match</h1>
+      <h1 style="margin-bottom: 10px; border-bottom: 1px solid #fff; border-top: 1px solid #fff; width: 187px;">Create Match</h1>
     </div>
   </div>
     <!-- <hr> -->
@@ -97,14 +96,15 @@
               <%= f.select :minute, (0..59).each.map { |num| [num, num] }, { prompt: "Minute" }, { class: "btn btn-primary  dropdown-toggle" } %>
             </div>
             <div class="col-md-4">
-              <span class="lead" style="font-size: 15px;">Activity<span class="pull-right" style="border: none; color: #000; margin-bottom: 19px">
+              <span class="lead" style="font-size: 15px;">Activity</span>
+                <span style="border: none; color: #000; margin-bottom: 19px">
                 <%= f.select :activity_id do %>
                 <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
                 <%= options_for_select([['Others', 0]]) %>
                 <%= options_for_select(activity_array) %>
                 <% end %>
               </span>
-              <%= f.text_field :activity, placeholder: "If selected 'Other', please specify", class: "form-control" %>
+              <span><%= f.text_field :activity, placeholder: "If selected 'Other', please specify", class: "form-control", style: "width: 140px" %></span>
               <%= f.submit class: "btn btn-primary", style: "width: 100%; margin-top: 10px; border-radius: 0; font-weight: 300;" %>
               <% end %>
             </div>
@@ -137,13 +137,11 @@
     </div>
   </div>
   <div class="col-lg-4 col-md-6">
-    <div class="panel-body" style="border: 1px solid #ccc">
+    <div class="panel-body" style="border: 1px solid #ccc; width: 365px, height: 270px;">
       <div class="pending-img">
-        <%= image_tag "sleep.png", width: "150px", height: "auto"%>
+        <!-- <%= image_tag "sleep.png", width: "150px", height: "auto"%> -->
       </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-      <%= link_to "approve", "#", class: "btn btn-success", style: "width: 40%; border-radius: 0;" %>
-      <%= link_to "decline", "#", class: "btn btn-danger", style: "width: 40%; border-radius: 0;" %>
+      <p>Upcoming Events</p>
     </div>
   </div>
 </div>

@@ -40,7 +40,7 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
 }
 
@@ -50,14 +50,15 @@ body {
   background: #15737d;
 }
 
+.topbar-left {
+  z-index: 2;
+}
+
 // user profile
 
 .user-profile {
   display: table;
   width: 100%;
-  background: url("bg6.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
 .user-thumb img {
@@ -66,10 +67,12 @@ body {
 
 .btn-default {
   color: #fff;
-  background: linear-gradient(#eea849, #f46b45); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: linear-gradient(#f47450, #ff404b);
   border: 0;
 }
+
+// #f46b45
+// #ff404b
 
 .user-profile .user-thumb {
   padding: 15px 0 15px 15px;
@@ -119,6 +122,8 @@ body {
   position: fixed;
   top: 60px;
   height: 100%;
+  overflow: hidden;
+  z-index: 1;
 }
 
 // background: rgba(0,0,0,0.8)
@@ -142,13 +147,13 @@ body {
 
 .list-profile {
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 13px;
   padding-left: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .list-profile li {
-  padding: 8px 15px;
+  padding: 8px 0px 8px 12px;
   font-weight: 500;
   color: #fff !important;
   position: relative;
@@ -204,7 +209,7 @@ body {
 .dashbox {
   position: absolute;
   right: 1em;
-  top: 2em;
+  top: em;
   margin-top:60px;
   width: calc(100% - 250px);
   float: right;
@@ -213,7 +218,7 @@ body {
 .dashbox h1 {
   color: #fff;
   margin-left: 15px;
-  font-size: 40px;
+  font-size: 25px;
   font-weight: 300;
   text-transform: uppercase;
 }
@@ -247,6 +252,7 @@ body {
   position: relative;
   bottom: 17.9em;
   width: 1210px;
+  // overflow: hidden;
   height: 251px;
   background: linear-gradient(to left, #072a2e, #15737d);
   opacity: 0.6;
@@ -258,6 +264,7 @@ body {
   background-position: center;
   background-size: cover;
   position: relative;
+  // overflow: hidden;
   margin-top: 0px;
   width: 1210px;
   height: 250px;
