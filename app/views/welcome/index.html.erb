@@ -1,11 +1,17 @@
+<div id="top"></div>
+
 <header>
   <nav class="navbar navbar-default">
     <%= link_to image_tag("fitbuds-clear_bg-new-grey.png"), root_path , id: "logo"%>
     <ul class="nav navbar-nav navbar-right" id="margin-right">
       <% if signed_in? %>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#contacts">Contacts</a></li>
         <li><%= link_to "User Profile", user_path(current_user.id) %></li>
         <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
       <% else %>
+      <a href="#vision">Vision</a>
+      <li><a href="#contacts">Contacts</a></li>
       <li><%= link_to "Log In with Facebook", "/auth/facebook" %></li>
       <li><%= link_to "Sign In", sign_in_path %></li>
       <li><%= link_to "Sign Up", new_user_path %></li>
@@ -24,9 +30,11 @@
   </div>
 </div>
 
+
 <div class="mock-text" >
   <div class="row">
     <div class="col-md-4">
+      <h2><a name="vision">Vision</a></h2>
       <p>
         Taxidermy chillwave beard you probably haven't heard of them.
         Bicycle rights four loko church-key jianbing williamsburg. Forage street art VHS, selvage bespoke vice plaid ennui keffiyeh.
@@ -60,13 +68,4 @@
       </p>
     </div>
   </div>
-  </div>
-
-<footer id="footer">
-  <nav class="navbar navbar-default">
-    <ul class="nav navbar-nav">
-      <li><%= link_to "Vission" %></li>
-      <li><%= link_to "Contacts" %></li>
-    </ul>
-  </nav>
-</footer>
+</div>
