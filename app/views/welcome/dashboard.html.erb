@@ -89,11 +89,8 @@
             </div>
             <div class="col-md-4">
               <p class="lead" style="font-size: 15px;">Time</p>
-              <%= f.select :year, [[2017, 2017]], { prompt: "Year" }, { class: "btn btn-primary dropdown-toggle" } %>
-              <%= f.select :month, (1..12).each.map { |num| [num, num] }, { prompt: "Month" }, { class: "btn btn-primary dropdown-toggle" } %>
-              <%= f.select :day, (1..31).each .map { |num| [num, num] }, { prompt: "Day" }, { class: "btn btn-primary dropdown-toggle" }  %>
-              <%= f.select :hour, (0..23).each.map { |num| [num, num] }, { prompt: "Hour" }, { class: "btn btn-primary dropdown-toggle" } %>
-              <%= f.select :minute, (0..59).each.map { |num| [num, num] }, { prompt: "Minute" }, { class: "btn btn-primary  dropdown-toggle" } %>
+              <%= f.date_field :date, placeholder: "Date", class: "date-field" %>
+              <%= f.text_field :time, placeholder: "Time", class: "time-field" %>
             </div>
             <div class="col-md-4">
               <span class="lead" style="font-size: 15px;">Activity</span>
