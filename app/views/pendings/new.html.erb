@@ -2,6 +2,8 @@
   <%= f.text_field :city, placeholder: "City" %>
   <hr>
   <%= f.label "Date and Time" %>
+  <%= f.date_field :datetime, placeholder: "Date", class: "date-field" %>
+  <%= f.text_field :datetime, placeholder: "Time", class: "time-field" %>
   <%= f.select :year, [[2017, 2017]], prompt: "Year" %>
   <%= f.select :month, (1..12).each.map { |num| [num, num] }, prompt: "Month" %>
   <%= f.select :day, (1..31).each .map { |num| [num, num] }, prompt: "Day" %>
