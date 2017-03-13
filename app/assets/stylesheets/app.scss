@@ -67,7 +67,7 @@ body {
 
 .btn-default {
   color: #fff;
-  background: linear-gradient(#f47450, #ff404b);
+  background: linear-gradient(#00cccc, #04b1b1);
   border: 0;
 }
 
@@ -93,6 +93,7 @@ body {
 
 
 .user-add-info ul {
+  text-align: left;
   padding: 0;
   color: #999;
   list-style: none;
@@ -145,11 +146,20 @@ body {
   height: 322px;
 }
 
+.fa.fa-sign-out {
+  margin-left: 10px;
+  color: #fff;
+}
+
 .list-profile {
   text-transform: uppercase;
   font-size: 13px;
   padding-left: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.list-profile {
+  text-align: left;
 }
 
 .list-profile li {
@@ -209,7 +219,7 @@ body {
 .dashbox {
   position: absolute;
   right: 1em;
-  top: em;
+  top: 5em;
   margin-top:60px;
   width: calc(100% - 250px);
   float: right;
@@ -223,7 +233,13 @@ body {
   text-transform: uppercase;
 }
 
-
+.create-match-heading h4 {
+  text-align: left;
+  padding: 10px 15px;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+}
 
 .form-control {
   border-radius: 0;
@@ -251,7 +267,7 @@ body {
   // display: none;
   position: relative;
   bottom: 17.9em;
-  width: 1210px;
+  width: calc(100% - 230px);
   // overflow: hidden;
   height: 251px;
   background: linear-gradient(to left, #072a2e, #15737d);
@@ -266,12 +282,19 @@ body {
   position: relative;
   // overflow: hidden;
   margin-top: 0px;
-  width: 1210px;
+  width: calc(100% - 230px);
   height: 250px;
   float: right;
 }
 
-
+#pending_activity_id {
+  width: 150px;
+  height: 34px;
+  border-color: #ddd;
+  background: #fff;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
 
 // #Sidenav {
 //   width: 230px;
