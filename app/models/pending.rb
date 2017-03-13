@@ -10,7 +10,7 @@ class Pending < ApplicationRecord
   validates :activity_id, :user_id, :city, :datetime, :status, presence: true
 
   # accessor for new pending form
-  attr_accessor :year, :month, :day, :hour, :minute
+  attr_accessor :date, :time
 
   # since we've got 2 pending table joins in matches table, we need to create a method to get a pending's matches
   def potential_matches
