@@ -83,7 +83,6 @@ class UsersController < Clearance::UsersController
   end
 
   def update_user_params
-
     attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours, :avatar, :remove_avatar)
 
     # convert string to integers for these attributes

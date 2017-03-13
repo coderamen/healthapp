@@ -36,5 +36,5 @@ class MatchStatus < ApplicationRecord
       return false
     end
   end
-  
+
 end

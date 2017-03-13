@@ -1,0 +1,170 @@
+<header class="topbar clearfix">
+  <div class="topbar-left pull-left">
+    <a href="/users/<%= current_user.id %>/dashboard"><%= image_tag "brand4.png", class: "brand", style: "width: 128px; height: 55px;" %></a>
+    <span onclick="openNav()" class="fa fa-bars fa-2x" style="position: relative; bottom: 3.6em; left: .5em; color: #fff;"></span>
+    <span onclick="openNav()" class="fa fa-sign-out fa-2x" style="position: relative; left: 41em; top: 10px; font-weight: 300; color: #fff;"></span>
+  </div>
+  <ul class="topbar-right pull-right" style="list-style: none;">
+    <li><%= link_to "", "/auth/facebook", class: "fa fa-facebook-square fa-2x", style: "color: #fff; margin-right: 30px; margin-top: 17px;" %></li>
+  </ul>
+</header>
+<!-- side-navigation -->
+<div class="leftbar">
+  <div class="leftbar-bg">
+      <div class="left-side-container">
+        <!-- <div id="Sidenav" class="navbar-left sidenav"> -->
+        <div class="user-profile-container">
+          <div class="user-profile clearfix">
+            <div class="user-thumb">
+              <%= image_tag "profile.png", width: "48px", height: "48px"%>
+            </div>
+            <div class="user-info">
+              <ul style="padding-left: 0;margin-bottom: 0; font-weight: 700;">
+                <li><%= current_user.name %></li>
+                <li><%= current_user.email %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="user-add-info">
+          <ul style="text-transform: capitalize; margin-top: 10px;">
+            <li style="float:left; margin-left: 20px; width: 100px; margin-right: 20px;">age</li>
+            <li style="text-align: center;"><%= current_user.age_range %></li>
+            <li style="float:left; margin-left: 20px; width: 100px;margin-right: 20px;">stamina</li>
+            <li style="text-align: center;"><%= current_user.stamina %></li>
+            <li style="float:left; margin-left: 20px; width: 100px;margin-right: 20px;">strength</li>
+            <li style="text-align: center;"><%= current_user.strength %></li>
+            <li style="float:left; margin-left: 20px; width: 100px; margin-right: 20px;">agility</li>
+            <li style="text-align: center;"><%= current_user.agility %></li>
+          </ul>
+          <ul style="text-transform: capitalize; border-top: 1px solid rgba(0, 0, 0, 0.12);">
+            <li style="margin-left: 20px; width: 200px; margin-top: 10px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:5px; font-size: 14px; line-height: 12px;">location_city</i>City/State/Country</li>
+              <li style="margin-left: 20px;"><%= current_user.city %></li>
+              <li style="margin-left: 20px;"><%= current_user.state %></li>
+              <li style="margin-left: 20px;"><%= current_user.country %></li>
+
+
+            <!-- <li style="float:left; margin-left: 18px; width: 100px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">local_activity</i>Activity</li>
+            <li><%= current_user.weekly_activity_hours %></li>
+            <li style="float:left; margin-left: 18px; width: 200px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">local_hospital</i>Health Issue</li>
+            <li><%= current_user.additional_health_problems %></li> -->
+            <li>
+              <%= link_to( "edit", { class: "btn btn-default", style: "vertical-align: middle;width: 100%; margin-left: 10px; margin-top: 10px; border-radius: 0;"} ) do %>
+              <i class="material-icons md-18" style="line-height: 14px; vertical-align: middle; padding-right: 21px; ">mode_edit</i>Edit
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <ul class="list-profile" style="display: block; margin-top: 12px;">
+          <li><%= image_tag "icon1.png", width: "13px", height: "13px", style: "margin-right: 5px;" %><%= link_to "waiting/pending matches", "#", class: "list-style" %></li>
+          <li><i class="material-icons md-18" style="vertical-align: middle; margin-right: 5px; font-size: 15px;">recent_actors</i><%= link_to "matches", "#", class: "list-style" %></li>
+        </ul>
+        <div id=""></div>
+        <!-- </div> -->
+      </div>
+    </div>
+</div>
+<div class="db-landing">
+<!-- landing background -->
+</div>
+<div class="db-landing-overlay">
+  <!-- color overlay -->
+</div>
+<div class="dashbox">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 style="margin-bottom: 10px; border-bottom: 1px solid #fff; border-top: 1px solid #fff; width: 187px;">Create Match</h1>
+    </div>
+  </div>
+    <!-- <hr> -->
+  <section class="container-fluid">
+    <%= form_for @pending, url: user_pendings_path(current_user.id) do |f| %>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-green">
+          <div class="panel-heading">
+            <div class="col-md-4">
+              <p class="lead" style="font-size: 15px;">Venue</p>
+              <%= f.text_field :city, placeholder: "City", class: "form-control" %>
+            </div>
+            <div class="col-md-4">
+              <p class="lead" style="font-size: 15px;">Time</p>
+              <%= f.date_field :date, placeholder: "Date", class: "date-field" %>
+              <%= f.text_field :time, placeholder: "Time", class: "time-field" %>
+            </div>
+            <div class="col-md-4">
+              <span class="lead" style="font-size: 15px;">Activity</span>
+                <span style="border: none; color: #000; margin-bottom: 19px">
+                <%= f.select :activity_id do %>
+                <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
+                <%= options_for_select([['Others', 0]]) %>
+                <%= options_for_select(activity_array) %>
+                <% end %>
+              </span>
+              <span><%= f.text_field :activity, placeholder: "If selected 'Other', please specify", class: "form-control", style: "width: 140px" %></span>
+              <%= f.submit class: "btn btn-primary", style: "width: 100%; margin-top: 10px; border-radius: 0; font-weight: 300;" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <h2 style= "margin-top: 0; font-size:16px; font-weight: 400; text-transform: uppercase;">Pending Matches</h2>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="panel-body" style="border: 1px solid #ccc">
+      <div class="pending-img">
+        <%= image_tag "sleep.png", width: "150px", height: "auto"%>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <%= link_to "approve", "#", class: "btn btn-success", style: "width: 40%; border-radius: 0;" %>
+      <%= link_to "decline", "#", class: "btn btn-danger", style: "width: 40%; border-radius: 0;" %>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="panel-body" style="border: 1px solid #ccc">
+      <div class="pending-img">
+        <%= image_tag "sleep.png", width: "150px", height: "auto"%>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <%= link_to "approve", "#", class: "btn btn-success", style: "width: 40%; border-radius: 0;" %>
+      <%= link_to "decline", "#", class: "btn btn-danger", style: "width: 40%; border-radius: 0;" %>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="panel-body" style="border: 1px solid #ccc; width: 365px, height: 270px;">
+      <div class="pending-img">
+        <!-- <%= image_tag "sleep.png", width: "150px", height: "auto"%> -->
+      </div>
+      <p>Upcoming Events</p>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+
+<div id="main">
+
+</div>
+
+
+<!-- <script>
+  window.onload = function() {
+    openNav();
+    console.log("opened");
+  };
+function openNav() {
+  console.log("openNav")
+  document.getElementById("Sidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  console.log("closeNav")
+  document.getElementById("Sidenav").style.width = "0";
+  document.getElementById("Sidenav").marginLeft = "0";
+}
+</script> -->

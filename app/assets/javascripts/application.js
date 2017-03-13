@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap-sprockets
+//= require bootstrap-select
+//= require bootstrap/alert
+//= require bootstrap/dropdown
 //= require bootstrap-timepicker
 //= require turbolinks
 //= require_tree .

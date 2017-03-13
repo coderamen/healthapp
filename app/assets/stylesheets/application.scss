@@ -13,15 +13,19 @@
  *= require jquery-ui
  *= require_tree .
  *= require_self
+*= require font-awesome
+*= require bootstrap-select
+*= require material_icons
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+@import "app.scss";
 @import "welcome.scss";
 @import "signin_signup.scss";
 @import "edit_user.scss";
 @import "show_user.scss";
-@import "font-awesome";
 @import "jquery-ui";
 @import "bootstrap-timepicker";
 @import "chat";
