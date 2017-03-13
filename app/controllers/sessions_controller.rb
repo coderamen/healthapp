@@ -6,6 +6,7 @@ class SessionsController < Clearance::SessionsController
 
     sign_in(@user) do |status|
       if status.success?
+        cookies.signed[:user_id] = @user.id
         redirect_back_or root_path
       else
         flash[:danger] = "Unable to log in"
@@ -30,6 +31,8 @@ class SessionsController < Clearance::SessionsController
     end
 
     sign_in(user)
+    cookies.signed[:user_id] = @user.id
+
     redirect_to @next, :notice => @notice
   end
 

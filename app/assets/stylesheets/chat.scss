@@ -1,0 +1,55 @@
+.chatbox {
+  position: relative;
+  border: solid 1px #000;
+  width: 500px;
+  height: 600px;
+
+  .chat {
+    list-style: none;
+    padding: 10px;
+    overflow: scroll;
+    height: 500px;
+
+    .other {
+      width: 100%;
+      display: block;
+      overflow: hidden;
+
+      .msg {
+        background-color: #eee;
+        font-weight: 900;
+        float: left;
+      }
+    }
+
+    .self {
+      width: 100%;
+      display: block;
+      overflow: hidden;
+
+      .msg {
+        background-color: #08f;
+        color: #fff;
+        font-weight: 900;
+        text-align: right;
+        float: right;
+      }
+    }
+
+    p {
+      margin: 7px;
+    }
+
+    .msg {
+      border-radius: 15px;
+      margin: 5px;
+    }
+  }
+
+  .reply-msg {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}

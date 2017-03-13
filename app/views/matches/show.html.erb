@@ -2,34 +2,113 @@
 
 <!-- this first if...else statement is to determine whether the current_user is user1 or user2 -->
 <!-- the current user will always be mentioned first -->
-<% if current_user.id == @match.user1_id %>
+<% if current_user == @match.user1 %>
 
-  <h1>Current User: <%= User.find(@match.user1_id).email %></h1>
+  <h1>Current User: <%= @match.user1.email %></h1>
   <h2>Your match details: </h2>
-  <% your_pending = Pending.find(@match.user1_pending_id) %>
-  <h3>Time: <%= your_pending.datetime %></h3>
+  <% your_pending = @match.user1_pending %>
+  <h3>Time: <%= your_pending.datetime.localtime %></h3>
   <h3>Area: <%= your_pending.city %></h3>
 
-  <h1>Matched User: <%= User.find(@match.user2_id).email %></h1>
+  <h1>Matched User: <%= @match.user2.email %></h1>
   <h2>Their match details: </h2>
-  <% their_pending = Pending.find(@match.user2_pending_id) %>
-  <h3>Time: <%= their_pending.datetime %></h3>
+  <% their_pending = @match.user2_pending %>
+  <h3>Time: <%= their_pending.datetime.localtime %></h3>
   <h3>Area: <%= their_pending.city %></h3>
 
 <% else %>
 
-  <h1>Current User: <%= User.find(@match.user2_id).email %></h1>
+  <h1>Current User: <%= @match.user2.email %></h1>
   <h2>Your match details: </h2>
-  <% your_pending = Pending.find(@match.user2_pending_id) %>
-  <h3>Time: <%= your_pending.datetime %></h3>
+  <% your_pending = @match.user2_pending %>
+  <h3>Time: <%= your_pending.datetime.localtime %></h3>
   <h3>Area: <%= your_pending.city %></h3>
 
-  <h1>Matched User: <%= User.find(@match.user1_id).email %></h1>
+  <h1>Matched User: <%= @match.user1.email %></h1>
   <h2>Their match details: </h2>
-  <% their_pending = Pending.find(@match.user1_pending_id) %>
-  <h3>Time: <%= their_pending.datetime %></h3>
+  <% their_pending = @match.user2_pending %>
+  <h3>Time: <%= their_pending.datetime.localtime %></h3>
   <h3>Area: <%= their_pending.city %></h3>
 
 <% end %>
 
 <h1>Chat Panel goes below here</h1>
+<% if current_user == @match.user1 %>
+  <div class="chatbox" data-match-id="<%= @match.id %>" data-self="<%= @match.user1.id %>" data-other="<%= @match.user2.id %>">
+<% else %>
+  <div class="chatbox" data-match-id="<%= @match.id %>" data-self="<%= @match.user2.id %>" data-other="<%= @match.user1.id %>">
+<% end %>
+  <ol class="chat">
+    <% @match.messages.order('created_at').each do |msg| %>
+      <% if msg.user.id == current_user.id %>
+        <li class="self">
+      <% else %>
+        <li class="other">
+      <% end %>
+          <div class="msg">
+            <p><%= msg.content %></p>
+          </div>
+        </li>
+    <% end %>
+  </ol>
+
+  <div class="reply-msg">
+    <%= form_for :message, url: match_messages_path(@match), remote: true do |f| %>
+      <%= f.text_field :content, placeholder: "Message" %>
+      <%= f.submit "Send" %>
+    <% end %>
+  </div>
+</div>
+
+<h1>Form for confirmed activity goes below</h1>
+<% activity = @match.confirmed_activity %>
+<% if activity %>
+  <p>Activity: <%= activity.activity.name %></p>
+  <p>Datetime: <%= activity.datetime.localtime %></p>
+  <p>Duration: <%= activity.duration_in_hours %> hours</p>
+  <p>Location: <%= activity.location %></p>
+  
+  <!-- conditions for when the user has confirmed/not confirmed -->
+  <% if activity.user1_confirm && activity.user2_confirm %>
+    <p><strong>You've both confirmed this activity!</strong></p>
+  <% elsif current_user == @match.user1 %>
+    <% if activity.user1_confirm %>
+      <p><strong>Waiting for other user to confirm!</strong></p>
+    <% else %>
+      <p><strong><%= button_to "Confirm", match_confirmed_activity_path(@match, activity), method: :post %></strong></p>
+      <p><strong><%= button_to "Decline", match_confirmed_activity_path(@match, activity), method: :delete %></strong></p>
+    <% end %>
+  <% elsif current_user == @match.user2 %>
+    <% if activity.user2_confirm %>
+      <p><strong>Waiting for other user to confirm!</strong></p>
+    <% else %>
+      <p><strong><%= button_to "Confirm", match_confirmed_activity_path(@match, activity), method: :post %></strong></p>
+      <p><strong><%= button_to "Decline", match_confirmed_activity_path(@match, activity), method: :delete %></strong></p>
+    <% end %>
+  <% end %>
+
+<% else %>
+  <%= form_for @confirmed_activity, url: match_confirmed_activities_path(@match) do |f| %>
+    <!-- for user confirmation based on the current_user -->
+    <% if current_user == @match.user1 %>
+      <%= f.hidden_field :user1_confirm, value: true %>
+    <% else %>
+      <%= f.hidden_field :user2_confirm, value: true %>
+    <% end %>
+    <%= f.select :activity_id do %>
+      <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
+      <%= options_for_select([['Others', 0]]) %>
+      <%= options_for_select(activity_array) %>
+    <% end %>
+    <%= f.text_field :activity, placeholder: "If selected 'Other', please specify" %>
+    <hr>
+    <%= f.text_field :location, placeholder: "Location" %>
+    <hr>
+    <%= f.date_field :date, placeholder: "Date", class: "date-field" %>
+    <%= f.text_field :time, placeholder: "Time", class: "time-field" %>
+    <hr>
+    <%= f.number_field :duration_in_hours, placeholder: "Activity Duration" %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
+  

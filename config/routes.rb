@@ -32,6 +32,16 @@ root "welcome#index"
     resources :matches, only: [:index, :show]
   end
 
+  #routes for messages and confirmed_activities
+  resources :matches, only: [] do
+    resources :messages, only: [:create]
+    resources :confirmed_activities, only: [:create, :destroy]
+    post "/confirmed_activities/:id/confirm" => "confirmed_activities#confirm" 
+  end
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => "/cable"
+
   # these are routes from clearance
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   # resource :session, controller: "clearance/sessions", only: [:create]

@@ -10,6 +10,7 @@
   <%= link_to "Back to main", root_path %>
 </div>
 
+
 <div class="jumbotron edit_user_bg">
   <div class="container-fluid" >
     <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="f-logo"><%= image_tag("f-clear_bg.png") %></span>
@@ -67,3 +68,7 @@ function closeNav() {
     // document.getElementById("main").fadeIn();
 }
 </script>
+  <%= image_tag(@user.avatar.large_avatar.url) if @user.avatar? %>
+  <%= f.file_field :avatar %>
+  <%= f.check_box :remove_avatar %>Remove Avatar
+  <hr>
