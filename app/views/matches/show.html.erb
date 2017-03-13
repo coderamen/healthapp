@@ -1,7 +1,4 @@
-<!-- this is where one specific match appears, with the two profile pics and chat panel -->
 
-<!-- this first if...else statement is to determine whether the current_user is user1 or user2 -->
-<!-- the current user will always be mentioned first -->
 <div class="match-container">
   
   <% if current_user == @match.user1 %>
@@ -16,21 +13,63 @@
     <% their_pending = @match.user1_pending %>
   <% end %>
 
-    <div>
-      <h3>Your pending details: </h3>
+    <div class="pending-info">
+      <h3>Your pending for <%= your_pending.activity.name %> </h3>
       <hr class="match-hr">
-
+      <table>
+        <tr>
+          <td class="pending-attr"><p>Activity:</p></td>
+          <td class="pending-details"><p><%= your_pending.activity.name %></p></td>
+          <td class="pending-attr"><p>Date: </p></td>
+          <td class="pending-details"><p><%= your_pending.datetime.localtime.strftime("%A, %d %b %Y") %></p></td>
+        </tr>
+        <tr>
+          <td class="pending-attr"><p>City:</p></td>
+          <td class="pending-details"><p><%= your_pending.city %></p></td>
+          <td class="pending-attr"><p>Time:</p></td>
+          <td class="pending-details"><p><%= your_pending.datetime.localtime.strftime("%I:%M%p") %></p></td>
+        </tr>
+      </table>
     </div>
 
-    <h1>Current User: <%= you.email %></h1>
-    <h2>Your match details: </h2>
-    <h3>Time: <%= your_pending.datetime.localtime %></h3>
-    <h3>Area: <%= your_pending.city %></h3>
-
-    <h1>Matched User: <%= them.email %></h1>
-    <h2>Their match details: </h2>
-    <h3>Time: <%= their_pending.datetime.localtime %></h3>
-    <h3>Area: <%= their_pending.city %></h3>
+    <div class="row match-other-row">
+      <div class="col-md-4">
+        <div class="profile-pic"></div>
+      </div>
+      <div class="col-md-8">
+        <h2><%= them.name %></h2>
+        <h4>from <%= them.city %>, <%= them.state %>, <%= them.country %></h4>
+        <p><%= them.email %></p>
+        <br>
+        <table class="user-attr-table">
+          <tr>
+            <td>Stamina:</td>
+            <td class="attr-value"><%= them.stamina %></td>
+            <td>Strength:</td>
+            <td class="attr-value"><%= them.strength %></td>
+            <td>Agility:</td>
+            <td class="attr-value"><%= them.agility %></td>
+          </tr>
+        </table>
+        <br>
+        <hr class="match-hr">
+        <h4 class="other-pending-title">Their Pending details</h4>
+        <table class="other-pending-table">
+          <tr>
+            <td class="pending-attr"><p>Activity:</p></td>
+            <td class="pending-details"><p><%= their_pending.activity.name %></p></td>
+            <td class="pending-attr"><p>Date: </p></td>
+            <td class="pending-details"><p><%= their_pending.datetime.localtime.strftime("%A, %d %b %Y") %></p></td>
+          </tr>
+          <tr>
+            <td class="pending-attr"><p>City:</p></td>
+            <td class="pending-details"><p><%= their_pending.city %></p></td>
+            <td class="pending-attr"><p>Time:</p></td>
+            <td class="pending-details"><p><%= their_pending.datetime.localtime.strftime("%I:%M%p") %></p></td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
   <h1>Chat Panel goes below here</h1>
   <% if current_user == @match.user1 %>

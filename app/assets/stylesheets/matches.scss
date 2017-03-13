@@ -4,12 +4,80 @@
 
 // show page
 .match-container {
-  width: 80%;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
 
 hr.match-hr {
   border-color: #aaa;
-  margin: 0;
+  margin: 0 0 10px 0;
+}
+
+.pending-info {
+  margin-bottom: 100px;
+
+
+  .pending-attr {
+    width: 100px;
+  }
+
+  .pending-details {
+    width: 200px;
+  }
+  
+}
+
+.match-other-row {
+  .col-md-4 {
+    width: 300px;
+
+    .profile-pic {
+      border-radius: 50%;
+      // border: solid 1px #888;
+      background-color: #888;
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  .col-md-8 {
+    padding-left: 100px;
+
+    h2 {
+      margin-top: 0;
+      font-size: 40px;
+    }
+
+    h4 {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    .user-attr-table {
+      td {
+        padding-right: 15px;
+      }
+
+      .attr-value {
+        padding-right: 100px;
+      }
+
+    }
+    .other-pending-title {
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .other-pending-table {
+
+      .pending-attr {
+        width: 70px;
+      }
+
+      .pending-details {
+        width: 200px;
+      }
+    }
+  }
 }
