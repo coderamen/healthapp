@@ -1,0 +1,13 @@
+<h1>All Your Matches</h1>
+
+<% @matches.each do |match| %>  
+  <h3>
+    You have a match with:
+    <% if current_user.id == match.user1_id %>
+      <%= match.user2.name %>
+    <% else %>
+      <%= match.user1.name %>
+    <% end %>
+    <%= link_to "Go to Match", user_match_path(user_id: current_user.id, id: match.id) %>
+  </h3>
+<% end %>

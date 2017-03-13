@@ -12,8 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require jquery-ui
+//= require bootstrap-sprockets
 //= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/dropdown
+//= require bootstrap-timepicker
+//= require turbolinks
+//= require_tree .
+//= require_tree ./channels

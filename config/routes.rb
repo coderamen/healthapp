@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/users/:id/dashboard' => "welcome#dashboard", as: "dashboard"
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # routes for user
   resources :users
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # routes for pending matches
+
   resources :users, only: [] do
     resources :pendings, only: [:index, :new, :create, :show, :destroy]
   end
@@ -30,6 +32,16 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :matches, only: [:index, :show]
   end
+
+  #routes for messages and confirmed_activities
+  resources :matches, only: [] do
+    resources :messages, only: [:create]
+    resources :confirmed_activities, only: [:create, :destroy]
+    post "/confirmed_activities/:id/confirm" => "confirmed_activities#confirm"
+  end
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => "/cable"
 
   # these are routes from clearance
   # resources :passwords, controller: "clearance/passwords", only: [:create, :new]

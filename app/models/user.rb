@@ -8,13 +8,21 @@ class User < ApplicationRecord
   has_many :authentications
   has_many :pendings
   has_many :confirmed_activities
+  has_many :messages
 
+  mount_uploader :avatar, AvatarUploader
+  
   def self.create_with_auth_and_hash(authentication, auth_hash)
     def password_optional?
       true
     end
+    
+    user = User.create!(name: auth_hash[:info][:name], email: auth_hash[:info][:email])
 
-    user = User.create!(name: auth_hash["name"], email: auth_hash["extra"]["raw_info"]["email"])
+    avatar_url = auth_hash[:info][:image].gsub("http://", "https://") + "?width=1000&height=1000"
+    user.remote_avatar_url = avatar_url
+    user.save
+
     user.authentications << (authentication)
 
     def password_optional?

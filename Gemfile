@@ -5,8 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-
+#for aws cloud storage
+gem 'fog'
+# photo resizing
+gem "mini_magick"
+# file upload solution
+gem 'carrierwave', '~> 1.0'
 # Use for omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -20,14 +24,12 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 # User Bootstrap select
 gem 'bootstrap-select-rails'
-# Use Bootstrap
-gem 'bootstrap-sass', '~> 3.3.7'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Font-awesome
-gem "font-awesome-rails"
 # Use Material-icons
 gem 'material_icons'
+# Use Bootstrap, Font-Awesome and SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'sass-rails', '~> 5.0'
+gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -37,6 +39,9 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+# User the jquery timepicker plugin
+gem 'bootstrap-timepicker-rails-addon'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -45,8 +50,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'clearance'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
+gem 'redis'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
