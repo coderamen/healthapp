@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'welcome#index'
+  constraints Clearance::Constraints::SignedIn.new do
+    root "welcome#dashboard"
+    # root 'welcome#dashboard'
+  end
 
-  get '/users/:id/dashboard' => "welcome#dashboard", as: "dashboard"
+  constraints Clearance::Constraints::SignedOut.new do
+    root 'welcome#index'
+  end
+
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # routes for user
