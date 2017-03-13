@@ -36,7 +36,7 @@ root "welcome#index"
   resources :matches, only: [] do
     resources :messages, only: [:create]
     resources :confirmed_activities, only: [:create, :destroy]
-    post "/confirmed_activities/:id/confirm" => "confirmed_activities#confirm" 
+    post "/confirmed_activities/:id/confirm" => "confirmed_activities#confirm"
   end
 
   # Serve websocket cable requests in-process
