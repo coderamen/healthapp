@@ -4,6 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+
 #for aws cloud storage
 gem 'fog'
 # photo resizing
@@ -21,6 +22,10 @@ gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+# User Bootstrap select
+gem 'bootstrap-select-rails'
+# Use Material-icons
+gem 'material_icons'
 # Use Bootstrap, Font-Awesome and SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'sass-rails', '~> 5.0'

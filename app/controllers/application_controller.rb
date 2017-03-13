@@ -31,12 +31,12 @@ class ApplicationController < ActionController::Base
       return redirect_to root_path
     end
   end
-  
+
   # get datetime object from separated date and time values
   def get_datetime(params)
     date = params[:date]
     time = params[:time]
-    
+
     day = date[0..1].to_i
     month = date[3..4].to_i
     year = date[6..9].to_i
@@ -59,5 +59,4 @@ class ApplicationController < ActionController::Base
 
     Time.local(year, month, day, hour, min, 0)
   end
-
 end
