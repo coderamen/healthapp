@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  #root page
-  root "welcome#index"
+
+get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+
+root "welcome#index"
 
   # routes for user
   resources :users
@@ -14,6 +17,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # routes for pending matches
+
   resources :users, only: [] do
     resources :pendings, only: [:index, :new, :create, :show, :destroy]
   end

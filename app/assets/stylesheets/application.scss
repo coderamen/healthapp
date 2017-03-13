@@ -15,8 +15,13 @@
  *= require_self
  */
 
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "welcome.scss";
+ @import "signin_signup.scss";
+ @import "edit_user.scss";
+ @import "show_user.scss";
+ @import "font-awesome";
 @import "jquery-ui";
-@import "bootstrap-sprockets";
-@import "bootstrap";
 @import "bootstrap-timepicker";
 @import "chat";

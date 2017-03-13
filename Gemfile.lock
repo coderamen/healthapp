@@ -40,7 +40,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
-    autoprefixer-rails (6.7.3)
+    autoprefixer-rails (6.7.6)
       execjs
     bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
@@ -204,6 +204,8 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -338,7 +340,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3.6)
+  bootstrap-sass (~> 3.3, >= 3.3.7)
   bootstrap-timepicker-rails-addon
   byebug
   carrierwave (~> 1.0)
@@ -346,6 +348,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   figaro
   fog
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails

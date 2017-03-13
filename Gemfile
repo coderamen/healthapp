@@ -21,9 +21,10 @@ gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
-# Use Bootstrap and SCSS for stylesheets
-gem 'bootstrap-sass', '~> 3.3.6'
+# Use Bootstrap, Font-Awesome and SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'sass-rails', '~> 5.0'
+gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -47,6 +48,7 @@ gem 'clearance'
 gem 'redis'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

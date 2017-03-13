@@ -1,17 +1,72 @@
-<% if signed_in? %>
-  <p>Current User id: <%= current_user.id %></p>
-<% end %>
+<header>
+  <nav class="navbar navbar-default">
+    <%= link_to image_tag("fitbuds-clear_bg-new-grey.png"), root_path , id: "logo"%>
+    <ul class="nav navbar-nav navbar-right" id="margin-right">
+      <% if signed_in? %>
+        <li><%= link_to "User Profile", user_path(current_user.id) %></li>
+        <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to "Log In with Facebook", "/auth/facebook" %></li>
+      <li><%= link_to "Sign In", sign_in_path %></li>
+      <li><%= link_to "Sign Up", new_user_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
 
-<% if signed_in? %>
-  <%= link_to "Sign Out", sign_out_path, method: :delete %>
-  <%= link_to "Pendings", user_pendings_path(current_user) %>
-  <%= link_to "Matches", user_matches_path(current_user) %>
-  
-<% else %>
-  <%= link_to "Sign In", sign_in_path %>
-  <%= link_to "Sign Up", new_user_path %>
-<% end %>
+<div class="jumbotron" id="index-bg">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 id="middle-text">Find a bud to sports with</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
+<div class="mock-text" >
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+        Taxidermy chillwave beard you probably haven't heard of them.
+        Bicycle rights four loko church-key jianbing williamsburg. Forage street art VHS, selvage bespoke vice plaid ennui keffiyeh.
+        Vaporware cray ugh iceland listicle, franzen kale chips jianbing. Lumbersexual semiotics pinterest fap, mumblecore four loko pabst.
+        Gluten-free chia humblebrag tumeric. Keffiyeh listicle vaporware food truck raw denim.
+        Etsy organic wolf, meggings church-key wayfarers everyday carry fashion axe lyft.
+        Man bun af raclette, aesthetic godard pork belly synth forage 90's.
+        Hella flannel four loko, plaid gentrify yuccie pabst slow-carb messenger bag 8-bit shabby chic squid vegan kinfolk.
+        Chillwave whatever chartreuse single-origin coffee.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <p>
+        PBR&B venmo schlitz, swag single-origin coffee jean shorts umami marfa cray put a bird on it vexillologist lo-fi.
+        Bushwick tumeric aesthetic, cold-pressed glossier letterpress tofu williamsburg gastropub iceland kitsch man bun banjo.
+        Poutine bushwick freegan pop-up schlitz deep v, tumeric af.
+        Biodiesel street art tofu asymmetrical photo booth tbh vexillologist, cronut craft beer occupy.
+        Fingerstache echo park man braid, bicycle rights leggings live-edge trust fund. DIY deep v blue bottle kickstarter bicycle rights.
+        Poutine kogi four dollar toast, kitsch vice photo booth raw denim subway tile heirloom kickstarter mumblecore paleo post-ironic +1 church-key.
+        Gochujang tbh banh mi single-origin coffee yuccie. Poke iceland distillery microdosing godard vegan.
+        Chartreuse vape kale chips hoodie, brooklyn 3 wolf moon keytar live-edge flannel single-origin coffee street art.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <p>
+        Banjo selvage intelligentsia authentic, VHS la croix gentrify pour-over twee plaid roof party godard wolf.
+        Brooklyn shabby chic truffaut poke quinoa dreamcatcher, hella copper mug williamsburg celiac gentrify wayfarers lomo keytar YOLO.
+        Air plant man braid pickled tousled tilde blue bottle. Gochujang lumbersexual synth shabby chic +1.
+        Edison bulb lomo brooklyn, retro ugh beard offal ennui. XOXO hexagon direct trade crucifix four dollar toast.
+        Roof party live-edge gochujang, aesthetic woke vape forage 3 wolf moon ethical tilde organic.
+      </p>
+    </div>
+  </div>
+  </div>
 
-<%= link_to "Sign in with Facebook", "/auth/facebook" %>
+<footer id="footer">
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Vission" %></li>
+      <li><%= link_to "Contacts" %></li>
+    </ul>
+  </nav>
+</footer>

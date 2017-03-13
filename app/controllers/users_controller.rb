@@ -10,6 +10,7 @@ class UsersController < Clearance::UsersController
 
   def create
     @user = User.new(new_user_params)
+
     if @user.save
       sign_in(@user)
       flash[:success] = "healthapp account has been successfully created"
@@ -38,7 +39,7 @@ class UsersController < Clearance::UsersController
 
   def update
     current_user_authorised?(params[:id], root_path)
-    
+
     @user = User.find(params[:id])
 
     update_hash = update_user_params
@@ -48,7 +49,7 @@ class UsersController < Clearance::UsersController
       flash[:danger] = "Passwords do not match!"
       return redirect_to edit_user_path(params[:id])
     end
-    
+
     # if remove_avatar is true
     if update_hash[:remove_avatar] == "1"
       @user.remove_avatar!
@@ -67,7 +68,7 @@ class UsersController < Clearance::UsersController
 
   def destroy
     current_user_authorised?(params[:id], root_path)
-    
+
 		user = User.find_by_id(params[:id])
 		sign_out
 		user.authentications.delete_all
@@ -82,6 +83,7 @@ class UsersController < Clearance::UsersController
   end
 
   def update_user_params
+
     attr = params.require(:user).permit(:email, :name, :city, :state, :country, :stamina, :strength, :agility, :additional_health_problems, :weekly_activity_hours, :avatar, :remove_avatar)
 
     # convert string to integers for these attributes
