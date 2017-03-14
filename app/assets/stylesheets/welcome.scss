@@ -18,6 +18,11 @@ body {
   margin-bottom: 10px;
 }
 
+.jumbotron {
+  margin: 0;
+  padding: 0;
+}
+
 #margin-right {
   margin-right: 0;
   margin-top: 10px;
@@ -30,7 +35,7 @@ body {
   margin-bottom: 0;
   height: 100%;
   padding-top: 3px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
 }
 
@@ -55,9 +60,195 @@ body {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin-top: 180px;
-  font-family: 'Droid Serif', serif;
+  margin-top: 13%;
+  // font-family: 'Droid Serif', serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
   opacity: 0.7;
+}
+
+#sign-in-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    margin-top: 0;
+    margin-left: 8px;
+    margin-right: 8px;
+    background-color: #01b6d1;
+    color: white;
+    border-style: none;
+    border-color: #818181;
+    border-radius: 4px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 2px 2px lightgrey;
+}
+
+
+#sign-in-btn:hover {
+    background-color: #258f9f;
+    border-style: none;
+    color: white;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+#sign-up-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    margin-top: 0;
+    margin-left: 8px;
+    margin-right: 8px;
+    background-color: #01b6d1;
+    color: white;
+    border-style: none;
+    border-color: #818181;
+    border-radius: 4px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 2px 2px lightgrey;
+}
+
+
+#sign-up-btn:hover {
+    background-color: #258f9f;
+    border-style: none;
+    color: white;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+#about-us {
+  text-decoration: none;
+}
+
+#howto-signinup-bg {
+  background: white;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#how-to-use {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #5C5F6B;
+  text-align: center;
+  font-size: 40px;
+  padding-top: 3%;
+  padding-bottom: -10px;
+}
+
+#signup-mock {
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#signing-up{
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #5C5F6B;
+  opacity: 0.7;
+  text-align: center;
+  padding-bottom: 6%;
+}
+
+#blah {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #5C5F6B;
+  opacity: 0.7;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+#howto-dashboard {
+  background-color: #c4dbe1;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#mockup-mac {
+  margin-left: 8%;
+  margin-top: 20%;
+}
+
+#mockup-mac-dashboard {
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  color: #5C5F6B;
+  opacity: 0.9;
+}
+
+#dashboard-text {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #5C5F6B;
+  margin: 0;
+  padding: 0;
+  font-size: 45px;
+}
+
+#dashboard-mock {
+  margin-top: 8%;
+  margin-right: 4%;
+}
+
+#howto-matches {
+  background: white;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#matches-text {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #5C5F6B;
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+}
+
+#matches-mock {
+  margin-top: 8%;
+  margin-left: 4%;
+}
+
+#mockup-mac-matches {
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  color: #5C5F6B;
+  opacity: 0.7;
+  text-align: center;
+  margin-top: 50%;
+  height: 100%;
+  width: 100%;
 }
 
 .mock-text {

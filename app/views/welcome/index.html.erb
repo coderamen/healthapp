@@ -5,16 +5,15 @@
     <%= link_to image_tag("fitbuds-clear_bg-new-grey.png"), root_path , id: "logo"%>
     <ul class="nav navbar-nav navbar-right" id="margin-right">
       <% if signed_in? %>
-      <li><a href="#vision">Vision</a></li>
-      <li><a href="#contacts">Contacts</a></li>
-        <li><%= link_to "User Profile", user_path(current_user.id) %></li>
-        <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+      <li><a href="#about-us" id="about-us-link">About Us</a></li>
+      <li><a href="#contacts" id="contacts-link">Contacts</a></li>
+      <li><%= link_to "Dashboard", dashboard_path(current_user.id) %></li>
+      <li><%= link_to "User Profile", user_path(current_user.id) %></li>
+      <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
       <% else %>
-      <a href="#vision">Vision</a>
-      <li><a href="#contacts">Contacts</a></li>
+      <li><a href="#about-us" id="about-us-link">About Us</a></li>
+      <li><a href="#contacts" id="contacts-link">Contacts</a></li>
       <li><%= link_to "Log In with Facebook", "/auth/facebook" %></li>
-      <li><%= link_to "Sign In", sign_in_path %></li>
-      <li><%= link_to "Sign Up", new_user_path %></li>
       <% end %>
     </ul>
   </nav>
@@ -24,8 +23,54 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-        <h1 id="middle-text">Find a bud to sports with</h1>
+        <h1 id="middle-text">Welcome to Fitbuds</h1>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron" id="howto-signinup-bg">
+  <div class="container-fluid">
+    <div class="how-to">
+      <h1 id="how-to-use">Where to Start</h1>
+      <div id="signup-mock">
+        <%= image_tag("signup_page.png")%>
+      </div>
+      <h2 id="blah">Simply start by signing in or up</h2>
+      <div class="signin-up-btn" style="text-align: center;">
+        <%= link_to "Sign In", sign_in_path, class: "button", id: "sign-in-btn"%>
+        <%= link_to "Sign Up", new_user_path, class: "button", id: "sign-up-btn"%>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="jumbotron" id="howto-dashboard">
+  <div class="container-fluid">
+    <div class="col-md-5" id="mockup-mac">
+      <p id="mockup-mac-dashboard" style="float:left">
+        In the Dashboard,
+        you can Create Match or WHATEVER.
+      </p>
+    </div>
+    <div id="dashboard-mock" style="float:right">
+      <h2 id="dashboard-text">Dashboard</h2>
+      <%= image_tag("dashboard_page.png")%>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron" id="howto-matches">
+  <div class="container-fluid">
+    <div id="matches-mock" style="float:left">
+      <h2 id="matches-text">Matches Chatbox</h2>
+      <%= image_tag("dashboard_page.png")%>
+    </div>
+    <div class="col-md-5" id="mockup-matches">
+      <p id="mockup-mac-matches" style="float:right">
+        Mockup Matches
+      </p>
     </div>
   </div>
 </div>
@@ -34,7 +79,8 @@
 <div class="mock-text" >
   <div class="row">
     <div class="col-md-4">
-      <h2><a name="vision">Vision</a></h2>
+      <h2 id="about-us">About Us</h2>
+      <a name="about-us" id="about-us"></a>
       <p>
         Taxidermy chillwave beard you probably haven't heard of them.
         Bicycle rights four loko church-key jianbing williamsburg. Forage street art VHS, selvage bespoke vice plaid ennui keffiyeh.

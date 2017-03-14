@@ -61,7 +61,7 @@
           <li><i class="material-icons md-18" style="vertical-align: middle; margin-right: 5px; font-size: 15px;">recent_actors</i><%= link_to "matches", user_matches_path(current_user), class: "list-style" %></li>
           <div style="height: 320px;"></div>
           <li>
-            <i class="fa fa-sign-out"></i><%= link_to "logout", "sign_out_path", style: "color: #898989; text-decoration: none; text-transform: uppercase; margin-left:5px; font-size: 13px; font-weight: 500; " %>
+            <i class="fa fa-sign-out"></i><%= link_to "logout", sign_out_path, method: "delete", style: "color: #898989; text-decoration: none; text-transform: uppercase; margin-left:5px; font-size: 13px; font-weight: 500; " %>
           </li>
         </ul>
         <!-- </div> -->
