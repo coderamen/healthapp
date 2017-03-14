@@ -251,7 +251,8 @@ body {
   // display: none;
   position: relative;
   bottom: 17.9em;
-  width: 1210px;
+  // width: 1210px;
+  width: calc(100% - 230px);
   // overflow: hidden;
   height: 251px;
   background: linear-gradient(to left, #072a2e, #15737d);
@@ -266,7 +267,8 @@ body {
   position: relative;
   // overflow: hidden;
   margin-top: 0px;
-  width: 1210px;
+  // width: 1210px;
+  width: calc(100% - 230px);
   height: 250px;
   float: right;
 }

@@ -1,7 +1,9 @@
 <!-- edit user here front end team! -->
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <%= image_tag("fitbuds-clear_bg-new-grey.png")%>
+  <div class="sidebar-logo">
+    <%= image_tag("fitbuds-clear_bg-new-grey.png")%>
+  </div>
   <!-- <div id="avatar"><%= image_tag("default.png")%></div> -->
   <h3 id="username"><%= @user.name %></h3>
   <a href="#">Dashboard</a>
@@ -9,7 +11,6 @@
   <a href="#">Contact</a>
   <%= link_to "Back to main", root_path %>
 </div>
-
 
 <div class="jumbotron edit_user_bg">
   <div class="container-fluid" >
@@ -21,6 +22,10 @@
       <div class="container" >
         <div id="editbox"  >
           <%= form_for @user, id: "edit-user", url: user_path(@user), method: :patch do |f| %>
+            <%= image_tag(@user.avatar.large_avatar.url) if @user.avatar? %>
+            <%= f.file_field :avatar %>
+            <%= f.check_box :remove_avatar, id: "avatar-checkbox" %>Remove Avatar
+            <hr>
             <%= f.text_field :name, placeholder: "Name", class: "input pass" %>
             <%= f.email_field :email, placeholder: "Email", class: "input pass" %>
             <%= f.password_field :password, placeholder: "Password", class: "input pass" %>
@@ -45,14 +50,13 @@
             <hr>
             <%= f.text_area :additional_health_problems, placeholder: "additional health problems", class: "input pass" %>
             <hr>
-            <%= f.submit "Enter", class: "inputButton" %>
+            <%= f.submit "Enter", class: "submitButton" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 
 <script>
@@ -68,7 +72,3 @@ function closeNav() {
     // document.getElementById("main").fadeIn();
 }
 </script>
-  <%= image_tag(@user.avatar.large_avatar.url) if @user.avatar? %>
-  <%= f.file_field :avatar %>
-  <%= f.check_box :remove_avatar %>Remove Avatar
-  <hr>
