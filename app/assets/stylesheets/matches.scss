@@ -19,7 +19,6 @@ hr.match-hr {
 .pending-info {
   margin-bottom: 50px;
 
-
   .pending-attr {
     width: 100px;
   }
@@ -77,10 +76,12 @@ hr.match-hr {
     .user-attr-table {
       td {
         padding-right: 15px;
+        font-weight: 700;
       }
 
       .attr-value {
-        padding-right: 100px;
+        padding-right: 150px;
+        font-weight: 400;
       }
 
     }
@@ -93,6 +94,7 @@ hr.match-hr {
 
       .pending-attr {
         width: 70px;
+        font-weight: 700;
       }
 
       .pending-details {
