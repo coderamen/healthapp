@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  // scroll to botom on load
+  $('.chat').scrollTop($('.chat').prop('scrollHeight'));
+
   App.messages = App.cable.subscriptions.create({channel: 'MessagesChannel', match_id: $('.chatbox').data('match-id')}, {
     received: function(data) {
       var $newMessage = $('<li></li>');
