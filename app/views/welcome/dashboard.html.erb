@@ -20,11 +20,11 @@
             </div>
             <div class="user-info">
               <ul style="padding-left: 0;margin-bottom: 0; font-weight: 300; text-align: left;  ">
-                <li><%= current_user.name %></li>
+                <li style="text-transform: capitalize"><%= current_user.name %></li>
                 <li><%= current_user.email %></li>
                 <li>
-                  <%= link_to( "edit", { class: "btn btn-default", style: "vertical-align: middle;width: 82%; margin-left: 10px; margin-top: 0px; margin-left: 0; border-radius: 0; padding: 0 12px; margin-top: 5px;"} ) do %>
-                  <i class="material-icons md-18" style="line-height: 14px; vertical-align: middle; padding-right: 21px; height: 16px;">mode_edit</i>Edit
+                  <%= link_to " ", ( { class: "btn btn-default", style: "vertical-align: middle;width: 114px; border-radius: 0; height: 30px;"} ) do %>
+                  <i class="material-icons md-18" style="vertical-align: middle; font-size: 14px; line-height: 14px; padding-right: 10px; height: 16px;">mode_edit</i>edit
                   <% end %>
                 </li>
               </ul>
@@ -44,9 +44,9 @@
           </ul>
           <ul style="text-transform: capitalize; border-top: 1px solid rgba(0, 0, 0, 0.12);">
             <li style="margin-left: 20px; width: 200px; margin-top: 10px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:5px; font-size: 14px; line-height: 12px;">location_city</i>City/State/Country</li>
-              <li style="margin-left: 20px;"><%= current_user.city %></li>
-              <li style="margin-left: 20px;"><%= current_user.state %></li>
-              <li style="margin-left: 20px;"><%= current_user.country %></li>
+              <li style="margin-left: 20px;"><i class="material-icons md-18" style="font-size: 15px; margin-right: 5px; margin-right: 5px; line-height: 12px;">label</i><%= current_user.city %></li>
+              <li style="margin-left: 20px;"><i class="material-icons md-18" style="font-size: 15px; margin-right: 5px; line-height: 12px;">label</i><%= current_user.state %></li>
+              <li style="margin-left: 20px;"><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; margin-right: 5px; line-height: 12px;">label</i><%= current_user.country %></li>
 
 
             <!-- <li style="float:left; margin-left: 18px; width: 100px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">local_activity</i>Activity</li>
@@ -57,11 +57,11 @@
           </ul>
         </div>
         <ul class="list-profile" style="display: block; margin-top: 12px;">
-          <li><%= image_tag "icon1.png", width: "13px", height: "13px", style: "margin-right: 5px;" %><%= link_to "waiting/pending matches", "#", class: "list-style" %></li>
-          <li><i class="material-icons md-18" style="vertical-align: middle; margin-right: 5px; font-size: 15px;">recent_actors</i><%= link_to "matches", "#", class: "list-style" %></li>
+          <li><%= image_tag "icon1.png", width: "13px", height: "13px", style: "margin-right: 5px;" %><%= link_to "waiting/pending", user_pendings_path(current_user), class: "list-style" %></li>
+          <li><i class="material-icons md-18" style="vertical-align: middle; margin-right: 5px; font-size: 15px;">recent_actors</i><%= link_to "matches", user_matches_path(current_user), class: "list-style" %></li>
           <div style="height: 320px;"></div>
           <li>
-            <i class="fa fa-sign-out fa-1x" style="margin-right: 8px;"></i><%= link_to "logout", "#", style: "text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500;" %>
+            <i class="fa fa-sign-out"></i><%= link_to "logout", "sign_out_path", style: "color: #898989; text-decoration: none; text-transform: uppercase; margin-left:5px; font-size: 13px; font-weight: 500; " %>
           </li>
         </ul>
         <!-- </div> -->
@@ -81,7 +81,7 @@
       <div class="col-lg-12">
         <div class="panel panel-green" style="height: 185px; border: 0; ">
           <div class="create_match_heading" style="height: 35px; margin-top: 0; ">
-            <h4 style= "padding-top: 12px; padding-left: 13px; font-weight: 300;">Create Match</h4>
+            <h4 style= "padding-top: 12px; padding-left: 13px; font-weight: 300;"><i class="material-icons" style="vertical-align: middle; line-height: 18px; font-size: 22px; margin-right: 5px;">label</i>Create Match</h4>
           </div>
           <hr style="margin-right: 35px;margin-top: 5px; margin-bottom: 5px; border-color: #ccc; width: 95.5%;">
           <div class="panel-heading" style="padding: 0 15px; margin-top: 10px;">
@@ -111,10 +111,16 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        <h2 style="margin-top: 0; font-size:16px; font-weight: 400; text-transform: uppercase;">Matches</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <h2 style="margin-top: 0; font-size:16px; font-weight: 400; text-transform: uppercase;"><i class="material-icons" style="vertical-align: middle; line-height: 18px; font-size: 22px; margin-right: 5px;">label</i>Matches</h2>
     </div>
+    <div class="col-lg-4" style="padding-left: 0;">
+      <h2 style="margin-top: 0; font-size:16px; font-weight: 400; text-transform: uppercase;"><i class="material-icons" style="vertical-align: middle; line-height: 18px; font-size: 22px; margin-right: 5px;">label</i>Upcoming Events</h2>
+    </div>
+</div>
+</div>
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
@@ -168,7 +174,7 @@
             </div>
             <div class="col-sm-4" style="padding-right: 4px;">
               <div class="row">
-                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0;">
+                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-bottom: 5px;">
                   <div class="col-sm-3 upcoming" style="height: 100%; width: 33.3%; padding: 0px;">
                     <p style="position:absolute; z-index: 2; top:5px; left: 10px; height: 40px; color: #fff;"><span style="font-size: 18px;">Activity</span><br>Football</p>
                     <div style="background: #258f9f; width: 100%; height: 100%; position: relative; opacity: 0.5;z-index: 1;"></div>
@@ -187,7 +193,7 @@
                   </div>
                 </div>
               <div class="row">
-                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px">
+                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px; margin-bottom: 5px;">
                   <div class="col-sm-3 upcoming" style="height: 100%; width: 33.3%; padding: 0px;">
                     <p style="position:absolute; z-index: 2; top:5px; left: 10px; height: 40px; color: #fff;"><span style="font-size: 18px;">Activity</span><br>Badminton</p>
                     <div style="background: #258f9f; width: 100%; height: 100%; position: relative; opacity: 0.5;z-index: 1;"></div>
@@ -207,7 +213,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px">
+                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px; margin-bottom: 5px;">
                   <div class="col-sm-3 upcoming" style="height: 100%; width: 33.3%; padding: 0px;">
                     <p style="position:absolute; z-index: 2; top:5px; left: 10px; height: 40px; color: #fff;"><span style="font-size: 18px;">Activity</span><br>Taichi</p>
                     <div style="background: #258f9f; width: 100%; height: 100%; position: relative; opacity: 0.5;z-index: 1;"></div>
@@ -227,7 +233,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px">
+                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px; margin-bottom: 5px;">
                   <div class="col-sm-3 upcoming" style="height: 100%; width: 33.3%; padding: 0px;">
                     <p style="position:absolute; z-index: 2; top:5px; left: 10px; height: 40px; color: #fff;"><span style="font-size: 18px;">Activity</span><br>Yoga</p>
                     <div style="background: #258f9f; width: 100%; height: 100%; position: relative; opacity: 0.5;z-index: 1;"></div>
