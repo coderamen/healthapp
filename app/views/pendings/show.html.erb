@@ -1,3 +1,33 @@
+<div class="show-pending-container">
+  <div class="panel show-pending-panel">
+    <div class="panel-body">
+      <h2>YOUR PENDING DETAILS</h2>  
+      <table class="">
+        <tr>
+          <td class="pending-attr">Activity:</td>
+          <td class="pending-details"><%= @pending.activity.name %></td>
+          <td class="pending-attr">Date:</td>
+          <td class="pending-details"><%= @pending.datetime.localtime.strftime("%A, %d %b %Y") %></td>  
+        </tr>
+        <tr>
+          <td class="pending-attr">City:</td>
+          <td class="pending-details"><%= @pending.city %></td>
+          <td class="pending-attr">Time:</td>
+          <td class="pending-details"><%= @pending.datetime.localtime.strftime("%I:%M %p") %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="potential-matches">
+    <h3>ALL AVAILABLE MATCHES</h3>
+    
+  </div>
+
+</div>
+
+
+
 <!-- show page for all the available pendings to accept/decline for this particular pending -->
 <h1>This Pending</h1>
 <%= @pending %>

@@ -1,3 +1,41 @@
 // Place all the styles related to the pendings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// show page
+.show-pending-container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  .show-pending-panel {
+    margin-top: 50px;
+    height: auto;
+    padding: 10px;
+  }
+
+  td {
+    height: 70px;
+
+    &.pending-attr {
+      font-size: 14px;
+      width: 12%;
+    }
+
+    &.pending-details {
+      font-size: 24px;
+      width: 48%;
+    }
+  }
+  
+  .potential-matches {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    
+    h3 {
+      margin-top: 60px;
+    }
+  }
+
+} 
