@@ -42,37 +42,40 @@
           
       </div>
       <div class="col-md-8">
-        <h2><%= them.name %></h2>
-        <h4>from <%= them.city %>, <%= them.state %>, <%= them.country %></h4>
-        <p><%= them.email %></p>
-        <br>
-        <table class="user-attr-table">
-          <tr>
-            <td>Stamina:</td>
-            <td class="attr-value"><%= them.stamina %></td>
-            <td>Strength:</td>
-            <td class="attr-value"><%= them.strength %></td>
-            <td>Agility:</td>
-            <td class="attr-value"><%= them.agility %></td>
-          </tr>
-        </table>
-        <br>
-        <hr class="match-hr">
-        <h4 class="other-pending-title">Their Pending details</h4>
-        <table class="other-pending-table">
-          <tr>
-            <td class="pending-attr"><p>Activity:</p></td>
-            <td class="pending-details"><p><%= their_pending.activity.name %></p></td>
-            <td class="pending-attr"><p>Date: </p></td>
-            <td class="pending-details"><p><%= their_pending.datetime.localtime.strftime("%A, %d %b %Y") %></p></td>
-          </tr>
-          <tr>
-            <td class="pending-attr"><p>City:</p></td>
-            <td class="pending-details"><p><%= their_pending.city %></p></td>
-            <td class="pending-attr"><p>Time:</p></td>
-            <td class="pending-details"><p><%= their_pending.datetime.localtime.strftime("%I:%M %p") %></p></td>
-          </tr>
-        </table>
+        <div class="other-user-details">
+          <h2><%= them.name %></h2>
+          <h4>from <%= them.city %>, <%= them.state %>, <%= them.country %></h4>
+          <p><%= them.email %></p>
+          <br>
+          <table class="user-attr-table">
+            <tr>
+              <td>Stamina:</td>
+              <td class="attr-value"><%= them.stamina %></td>
+              <td>Strength:</td>
+              <td class="attr-value"><%= them.strength %></td>
+              <td>Agility:</td>
+              <td class="attr-value"><%= them.agility %></td>
+            </tr>
+          </table>
+          <br>
+          <hr class="match-hr">
+          <h4 class="other-pending-title">Their Pending details</h4>
+          <table class="other-pending-table">
+            <tr>
+              <td class="pending-attr"><p>Activity:</p></td>
+              <td class="pending-details"><p><%= their_pending.activity.name %></p></td>
+              <td class="pending-attr"><p>Date: </p></td>
+              <td class="pending-details"><p><%= their_pending.datetime.localtime.strftime("%A, %d %b %Y") %></p></td>
+            </tr>
+            <tr>
+              <td class="pending-attr"><p>City:</p></td>
+              <td class="pending-details"><p><%= their_pending.city %></p></td>
+              <td class="pending-attr"><p>Time:</p></td>
+              <td class="pending-details"><p><%= their_pending.datetime.localtime.strftime("%I:%M %p") %></p></td>
+            </tr>
+          </table>
+          
+        </div>
       </div>
     </div>
   
@@ -135,8 +138,6 @@
                 <td><p><%= activity.duration_in_hours %> hour(s)</p></td>
               </tr>
             </table>
-          </div>
-        </div>
         <!-- conditions for when the user has confirmed/not confirmed -->
         <% if activity.user1_confirm && activity.user2_confirm %>
           <div class="alert alert-success confirm-alert">
@@ -150,6 +151,8 @@
             <%= button_to "or decline to recreate activity", match_confirmed_activity_path(@match, activity), method: :delete, class: "decline-link" %>
             <p><%= button_to "Confirm", match_confirmed_activity_path(@match, activity), method: :post, class: "btn btn-primary btn-lg confirm-btn" %></p>
         <% end %>
+          </div>
+        </div>
 
       <% else %>
         <%= form_for @confirmed_activity, url: match_confirmed_activities_path(@match) do |f| %>
@@ -210,5 +213,5 @@
 </div>
 
 <script>
-  $('html').scrollTop($('html').height());
+  $('html').scrollTop($('.pending-info').height() + 40);
 </script>

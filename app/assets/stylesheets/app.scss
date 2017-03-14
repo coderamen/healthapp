@@ -371,3 +371,32 @@ body {
 //   padding-left: 15px;
 //   padding-right: 15px;
 // }
+
+
+.well {
+
+  table.dahsboard-matches {
+    width: 80%;
+    margin: 0 auto;
+
+    td {
+      height: 30px;
+    }
+
+    .match-user-name {
+      height: 60px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .match-attr {
+      font-weight: 700;
+    }
+
+    .match-details {
+      padding-left: 20px;      
+    }
+  }
+
+}

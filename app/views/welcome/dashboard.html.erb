@@ -57,58 +57,12 @@
         <div class="row">
             <div class="col-sm-8">
                 <div class="row">
-                    <div class="col-sm-4" style="padding-left: 5px;">
-                        <div class="well">
-                          <div class="profile-img">
-                            <%= image_tag "profile1.jpg", width: "100%", height: "auto"%>
-                          </div>
-                          <ul style="padding-left:0;text-align: center; list-style: none">
-                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Yondu</li>
-                            <li style="margin-left:40px ;float: left;">Country</li>
-                            <li style="margin-bottom: 10px;">Match date</li>
-                            <hr>
-                            <li style="margin-left:40px ;float: left;">Malaysia</li>
-                            <li>10/3/17</li>
-                          </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="well">
-                          <div class="profile-img">
-                            <%= image_tag "profile2.jpg", width: "100%", height: "auto"%>
-                          </div>
-                          <ul style="padding-left:0;text-align: center; list-style: none">
-                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Baby Groot</li>
-                            <li style="margin-left:40px ;float: left;">Country</li>
-                            <li style="margin-bottom: 10px;">Match date</li>
-                            <hr>
-                            <li style="margin-left:40px ;float: left;">Malaysia</li>
-                            <li>10/3/17</li>
-                          </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="well">
-                          <div class="profile-img">
-                            <%= image_tag "profile3.jpg", width: "100%", height: "auto"%>
-                          </div>
-                          <ul style="padding-left:0;text-align: center; list-style: none">
-                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Drax</li>
-                            <li style="margin-left:40px ;float: left;">Country</li>
-                            <li style="margin-bottom: 10px;">Match date</li>
-                            <hr>
-                            <li style="margin-left:40px ;float: left;">Malaysia</li>
-                            <li>10/3/17</li>
-                          </ul>
-                        </div>
-                    </div>
-
                     <% @matches.each do |match| %>
                       <% if match.user1 == current_user %>
-                        <% match_pending = match.user2_pending %>
+                        <% match_pending = match.user1_pending %>
                         <% match_user = match.user2 %>
                       <% else %>
-                        <% match_pending = match.user1_pending %>
+                        <% match_pending = match.user2_pending %>
                         <% match_user = match.user1 %>
                       <% end %>
                       <div class="col-sm-4">
@@ -120,18 +74,21 @@
                               <%= image_tag "profile3.jpg", width: "100%", height: "auto"%>
                             <% end %>
                           </div>
-                          <table>
+                          <table class="dahsboard-matches">
                             <tr>
-                              <td colspan="2"><p><%= match_user.name %></p></td>
+                              <td class="match-user-name" colspan="2"><p><%= match_user.name %></p></td>
                             </tr>
                             <tr>
-                              <td></td>
+                              <td class="match-attr">Activity</td>
+                              <td class="match-details"><%= match_pending.activity.name %></td>
                             </tr>
                             <tr>
-                              <td></td>
+                              <td class="match-attr">City</td>
+                              <td class="match-details"><%= match_pending.city %></td>
                             </tr>
                             <tr>
-                              <td></td>
+                              <td class="match-attr">Date</td>
+                              <td class="match-details"><%= match_pending.datetime.localtime.strftime("%d %b %Y") %></td>
                             </tr>
                           </table>
                         </div>
@@ -219,6 +176,8 @@
                   </div>
                 </div>
               </div>
+
+              
             </div>
             </div>
         </div>
@@ -251,3 +210,46 @@ function closeNav() {
   document.getElementById("Sidenav").marginLeft = "0";
 }
 </script> -->
+
+<!-- <div class="col-sm-4" style="padding-left: 5px;">
+                        <div class="well">
+                          <div class="profile-img">
+                          </div>
+                          <ul style="padding-left:0;text-align: center; list-style: none">
+                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Yondu</li>
+                            <li style="margin-left:40px ;float: left;">Country</li>
+                            <li style="margin-bottom: 10px;">Match date</li>
+                            <hr>
+                            <li style="margin-left:40px ;float: left;">Malaysia</li>
+                            <li>10/3/17</li>
+                          </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="well">
+                          <div class="profile-img">
+                          </div>
+                          <ul style="padding-left:0;text-align: center; list-style: none">
+                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Baby Groot</li>
+                            <li style="margin-left:40px ;float: left;">Country</li>
+                            <li style="margin-bottom: 10px;">Match date</li>
+                            <hr>
+                            <li style="margin-left:40px ;float: left;">Malaysia</li>
+                            <li>10/3/17</li>
+                          </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="well">
+                          <div class="profile-img">
+                          </div>
+                          <ul style="padding-left:0;text-align: center; list-style: none">
+                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Drax</li>
+                            <li style="margin-left:40px ;float: left;">Country</li>
+                            <li style="margin-bottom: 10px;">Match date</li>
+                            <hr>
+                            <li style="margin-left:40px ;float: left;">Malaysia</li>
+                            <li>10/3/17</li>
+                          </ul>
+                        </div>
+                    </div> -->

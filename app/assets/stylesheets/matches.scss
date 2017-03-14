@@ -30,7 +30,7 @@ hr.match-hr {
 }
 
 .match-other-row {
-  margin-bottom: 30px;
+  margin: 0 0 30px 0 !important;
   display: flex;
 
   .col-md-4 {
@@ -43,6 +43,7 @@ hr.match-hr {
       background-color: #888;
       border-radius: 50%;
       border: solid 1px $grey-color;
+      margin: 0 auto;
       width: 300px;
       height: 300px;
     }
@@ -57,11 +58,16 @@ hr.match-hr {
 
   .col-md-8 {
     background-color: #f4f2f2;
-    padding: 20px;
-    margin-right: 20px;
-    width: 65%;
+    padding: 0;
+    // margin-right: 20px;
+    width: 60%;
+    // float: right;
     margin-left: auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+
+    .other-user-details {
+      padding: 20px;
+    }
 
     h2 {
       margin-top: 0;
@@ -81,7 +87,7 @@ hr.match-hr {
       }
 
       .attr-value {
-        padding-right: 150px;
+        padding-right: 100px;
         font-weight: 400;
       }
 
@@ -163,6 +169,7 @@ hr.match-hr {
     }
 
     .decline-link {
+      height: 44px;
       margin-top: 20px;
       border: none;
       background: none;
