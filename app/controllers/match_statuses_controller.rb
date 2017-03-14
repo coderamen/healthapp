@@ -25,7 +25,11 @@ class MatchStatusesController < ApplicationController
         end
       end
 
-      redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i)
+      respond_to do |format| 
+        format.html { redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i) }
+        format.js
+      end
+      
     else
       flash[:danger] = "Unable to make changes"
       redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i)
