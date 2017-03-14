@@ -1,3 +1,4 @@
+
 class Match < ApplicationRecord
   validates :user1_id, :user2_id, :user1_pending_id, :user2_pending_id, presence: true
   validates :user1_pending_id, uniqueness: { scope: :user2_pending_id }

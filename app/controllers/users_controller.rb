@@ -13,6 +13,7 @@ class UsersController < Clearance::UsersController
 
     if @user.save
       sign_in(@user)
+      UserMailer.welcome_email(@user).deliver_now
       flash[:success] = "healthapp account has been successfully created"
       redirect_to root_path
     else
