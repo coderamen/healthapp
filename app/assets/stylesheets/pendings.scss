@@ -33,8 +33,7 @@ $grey-color: #818181;
   
   .potential-matches {
     width: 80%;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto 50px auto;
 
     h3 {
       margin-top: 60px;
@@ -68,7 +67,57 @@ $grey-color: #818181;
       .col-md-5 {
 
         h2 {
-          margin-top: 5px;
+          margin: 3px 0 0 0 ;
+        }
+
+        h5 {
+          color: #818181;
+          margin: 0;
+        }
+
+        table {
+          margin-top: 15px;
+
+          .pending-details {
+            font-weight: 700;
+            font-size: 17px;
+          }
+        }
+
+      }
+
+      .col-md-4 {
+          height: 115px;
+          display: flex;
+          align-items: center;
+
+        .accept-btn {
+          margin: 10px;
+          padding: 12px 23px;
+          background-color: #fff;
+          border: solid 1px #258f9f;
+          border-radius: 0;
+          color: #258f9f;
+
+          &:hover {
+            color: #fff;
+            // background-color: #01b6d1;
+            background-color: #258f9f;
+          }
+        }
+
+        .decline-btn {
+          margin: 10px;
+          padding: 12px 23px;
+          background-color: #fff;
+          border: solid 1px #cc0010;
+          border-radius: 0;
+          color: #cc0010;
+
+          &:hover {
+            color: #fff;
+            background-color: #cc0010;
+          } 
         }
       }
     }
