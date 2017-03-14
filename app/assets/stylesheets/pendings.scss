@@ -1,3 +1,131 @@
 // Place all the styles related to the pendings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$grey-color: #818181;
+
+// show page
+.show-pending-container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  .show-pending-panel {
+    margin-top: 50px;
+    height: auto;
+    padding: 10px;
+
+    td {
+      height: 70px;
+
+      &.pending-attr {
+        font-size: 14px;
+        width: 12%;
+      }
+
+      &.pending-details {
+        font-size: 24px;
+        width: 48%;
+      }
+    }
+  }
+
+  
+  .potential-matches {
+    width: 80%;
+    margin: 0 auto 50px auto;
+
+    h3 {
+      margin-top: 60px;
+    }
+
+    .potential-match-panel {
+      margin: 0;
+      border: solid 1px #ddd;
+      transition: 0.4s;
+
+      &.minimise {
+        transform: scale(0);
+      }
+
+      .col-md-3 {
+        width: 22%;
+
+        img {
+          border-radius: 50%;
+          border: solid 1px $grey-color;
+          width: 115px;
+          height: 115px;
+          margin-left: 30px;
+        }
+
+        .profile-pic {
+          background-color: #888;
+          border-radius: 50%;
+          border: solid 1px $grey-color;
+          width: 115px;
+          height: 115px;
+          margin-left: 30px;
+        }
+      }
+
+      .col-md-5 {
+
+        h2 {
+          margin: 3px 0 0 0 ;
+        }
+
+        h5 {
+          color: #818181;
+          margin: 0;
+        }
+
+        table {
+          margin-top: 15px;
+
+          .pending-details {
+            font-weight: 700;
+            font-size: 17px;
+          }
+        }
+
+      }
+
+      .col-md-4 {
+          height: 115px;
+          display: flex;
+          align-items: center;
+
+        .accept-btn {
+          margin: 10px;
+          padding: 12px 23px;
+          background-color: #fff;
+          border: solid 1px #258f9f;
+          border-radius: 0;
+          color: #258f9f;
+
+          &:hover {
+            color: #fff;
+            // background-color: #01b6d1;
+            background-color: #258f9f;
+          }
+        }
+
+        .decline-btn {
+          margin: 10px;
+          padding: 12px 23px;
+          background-color: #fff;
+          border: solid 1px #cc0010;
+          border-radius: 0;
+          color: #cc0010;
+
+          &:hover {
+            color: #fff;
+            background-color: #cc0010;
+          } 
+        }
+      }
+    }
+  }
+
+} 

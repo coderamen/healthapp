@@ -5,7 +5,7 @@
 $grey-color: #818181;
 
 // show page
-.match-container {
+.show-match-container {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
@@ -30,7 +30,7 @@ hr.match-hr {
 }
 
 .match-other-row {
-  margin-bottom: 70px;
+  margin-bottom: 30px;
   display: flex;
 
   .col-md-4 {
@@ -40,6 +40,7 @@ hr.match-hr {
     align-self: center;
     
     .profile-pic {
+      background-color: #888;
       border-radius: 50%;
       border: solid 1px $grey-color;
       width: 300px;
@@ -105,7 +106,7 @@ hr.match-hr {
 }
 
 .chat-form-row {
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 
   .chat-col {
     width: 55%;

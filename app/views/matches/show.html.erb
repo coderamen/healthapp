@@ -1,5 +1,5 @@
 
-<div class="match-container">
+<div class="show-match-container">
   
   <% if current_user == @match.user1 %>
     <% you = @match.user1 %>
@@ -14,7 +14,7 @@
   <% end %>
 
     <div class="pending-info">
-      <h3>Your pending for this match</h3>
+      <h3>YOUR PENDING FOR THIS MATCH</h3>
       <hr class="match-hr">
       <table>
         <tr>
@@ -37,7 +37,7 @@
         <% if them.avatar? %>
           <%= image_tag them.avatar.large_avatar.url %>
         <% else %>
-          <div class="profile-pic" style="background-color: #888"></div>
+          <div class="profile-pic"></div>
         <% end %>
           
       </div>
@@ -78,7 +78,7 @@
   
   <div class="row chat-form-row">
     <div class="col-md-6 chat-col">
-      <h3>Chat</h3>
+      <h3>CHAT</h3>
       <% if current_user == @match.user1 %>
         <div class="chatbox" data-match-id="<%= @match.id %>" data-self="<%= @match.user1.id %>" data-other="<%= @match.user2.id %>">
       <% else %>
@@ -108,7 +108,7 @@
     </div>
 
     <div class="col-md-5 confirmed-activity-col">
-      <h3>Confirm the activity</h3>
+      <h3>CONFIRM THE ACTIVITY</h3>
       <% activity = @match.confirmed_activity %>
       <% if activity %>
         <div class="panel">

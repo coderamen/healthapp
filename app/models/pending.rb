@@ -64,8 +64,8 @@ class Pending < ApplicationRecord
     same_date = []
 
     pendings.each do |pending|
-      p_date = pending.datetime
-      s_date = self.datetime
+      p_date = pending.datetime.localtime
+      s_date = self.datetime.localtime
 
       if p_date.year == s_date.year && p_date.month == s_date.month && p_date.day == s_date.day
         same_date << pending.id
