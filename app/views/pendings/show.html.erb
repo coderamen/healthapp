@@ -21,7 +21,38 @@
   
   <div class="potential-matches">
     <h3>ALL AVAILABLE MATCHES</h3>
-    
+    <% @pending.potential_matches.each do |potential_match| %>
+      <div class="panel potential-match-panel">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3">
+              <% if potential_match.user.avatar? %>
+                <%= image_tag(potential_match.user.avatar.medium_avatar.url) %>
+              <% else %>
+                <div class="profile-pic"></div>
+              <% end %>
+            </div>
+            <div class="col-md-5">
+              <h2><%= potential_match.user.name %></h2>
+            </div>
+            <div class="col-md-4">
+              <%= button_to "Accept", pending_match_statuses_path(potential_match), method: :post, 
+                    params: { status: "accepted",
+                              pending_viewer_id: @pending.id,
+                              pending_viewed_id: potential_match.id },
+                    class: "btn btn-default btn-lg"
+              %>
+              <%= button_to "Decline", pending_match_statuses_path(potential_match), method: :post,
+                    params: { status: "declined",
+                              pending_viewer_id: @pending.id,
+                              pending_viewed_id: potential_match.id },
+                    class: "btn btn-default btn-lg"
+              %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 
 </div>

@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$grey-color: #818181;
+
 // show page
 .show-pending-container {
   width: 60%;
@@ -12,29 +14,63 @@
     margin-top: 50px;
     height: auto;
     padding: 10px;
+
+    td {
+      height: 70px;
+
+      &.pending-attr {
+        font-size: 14px;
+        width: 12%;
+      }
+
+      &.pending-details {
+        font-size: 24px;
+        width: 48%;
+      }
+    }
   }
 
-  td {
-    height: 70px;
-
-    &.pending-attr {
-      font-size: 14px;
-      width: 12%;
-    }
-
-    &.pending-details {
-      font-size: 24px;
-      width: 48%;
-    }
-  }
   
   .potential-matches {
     width: 80%;
     margin-right: auto;
     margin-left: auto;
-    
+
     h3 {
       margin-top: 60px;
+    }
+
+    .potential-match-panel {
+      margin: 0;
+      border: solid 1px #ddd;
+
+      .col-md-3 {
+        width: 22%;
+
+        img {
+          border-radius: 50%;
+          border: solid 1px $grey-color;
+          width: 115px;
+          height: 115px;
+          margin-left: 30px;
+        }
+
+        .profile-pic {
+          background-color: #888;
+          border-radius: 50%;
+          border: solid 1px $grey-color;
+          width: 115px;
+          height: 115px;
+          margin-left: 30px;
+        }
+      }
+
+      .col-md-5 {
+
+        h2 {
+          margin-top: 5px;
+        }
+      }
     }
   }
 
