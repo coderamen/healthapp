@@ -1,12 +1,8 @@
 <header class="topbar clearfix">
   <div class="topbar-left pull-left">
-    <a href="/users/<%= current_user.id %>/dashboard"><%= image_tag "brand4.png", class: "brand", style: "width: 128px; height: 55px;" %></a>
+    <a href="/users/<%= current_user.id %>/dashboard"><%= image_tag "fitbuds-clear_bg-new-grey.png", class: "brand", style: "width: 128px; height: 55px;" %></a>
     <span onclick="openNav()" class="fa fa-bars fa-2x" style="position: relative; bottom: 3.6em; left: .5em; color: #fff;"></span>
-    <span onclick="openNav()" class="fa fa-sign-out fa-2x" style="position: relative; left: 41em; top: 10px; font-weight: 300; color: #fff;"></span>
   </div>
-  <ul class="topbar-right pull-right" style="list-style: none;">
-    <li><%= link_to "", "/auth/facebook", class: "fa fa-facebook-square fa-2x", style: "color: #fff; margin-right: 30px; margin-top: 17px;" %></li>
-  </ul>
 </header>
 <!-- side-navigation -->
 <div class="leftbar">
@@ -16,12 +12,21 @@
         <div class="user-profile-container">
           <div class="user-profile clearfix">
             <div class="user-thumb">
-              <%= image_tag "profile.png", width: "48px", height: "48px"%>
+              <% if current_user.avatar? %>
+                <%= image_tag current_user.avatar.small_avatar.url, width: "70px", height: "70px" %>
+              <% else %>
+                <div style="background-color: #aaa; width: 70px; height: 70px; border-radius: 50%"; ></div>
+              <% end %>
             </div>
             <div class="user-info">
-              <ul style="padding-left: 0;margin-bottom: 0; font-weight: 700;">
-                <li><%= current_user.name %></li>
+              <ul style="padding-left: 0;margin-bottom: 0; font-weight: 300; text-align: left;  ">
+                <li style="text-transform: capitalize"><%= current_user.name %></li>
                 <li><%= current_user.email %></li>
+                <li>
+                  <%= link_to " ", ( { class: "btn btn-default", style: "vertical-align: middle;width: 114px; border-radius: 0; height: 30px;"} ) do %>
+                  <i class="material-icons md-18" style="vertical-align: middle; font-size: 14px; line-height: 14px; padding-right: 10px; height: 16px;">mode_edit</i>edit
+                  <% end %>
+                </li>
               </ul>
             </div>
           </div>
@@ -39,27 +44,26 @@
           </ul>
           <ul style="text-transform: capitalize; border-top: 1px solid rgba(0, 0, 0, 0.12);">
             <li style="margin-left: 20px; width: 200px; margin-top: 10px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:5px; font-size: 14px; line-height: 12px;">location_city</i>City/State/Country</li>
-              <li style="margin-left: 20px;"><%= current_user.city %></li>
-              <li style="margin-left: 20px;"><%= current_user.state %></li>
-              <li style="margin-left: 20px;"><%= current_user.country %></li>
+              <li style="margin-left: 20px;"><i class="material-icons md-18" style="font-size: 15px; margin-right: 5px; margin-right: 5px; line-height: 12px;">label</i><%= current_user.city %></li>
+              <li style="margin-left: 20px;"><i class="material-icons md-18" style="font-size: 15px; margin-right: 5px; line-height: 12px;">label</i><%= current_user.state %></li>
+              <li style="margin-left: 20px;"><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; margin-right: 5px; line-height: 12px;">label</i><%= current_user.country %></li>
 
 
             <!-- <li style="float:left; margin-left: 18px; width: 100px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">local_activity</i>Activity</li>
             <li><%= current_user.weekly_activity_hours %></li>
             <li style="float:left; margin-left: 18px; width: 200px; margin-right: 40px;"><i class="material-icons md-18" style="vertical-align: middle; margin-right:7px; font-size: 14px; line-height: 12px;">local_hospital</i>Health Issue</li>
             <li><%= current_user.additional_health_problems %></li> -->
-            <li>
-              <%= link_to( "edit", { class: "btn btn-default", style: "vertical-align: middle;width: 100%; margin-left: 10px; margin-top: 10px; border-radius: 0;"} ) do %>
-              <i class="material-icons md-18" style="line-height: 14px; vertical-align: middle; padding-right: 21px; ">mode_edit</i>Edit
-              <% end %>
-            </li>
+
           </ul>
         </div>
         <ul class="list-profile" style="display: block; margin-top: 12px;">
-          <li><%= image_tag "icon1.png", width: "13px", height: "13px", style: "margin-right: 5px;" %><%= link_to "waiting/pending matches", "#", class: "list-style" %></li>
-          <li><i class="material-icons md-18" style="vertical-align: middle; margin-right: 5px; font-size: 15px;">recent_actors</i><%= link_to "matches", "#", class: "list-style" %></li>
+          <li><%= image_tag "icon1.png", width: "13px", height: "13px", style: "margin-right: 5px;" %><%= link_to "waiting/pending", user_pendings_path(current_user), class: "list-style" %></li>
+          <li><i class="material-icons md-18" style="vertical-align: middle; margin-right: 5px; font-size: 15px;">recent_actors</i><%= link_to "matches", user_matches_path(current_user), class: "list-style" %></li>
+          <div style="height: 320px;"></div>
+          <li>
+            <i class="fa fa-sign-out"></i><%= link_to "logout", "sign_out_path", style: "color: #898989; text-decoration: none; text-transform: uppercase; margin-left:5px; font-size: 13px; font-weight: 500; " %>
+          </li>
         </ul>
-        <div id=""></div>
         <!-- </div> -->
       </div>
     </div>
@@ -71,76 +75,188 @@
   <!-- color overlay -->
 </div>
 <div class="dashbox">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 style="margin-bottom: 10px; border-bottom: 1px solid #fff; border-top: 1px solid #fff; width: 187px;">Create Match</h1>
-    </div>
-  </div>
-    <!-- <hr> -->
   <section class="container-fluid">
     <%= form_for @pending, url: user_pendings_path(current_user.id) do |f| %>
     <div class="row">
       <div class="col-lg-12">
-        <div class="panel panel-green">
-          <div class="panel-heading">
-            <div class="col-md-4">
-              <p class="lead" style="font-size: 15px;">Venue</p>
-              <%= f.text_field :city, placeholder: "City", class: "form-control" %>
+        <div class="panel panel-green" style="height: 185px; border: 0; ">
+          <div class="create_match_heading" style="height: 35px; margin-top: 0; ">
+            <h4 style= "padding-top: 12px; padding-left: 13px; font-weight: 300;"><i class="material-icons" style="vertical-align: middle; line-height: 18px; font-size: 22px; margin-right: 5px;">label</i>Create Match</h4>
+          </div>
+          <hr style="margin-right: 35px;margin-top: 5px; margin-bottom: 5px; border-color: #ccc; width: 95.5%;">
+          <div class="panel-heading" style="padding: 0 15px; margin-top: 10px;">
+            <div class="col-md-4" style="padding-left:0;">
+              <p style="font-size: 15px;">Venue</p>
+              <%= f.text_field :city, placeholder: "City", class: "form-control", style: "float: left; width: 300px;" %>
             </div>
             <div class="col-md-4">
-              <p class="lead" style="font-size: 15px;">Time</p>
-              <%= f.date_field :date, placeholder: "Date", class: "date-field" %>
-              <%= f.text_field :time, placeholder: "Time", class: "time-field" %>
+              <p style="font-size: 15px;">Time</p>
+              <%= f.date_field :date, placeholder: "Date", class: "date-field", style: "float: left; width: 150px; height: 34px; margin-right: 3px;" %>
+              <%= f.text_field :time, placeholder: "Time", class: "time-field", style: "width: 150px; height: 34px;" %>
             </div>
             <div class="col-md-4">
-              <span class="lead" style="font-size: 15px;">Activity</span>
-                <span style="border: none; color: #000; margin-bottom: 19px">
+              <p style="font-size: 15px; height: 0;">Activity</p>
+              <span style="border: none; color: #000;">
+                <br>
                 <%= f.select :activity_id do %>
                 <% activity_array = Activity.order(:name).all.map { |activity| [activity.name, activity.id] } %>
                 <%= options_for_select([['Others', 0]]) %>
                 <%= options_for_select(activity_array) %>
                 <% end %>
-              </span>
-              <span><%= f.text_field :activity, placeholder: "If selected 'Other', please specify", class: "form-control", style: "width: 140px" %></span>
-              <%= f.submit class: "btn btn-primary", style: "width: 100%; margin-top: 10px; border-radius: 0; font-weight: 300;" %>
+              <span><%= f.text_field :activity, placeholder: "If selected 'Other', please specify", class: "form-control", style: "width: 175px; float: right;" %></span>
+              <%= f.submit class: "btn btn-default", style: "background: #258f9f; width: 100%; margin-top: 15px; border: none; border-radius: 0; font-weight: 300;" %>
               <% end %>
             </div>
           </div>
         </div>
     </div>
 </div>
-<div class="row">
-  <div class="col-lg-12">
-    <h2 style= "margin-top: 0; font-size:16px; font-weight: 400; text-transform: uppercase;">Pending Matches</h2>
-  </div>
-  <div class="col-lg-4 col-md-6">
-    <div class="panel-body" style="border: 1px solid #ccc">
-      <div class="pending-img">
-        <%= image_tag "sleep.png", width: "150px", height: "auto"%>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-      <%= link_to "approve", "#", class: "btn btn-success", style: "width: 40%; border-radius: 0;" %>
-      <%= link_to "decline", "#", class: "btn btn-danger", style: "width: 40%; border-radius: 0;" %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <h2 style="margin-top: 0; font-size:16px; font-weight: 400; text-transform: uppercase;"><i class="material-icons" style="vertical-align: middle; line-height: 18px; font-size: 22px; margin-right: 5px;">label</i>Matches</h2>
     </div>
-  </div>
-  <div class="col-lg-4 col-md-6">
-    <div class="panel-body" style="border: 1px solid #ccc">
-      <div class="pending-img">
-        <%= image_tag "sleep.png", width: "150px", height: "auto"%>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-      <%= link_to "approve", "#", class: "btn btn-success", style: "width: 40%; border-radius: 0;" %>
-      <%= link_to "decline", "#", class: "btn btn-danger", style: "width: 40%; border-radius: 0;" %>
+    <div class="col-lg-4" style="padding-left: 0;">
+      <h2 style="margin-top: 0; font-size:16px; font-weight: 400; text-transform: uppercase;"><i class="material-icons" style="vertical-align: middle; line-height: 18px; font-size: 22px; margin-right: 5px;">label</i>Upcoming Events</h2>
     </div>
-  </div>
-  <div class="col-lg-4 col-md-6">
-    <div class="panel-body" style="border: 1px solid #ccc; width: 365px, height: 270px;">
-      <div class="pending-img">
-        <!-- <%= image_tag "sleep.png", width: "150px", height: "auto"%> -->
-      </div>
-      <p>Upcoming Events</p>
+</div>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-4" style="padding-left: 5px;">
+                        <div class="well">
+                          <div class="profile-img">
+                            <%= image_tag "profile1.jpg", width: "100%", height: "auto"%>
+                          </div>
+                          <ul style="padding-left:0;text-align: center; list-style: none">
+                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Yondu</li>
+                            <li style="margin-left:40px ;float: left;">Country</li>
+                            <li style="margin-bottom: 10px;">Match date</li>
+                            <hr>
+                            <li style="margin-left:40px ;float: left;">Malaysia</li>
+                            <li>10/3/17</li>
+                          </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="well">
+                          <div class="profile-img">
+                            <%= image_tag "profile2.jpg", width: "100%", height: "auto"%>
+                          </div>
+                          <ul style="padding-left:0;text-align: center; list-style: none">
+                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Baby Groot</li>
+                            <li style="margin-left:40px ;float: left;">Country</li>
+                            <li style="margin-bottom: 10px;">Match date</li>
+                            <hr>
+                            <li style="margin-left:40px ;float: left;">Malaysia</li>
+                            <li>10/3/17</li>
+                          </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="well">
+                          <div class="profile-img">
+                            <%= image_tag "profile3.jpg", width: "100%", height: "auto"%>
+                          </div>
+                          <ul style="padding-left:0;text-align: center; list-style: none">
+                            <li style="margin-top: 10px;margin-bottom: 25px; font-weight: 700; font-size: 15px; text-transform: capitalize">Drax</li>
+                            <li style="margin-left:40px ;float: left;">Country</li>
+                            <li style="margin-bottom: 10px;">Match date</li>
+                            <hr>
+                            <li style="margin-left:40px ;float: left;">Malaysia</li>
+                            <li>10/3/17</li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4" style="padding-right: 4px;">
+              <div class="row">
+                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-bottom: 5px;">
+                  <div class="col-sm-3 upcoming" style="height: 100%; width: 33.3%; padding: 0px;">
+                    <p style="position:absolute; z-index: 2; top:5px; left: 10px; height: 40px; color: #fff;"><span style="font-size: 18px;">Activity</span><br>Football</p>
+                    <div style="background: #258f9f; width: 100%; height: 100%; position: relative; opacity: 0.5;z-index: 1;"></div>
+                    <%= image_tag "bg3.jpg", style: "width: 100%; height: 100%; position: absolute; bottom: 0px; z-index: 0;"%>
+                  </div>
+                  <div class="col-sm-3" style="margin-top: 5px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; height: 80%; width: 33.3%;">
+                    <ul style="list-style: none; padding-left: 5px; padding-top:5px; text-align: left;">
+                      <li>1:30pm</li>
+                      <li>13 Mar 2017</li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-3" style=" height: 100%; width: 33.3%;">
+                    <ul style="list-style: none; padding-left: 5px; padding-top:19px; text-align: left;">
+                      <li>Petaling Jaya</li>
+                      </ul>
+                  </div>
+                </div>
+              <div class="row">
+                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px; margin-bottom: 5px;">
+                  <div class="col-sm-3 upcoming" style="height: 100%; width: 33.3%; padding: 0px;">
+                    <p style="position:absolute; z-index: 2; top:5px; left: 10px; height: 40px; color: #fff;"><span style="font-size: 18px;">Activity</span><br>Badminton</p>
+                    <div style="background: #258f9f; width: 100%; height: 100%; position: relative; opacity: 0.5;z-index: 1;"></div>
+                    <%= image_tag "bg5.jpg", style: "width: 100%; height: 100%; position: absolute; bottom: 0px; z-index: 0;"%>
+                  </div>
+                  <div class="col-sm-3" style="margin-top: 5px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; height: 80%; width: 33.3%;">
+                    <ul style="list-style: none; padding-left: 5px; padding-top:5px; text-align: left;">
+                      <li>1:30pm</li>
+                      <li>13 Mar 2017</li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-3" style=" height: 100%; width: 33.3%;">
+                    <ul style="list-style: none; padding-left: 5px; padding-top:19px; text-align: left;">
+                      <li>Petaling Jaya</li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px; margin-bottom: 5px;">
+                  <div class="col-sm-3 upcoming" style="height: 100%; width: 33.3%; padding: 0px;">
+                    <p style="position:absolute; z-index: 2; top:5px; left: 10px; height: 40px; color: #fff;"><span style="font-size: 18px;">Activity</span><br>Taichi</p>
+                    <div style="background: #258f9f; width: 100%; height: 100%; position: relative; opacity: 0.5;z-index: 1;"></div>
+                    <%= image_tag "bg4.jpg", style: "width: 100%; height: 100%; position: absolute; bottom: 0px; z-index: 0;"%>
+                  </div>
+                  <div class="col-sm-3" style="margin-top: 5px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; height: 80%; width: 33.3%;">
+                    <ul style="list-style: none; padding-left: 5px; padding-top:5px; text-align: left;">
+                      <li>1:30pm</li>
+                      <li>13 Mar 2017</li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-3" style=" height: 100%; width: 33.3%;">
+                    <ul style="list-style: none; padding-left: 5px; padding-top:19px; text-align: left;">
+                      <li>Petaling Jaya</li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="well" style="max-width: 385px; max-height:60px; padding-bottom: 0; margin-left: 15px; margin-bottom: 5px;">
+                  <div class="col-sm-3 upcoming" style="height: 100%; width: 33.3%; padding: 0px;">
+                    <p style="position:absolute; z-index: 2; top:5px; left: 10px; height: 40px; color: #fff;"><span style="font-size: 18px;">Activity</span><br>Yoga</p>
+                    <div style="background: #258f9f; width: 100%; height: 100%; position: relative; opacity: 0.5;z-index: 1;"></div>
+                    <%= image_tag "bg2.jpg", style: "width: 100%; height: 100%; position: absolute; bottom: 0px; z-index: 0;"%>
+                  </div>
+                  <div class="col-sm-3" style="margin-top: 5px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; height: 80%; width: 33.3%;">
+                    <ul style="list-style: none; padding-left: 5px; padding-top:5px; text-align: left;">
+                      <li>1:30pm</li>
+                      <li>13 Mar 2017</li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-3" style=" height: 100%; width: 33.3%;">
+                    <ul style="list-style: none; padding-left: 5px; padding-top:19px; text-align: left;">
+                      <li>Petaling Jaya</li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 </div>
 </section>
 </div>
