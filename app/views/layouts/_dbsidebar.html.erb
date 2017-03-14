@@ -1,7 +1,7 @@
 <!-- topbar -->
 <header class="topbar clearfix">
   <div class="topbar-left pull-left">
-    <a href="/users/<%= current_user.id %>/dashboard"><%= image_tag "fitbuds-clear_bg-new-grey.png", class: "brand", style: "width: 128px; height: 55px;" %></a>
+    <a href="/"><%= image_tag "fitbuds-clear_bg-new-grey.png", class: "brand", style: "width: 128px; height: 55px;" %></a>
     <span onclick="openNav()" class="fa fa-bars fa-2x" style="position: relative; bottom: 3.6em; left: .5em; color: #fff;"></span>
   </div>
 </header>
@@ -23,9 +23,9 @@
                 <li style="text-transform: capitalize"><%= current_user.name %></li>
                 <li><%= current_user.email %></li>
                 <li>
-                  <%= link_to " ", ( { class: "btn btn-default", style: "vertical-align: middle;width: 114px; border-radius: 0; height: 30px;"} ) do %>
-                  <i class="material-icons md-18" style="vertical-align: middle; font-size: 14px; line-height: 14px; padding-right: 10px; height: 16px;">mode_edit</i>edit
-                  <% end %>
+                  <a href="<%= edit_user_path(current_user) %>" class="btn btn-default" style="vertical-align: middle;width: 114px; border-radius: 0; height: 30px;">
+                    <i class="material-icons md-18" style="vertical-align: middle; font-size: 14px; line-height: 14px; padding-right: 10px; height: 16px;">mode_edit</i>edit
+                  </a>
                 </li>
               </ul>
             </div>
