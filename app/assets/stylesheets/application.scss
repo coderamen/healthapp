@@ -30,3 +30,14 @@
 @import "jquery-ui";
 @import "bootstrap-timepicker";
 @import "chat";
+
+body {
+  height: auto;
+}
+
+.page-content {
+  width: calc(100% - 230px);
+  position: relative;
+  left: 230px;
+  height: auto;
+}

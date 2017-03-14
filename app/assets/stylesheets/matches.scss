@@ -5,10 +5,11 @@
 $grey-color: #818181;
 
 // show page
+
 .show-match-container {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
+  width: auto;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 hr.match-hr {
@@ -17,7 +18,11 @@ hr.match-hr {
 }
 
 .pending-info {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+
+  h4 {
+    margin: 0;
+  }
 
   .pending-attr {
     width: 100px;
@@ -34,9 +39,8 @@ hr.match-hr {
   display: flex;
 
   .col-md-4 {
-    width: auto;
+    width: 40%;
     height: 100%;
-    margin-right: 50px;
     align-self: center;
     
     .profile-pic {
@@ -81,13 +85,15 @@ hr.match-hr {
     }
 
     .user-attr-table {
+      width: 100%;
+
       td {
         padding-right: 15px;
         font-weight: 700;
       }
 
       .attr-value {
-        padding-right: 100px;
+        padding-right: 80px;
         font-weight: 400;
       }
 
@@ -98,6 +104,7 @@ hr.match-hr {
     }
 
     .other-pending-table {
+      width: 100%;
 
       .pending-attr {
         width: 70px;
@@ -112,7 +119,7 @@ hr.match-hr {
 }
 
 .chat-form-row {
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 
   .chat-col {
     width: 55%;
