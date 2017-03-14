@@ -42,6 +42,11 @@ $grey-color: #818181;
     .potential-match-panel {
       margin: 0;
       border: solid 1px #ddd;
+      transition: 0.4s;
+
+      &.minimise {
+        transform: scale(0);
+      }
 
       .col-md-3 {
         width: 22%;
