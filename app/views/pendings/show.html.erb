@@ -23,7 +23,7 @@
     <h3>AVAILABLE MATCHES</h3>
     <div class="all-matches-panels" style="position: relative">
       <% @pending.potential_matches.each do |potential_match| %>
-        <div class="panel potential-match-panel">
+        <div class="panel potential-match-panel panel-<%= potential_match.id %>">
           <div class="panel-body">
             <div class="row">
               <div class="col-md-3">
