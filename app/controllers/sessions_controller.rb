@@ -32,7 +32,7 @@ class SessionsController < Clearance::SessionsController
     end
 
     sign_in(user)
-    cookies.signed[:user_id] = @user.id
+    cookies.signed[:user_id] = user.id
 
     redirect_to @next, :notice => @notice
   end
