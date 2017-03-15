@@ -29,7 +29,7 @@
                   <tr>
                     <td class="confirm-indi">
                       <p>
-                        <% if match.confirmed_activity.user1_confirm && match.confirmed_activity.user2_confirm %> 
+                        <% if match.confirmed_activity && match.confirmed_activity.user1_confirm && match.confirmed_activity.user2_confirm %> 
                           <i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #A9CF54;">fiber_manual_record</i>
                         <% else %>
                           <i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #ccc;">fiber_manual_record</i>
@@ -39,7 +39,7 @@
                     </td>
                     <td class="unconfirm-indi">
                       <p>
-                        <% if !match.confirmed_activity.user1_confirm || !match.confirmed_activity.user2_confirm %> 
+                        <% if !match.confirmed_activity || !match.confirmed_activity.user1_confirm || !match.confirmed_activity.user2_confirm %> 
                           <i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #f1433f;">fiber_manual_record</i>
                         <% else %>
                           <i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #ccc;">fiber_manual_record</i>
