@@ -95,4 +95,9 @@ Rails.application.configure do
     password:                 ENV['GMAIL_PASSWORD'],
     authentication:         'plain',
     enable_starttls_auto: true  }
+
+  # ActionCable server's URI for production
+  config.web_socket_server_url = "wss://fitbuds.herokuapp.com/cable" 
+  # ActionCable can only accept WebSocket requests from specific origins
+  config.action_cable.allowed_request_origins = ['https://fitbuds.herokuapp.com', 'http://fitbuds.herokuapp.com']
 end
