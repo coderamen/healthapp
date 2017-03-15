@@ -5,16 +5,14 @@
   <nav class="navbar navbar-default">
     <%= link_to image_tag("fitbuds-clear_bg-new-grey.png"), root_path , id: "logo"%>
     <ul class="nav navbar-nav navbar-right" id="margin-right">
+      <li><a href="#back-to" id="back-to-nav">Where To Start</a></li>
       <li><a href="#about-us" id="about-us-link">About Us</a></li>
-      <li><a href="#contacts" id="contacts-link">Contacts</a></li>
-      <li><a href="#back-to" id="back-to-nav">Sign Up</a></li>
       <li><%= link_to "Log In with Facebook", "/auth/facebook" %></li>
     </ul>
   </nav>
 </header>
 
 <div class="jumbotron" id="index-bg">
-  <%= video_tag("", id: "video-background", autoplay: true, loop: true, muted: true)%>
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">

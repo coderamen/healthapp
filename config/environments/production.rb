@@ -83,4 +83,21 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:                  'smtp.gmail.com',
+    port:                        587,
+    domain:                   'localhost:3000',
+    user_name:              ENV['GMAIL_USERNAME'],
+    password:                 ENV['GMAIL_PASSWORD'],
+    authentication:         'plain',
+    enable_starttls_auto: true  }
+
+  # ActionCable server's URI for production
+  config.web_socket_server_url = "wss://fitbuds.herokuapp.com/cable" 
+  # ActionCable can only accept WebSocket requests from specific origins
+  config.action_cable.allowed_request_origins = ['https://fitbuds.herokuapp.com', 'http://fitbuds.herokuapp.com']
 end
