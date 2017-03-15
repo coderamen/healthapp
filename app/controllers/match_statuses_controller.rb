@@ -13,7 +13,7 @@ class MatchStatusesController < ApplicationController
       if @match_status.opposite_match_status_accepted?
         match = @match_status.create_new_match
 
-        if match          
+        if match
           flash[:success] = "Match created!"
           return redirect_to user_match_path(user_id: pending.user_id, id: match.id)
         else

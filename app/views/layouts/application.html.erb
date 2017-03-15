@@ -13,13 +13,11 @@
      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   </head>
   <body>
-
-  <div id="flash">
-    <% flash.each do |key, msg| %>
-      <%= content_tag :div, msg, class: "alert alert-#{key}" %>
-    <% end %>
-  </div>
-
+    <div id="flash">
+      <% flash.each do |key, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-#{key}" %>
+      <% end %>
+    </div>
     <%= yield %>
 
   </body>

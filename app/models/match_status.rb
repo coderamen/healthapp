@@ -18,7 +18,6 @@ class MatchStatus < ApplicationRecord
       return false
     end
   end
-
   def create_new_match
     user1_pending = Pending.find(self.pending_viewer_id)
     user2_pending = Pending.find(self.pending_viewed_id)
@@ -36,5 +35,4 @@ class MatchStatus < ApplicationRecord
       return false
     end
   end
-
 end

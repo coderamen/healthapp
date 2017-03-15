@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # routes for pending matches
-
   resources :users, only: [] do
     resources :pendings, only: [:index, :new, :create, :show, :destroy]
   end
