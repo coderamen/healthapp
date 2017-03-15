@@ -13,9 +13,9 @@
  *= require jquery-ui
  *= require_tree .
  *= require_self
-*= require font-awesome
-*= require bootstrap-select
-*= require material_icons
+ *= require font-awesome
+ *= require bootstrap-select
+ *= require material_icons
  */
 
 @import "bootstrap-sprockets";
@@ -26,6 +26,29 @@
 @import "signin_signup.scss";
 @import "edit_user.scss";
 @import "show_user.scss";
+@import "pendings.scss";
 @import "jquery-ui";
 @import "bootstrap-timepicker";
 @import "chat";
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  // background: #DEDCDE;
+  background: linear-gradient(-45deg, #4e7f88, #144249);
+
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  height: auto;
+}
+
+.page-content {
+  width: calc(100% - 230px);
+  position: relative;
+  left: 230px;
+  height: auto;
+  padding-bottom: 10px;
+}

@@ -8,16 +8,12 @@ class MatchStatusesController < ApplicationController
 
     @match_status = MatchStatus.new(match_status_params)
 
-    if @match_status.save
-      flash[:success] = "#{params[:status].capitalize}!"
-
+    if @match_status.save 
       # add method to check the reversed id statuses
       if @match_status.opposite_match_status_accepted?
         match = @match_status.create_new_match
 
-        if match
-          match.mark_both_pendings_success
-          
+        if match          
           flash[:success] = "Match created!"
           return redirect_to user_match_path(user_id: pending.user_id, id: match.id)
         else
@@ -25,10 +21,20 @@ class MatchStatusesController < ApplicationController
         end
       end
 
-      redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i)
+      respond_to do |format| 
+        format.html { redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i) }
+        format.js { @match_status = @match_status }
+      end
+      
     else
-      flash[:danger] = "Unable to make changes"
-      redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i)
+      respond_to do |format|
+        format.html {
+          flash[:danger] = "Unable to make changes"
+          redirect_to user_pending_path(user_id: current_user.id, id: params[:pending_viewer_id].to_i)
+        }
+        format.js { @flash = "Unable to make changes" }
+      end
+
     end
 
   end
