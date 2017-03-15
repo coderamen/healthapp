@@ -240,7 +240,7 @@ hr.match-hr {
 .dashbox-match {
   position: absolute;
   right: 1em;
-  top: 5em;
+  // top: 5em;
   margin-top:60px;
   width: calc(100% - 250px);
   float: right;
@@ -304,7 +304,7 @@ hr.match-hr {
 
 .well {
 
-   table.dahsboard-matches {
+   table.index-matches {
      width: 80%;
      margin: 0 auto;
 
@@ -329,3 +329,31 @@ hr.match-hr {
      }
    }
  }
+
+.confirm-status-indi {
+  width: 100%;
+  
+  td {
+    width: 50%;
+    text-align: center;
+
+    &.confirm-indi {
+      padding-left: 30px;
+    }
+
+    &.unconfirm-indi {
+      padding-right: 30px;
+    }
+  }
+}
+
+.dashbox-match {
+  .col-sm-3 {
+    color: #000;
+
+     &:hover {
+      transition: 0.3s;
+      transform: scale(1.03);
+     }
+  }
+}
