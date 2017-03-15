@@ -8,4 +8,9 @@ class ConfirmedActivity < ApplicationRecord
   # accessor for new pending form
   attr_accessor :date, :time
 
+  def mark_both_pendings_success
+    self.match.user1_pending.update(status: "successful")
+    self.match.user2_pending.update(status: "successful")
+  end
+  
 end

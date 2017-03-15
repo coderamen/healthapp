@@ -30,3 +30,25 @@
 @import "jquery-ui";
 @import "bootstrap-timepicker";
 @import "chat";
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  // background: #DEDCDE;
+  background: linear-gradient(-45deg, #4e7f88, #144249);
+
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  height: auto;
+}
+
+.page-content {
+  width: calc(100% - 230px);
+  position: relative;
+  left: 230px;
+  height: auto;
+  padding-bottom: 10px;
+}

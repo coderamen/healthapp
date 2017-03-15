@@ -80,16 +80,16 @@
   color: #898989;
 }
 
-$grey-color: #818181;
+
 
 // show page
 .show-pending-container {
-  width: 60%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
   
   .show-pending-panel {
-    margin-top: 50px;
+    // margin-top: 50px;
     height: auto;
     padding: 10px;
 
@@ -98,12 +98,12 @@ $grey-color: #818181;
 
       &.pending-attr {
         font-size: 14px;
-        width: 12%;
+        width: 15%;
       }
 
       &.pending-details {
-        font-size: 24px;
-        width: 48%;
+        font-size: 20px;
+        width: 43%;
       }
     }
   }
@@ -113,7 +113,7 @@ $grey-color: #818181;
     width: 80%;
     margin: 0 auto 50px auto;
 
-    h3 {
+    h4 {
       margin-top: 60px;
     }
 
@@ -131,23 +131,24 @@ $grey-color: #818181;
 
         img {
           border-radius: 50%;
-          border: solid 1px $grey-color;
+          border: solid 1px #818181;
           width: 115px;
           height: 115px;
-          margin-left: 30px;
+          margin-left: 10%;
         }
 
         .profile-pic {
           background-color: #888;
           border-radius: 50%;
-          border: solid 1px $grey-color;
+          border: solid 1px #818181;
           width: 115px;
           height: 115px;
-          margin-left: 30px;
+          margin-left: 10%;
         }
       }
 
       .col-md-5 {
+        width: 37%;
 
         h2 {
           margin: 3px 0 0 0 ;
@@ -170,9 +171,10 @@ $grey-color: #818181;
       }
 
       .col-md-4 {
-          height: 115px;
-          display: flex;
-          align-items: center;
+        width: 30%;
+        height: 115px;
+        display: flex;
+        align-items: center;
 
         .accept-btn {
           margin: 10px;
@@ -204,6 +206,14 @@ $grey-color: #818181;
         }
       }
     }
+
+    .no-pending-msg {
+
+      h4 {
+        text-align: center;
+        color: #ccc;
+      }
+    }
   }
 
-} 
+}

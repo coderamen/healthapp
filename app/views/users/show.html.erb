@@ -4,8 +4,7 @@
     <%= image_tag("fitbuds-clear_bg-new-grey.png")%>
   </div>
   <%= link_to "Edit User Profile", edit_user_path %>
-  <a href="#">Dashboard</a>
-  <a href="#">Vission</a>
+  <%= link_to "Dashboard", dashboard_path(current_user.id) %>
   <a href="#">Contact</a>
   <%= link_to "Back", root_path %>
 </div>

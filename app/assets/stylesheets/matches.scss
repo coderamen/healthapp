@@ -5,10 +5,11 @@
 $grey-color: #818181;
 
 // show page
+
 .show-match-container {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
+  width: auto;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 hr.match-hr {
@@ -17,7 +18,13 @@ hr.match-hr {
 }
 
 .pending-info {
-  margin-bottom: 50px;
+  background-color: #f4f2f2;
+  padding: 20px;
+  margin-bottom: 60px;
+
+  h4 {
+    margin: 0;
+  }
 
   .pending-attr {
     width: 100px;
@@ -30,19 +37,19 @@ hr.match-hr {
 }
 
 .match-other-row {
-  margin-bottom: 30px;
+  margin: 0 0 30px 0 !important;
   display: flex;
 
   .col-md-4 {
-    width: auto;
+    width: 40%;
     height: 100%;
-    margin-right: 50px;
     align-self: center;
 
     .profile-pic {
-      background-color: #888;
+      background-color: #ddd;
       border-radius: 50%;
       border: solid 1px $grey-color;
+      margin: 0 auto;
       width: 300px;
       height: 300px;
     }
@@ -57,11 +64,16 @@ hr.match-hr {
 
   .col-md-8 {
     background-color: #f4f2f2;
-    padding: 20px;
-    margin-right: 20px;
-    width: 65%;
+    padding: 0;
+    // margin-right: 20px;
+    width: 60%;
+    // float: right;
     margin-left: auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+
+    .other-user-details {
+      padding: 20px;
+    }
 
     h2 {
       margin-top: 0;
@@ -75,13 +87,15 @@ hr.match-hr {
     }
 
     .user-attr-table {
+      width: 100%;
+
       td {
         padding-right: 15px;
         font-weight: 700;
       }
 
       .attr-value {
-        padding-right: 150px;
+        padding-right: 80px;
         font-weight: 400;
       }
 
@@ -92,6 +106,7 @@ hr.match-hr {
     }
 
     .other-pending-table {
+      width: 100%;
 
       .pending-attr {
         width: 70px;
@@ -106,14 +121,22 @@ hr.match-hr {
 }
 
 .chat-form-row {
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 
   .chat-col {
     width: 55%;
+
+    h4 {
+      color: #f4f2f2;
+    }
   }
 
   .confirmed-activity-col {
     float: right;
+
+    h4 {
+      color: #f4f2f2;
+    }
 
     .panel {
       height: auto;
@@ -163,6 +186,7 @@ hr.match-hr {
     }
 
     .decline-link {
+      height: 44px;
       margin-top: 20px;
       border: none;
       background: none;
