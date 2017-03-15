@@ -34,7 +34,6 @@ class ApplicationController < ActionController::Base
 
   # get datetime object from separated date and time values
   def get_datetime(params)
-    byebug
     date = params[:date].to_date
     time = params[:time].to_time
 
