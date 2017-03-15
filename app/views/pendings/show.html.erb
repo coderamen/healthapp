@@ -1,4 +1,3 @@
-<%= render partial: "layouts/dbsidebar" %>
 <div class="page-color"></div>
 <div class="page-content">
   <div class="show-pending-container">
@@ -35,7 +34,7 @@
                     <% if potential_match.user.avatar? %>
                       <%= image_tag(potential_match.user.avatar.medium_avatar.url) %>
                     <% else %>
-                      <div class="profile-pic"></div>
+                      <%= image_tag "default_profile.jpg" %>
                     <% end %>
                   </div>
                   <div class="col-md-5">
