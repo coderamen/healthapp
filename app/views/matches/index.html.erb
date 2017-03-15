@@ -1,13 +1,159 @@
-<h1>All Your Matches</h1>
+<%= render partial: "layouts/dbsidebar" %>
+<div class="body-match"></div>
+<div class="dashbox-match">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9" style="padding-left: 5px; height: 290px;">
+        <div class="row">
+          <div class="well" style="margin-left: 15px; margin-right: 15px; color:
+#999999; height: 270px;">
+          <div class="col-sm-8" style="padding-left: 20px;">
+            <h1 class="lead" style="font-size: 40px; text-transform: uppercase; font-weight: 300; margin-bottom: 10px;"><i class="material-icons md-48" style="vertical-align: middle; line-height: 40px; margin-right: 8px;">label</i>All Your Matches</h1>
+            <hr style="border-color: #ddd; margin-top: 10px; margin-bottom: 10px;">
+            <% @matches.each do |match| %>
+            <p class="match-text">
+              You have a match with
+              <% if current_user.id == match.user1_id %>
+              <span id="match-user"><%= match.user2.name %></span>
+              <% else %>
+              <%= match.user1.name %>
+              <% end %>
+              <br>
+              available for chat...
+              <br>
+              <%= link_to "Go to Match", user_match_path(user_id: current_user.id, id: match.id), class: "btn btn-default", style: "border-radius: 6px; font-size: 20px; margin-top: 10px;" %>
+              <% end %>
+            <p>
+          </div>
+          <div class="col-sm-4">
+            <div class="match-img">
+              <%= image_tag "profile4.jpg" %>
+            </div>
+            <i class="fa fa-commenting" id="match-sms"></i>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="col-sm-3" style="padding-left: 5px;">
+        <div class="well" style="height: 271px; background: rgba(0,0,0,0.2); box-shadow: 0 2px 5px rgba(0, 0, 0, .50);">
+          <i class="fa fa-check-circle-o fa-5x" style="color: #a9cf54; font-size: 200px; text-align: center; margin: 30px 50px 20px 50px;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<% @matches.each do |match| %>  
-  <h3>
-    You have a match with:
-    <% if current_user.id == match.user1_id %>
-      <%= match.user2.name %>
-    <% else %>
-      <%= match.user1.name %>
-    <% end %>
-    <%= link_to "Go to Match", user_match_path(user_id: current_user.id, id: match.id) %>
-  </h3>
-<% end %>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3" style="padding-left: 5px;">
+                <div class="well" style="height: 350px;">
+                    <div class="profile-img" style="height: 130px;">
+                        <%= image_tag "profile1.jpg", width: "100%", height: "auto"%>
+                        <i class="fa fa-refresh fa-spin fa-3x fa-fw loaders"></i>
+                        <span class="sr-only"></span>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;margin-bottom: 5px; font-weight: 700; font-size: 15px; text-transform: capitalize">Yondu</div>
+                    <div style="text-align: center; margin-bottom: 10px; color: #fff; background: #258f9f; width: 100px; border-radius: 10px; margin-left: 85px;">Badminton</div>
+                    <div class="item-match" style="margin-bottom: 15px; margin-left: 30px;">
+                      <div class="item-stats">
+                        <p><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #A9CF54;">fiber_manual_record</i>Active</p>
+                      </div>
+                      <div class="item-stats">
+                        <p><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #ccc;">fiber_manual_record</i>InActive</p>
+                      </div>
+                    </div>
+
+                    <ul style="padding-left:0;text-align: center; list-style: none; border-top: 1px solid #ccc; margin-top: ">
+                        <li style="margin-left:70px ;float: left; margin-top:20px">City</li>
+                        <li style="margin-bottom: 10px; margin-top:20px; padding-right: 10px;">Match date</li>
+                        <hr style="border-color: #bbb;">
+                        <li style="margin-left:40px ;float: left;">Kuala Lumpur</li>
+                        <li>10/3/17</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3" style="padding-left: 5px;">
+                <div class="well" style="height: 350px;">
+                    <div class="profile-img" style="height: 130px;">
+                        <%= image_tag "profile2.jpg", width: "100%", height: "auto"%>
+                        <i class="fa fa-spin fa-refresh fa-3x fa-fw loaders"></i>
+                        <span class="sr-only"></span>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;margin-bottom: 5px; font-weight: 700; font-size: 15px; text-transform: capitalize">Baby Groot</div>
+                    <div style="text-align: center; margin-bottom: 10px; color: #fff; background: #258f9f; width: 100px; border-radius: 10px; margin-left: 85px;">Taichi</div>
+                    <div class="item-match" style="margin-bottom: 15px; margin-left: 30px;">
+                      <div class="item-stats">
+                        <p><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #ccc;">fiber_manual_record</i>Active</p>
+                      </div>
+                      <div class="item-stats">
+                        <p><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #F1433F;">fiber_manual_record</i>InActive</p>
+                      </div>
+                    </div>
+
+                    <ul style="padding-left:0;text-align: center; list-style: none; border-top: 1px solid #ccc; margin-top: ">
+                        <li style="margin-left:70px ;float: left; margin-top:20px">City</li>
+                        <li style="margin-bottom: 10px; margin-top:20px; padding-right: 10px;">Match date</li>
+                        <hr style="border-color: #bbb;">
+                        <li style="margin-left:40px ;float: left;">Kuala Lumpur</li>
+                        <li>10/3/17</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3" style="padding-left: 5px;">
+                <div class="well" style="height: 350px;">
+                    <div class="profile-img" style="height: 130px;">
+                        <%= image_tag "profile3.jpg", width: "100%", height: "auto"%>
+                        <i class="fa fa-spin fa-refresh fa-3x fa-fw loaders"></i>
+                        <span class="sr-only"></span>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;margin-bottom: 5px; font-weight: 700; font-size: 15px; text-transform: capitalize">Drax</div>
+                    <div style="text-align: center; margin-bottom: 10px; color: #fff; background: #258f9f; width: 100px; border-radius: 10px; margin-left: 85px;">Yoga</div>
+                    <div class="item-match" style="margin-bottom: 15px; margin-left: 30px;">
+                      <div class="item-stats">
+                        <p><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #A9CF54;">fiber_manual_record</i>Active</p>
+                      </div>
+                      <div class="item-stats">
+                        <p><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #ccc;">fiber_manual_record</i>InActive</p>
+                      </div>
+                    </div>
+
+                    <ul style="padding-left:0;text-align: center; list-style: none; border-top: 1px solid #ccc; margin-top: ">
+                        <li style="margin-left:70px ;float: left; margin-top:20px">City</li>
+                        <li style="margin-bottom: 10px; margin-top:20px; padding-right: 10px;">Match date</li>
+                        <hr style="border-color: #bbb;">
+                        <li style="margin-left:40px ;float: left;">Kuala Lumpur</li>
+                        <li>10/3/17</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3" style="padding-left: 5px;">
+                <div class="well" style="height: 350px;">
+                    <div class="profile-img" style="height: 130px;">
+                        <%= image_tag "profile.png", width: "100%", height: "auto"%>
+                        <i class="fa fa-spin fa-refresh fa-3x fa-fw loaders"></i>
+                        <span class="sr-only"></span>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;margin-bottom: 5px; font-weight: 700; font-size: 15px; text-transform: capitalize">Ramen</div>
+                    <div style="text-align: center; margin-bottom: 10px; color: #fff; background: #258f9f; width: 100px; border-radius: 10px; margin-left: 85px;">Sleep time</div>
+                    <div class="item-match" style="margin-bottom: 15px; margin-left: 30px;">
+                      <div class="item-stats">
+                        <p><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #A9CF54;">fiber_manual_record</i>Active</p>
+                      </div>
+                      <div class="item-stats">
+                        <p><i class="material-icons md-18" style="vertical-align:middle; font-size: 15px; line-height: 13px; padding-right:2px; color: #ccc;">fiber_manual_record</i>InActive</p>
+                      </div>
+                    </div>
+
+                    <ul style="padding-left:0;text-align: center; list-style: none; border-top: 1px solid #ccc; margin-top: ">
+                        <li style="margin-left:70px ;float: left; margin-top:20px">City</li>
+                        <li style="margin-bottom: 10px; margin-top:20px; padding-right: 10px;">Match date</li>
+                        <hr style="border-color: #bbb;">
+                        <li style="margin-left:40px ;float: left;">Kuala Lumpur</li>
+                        <li>10/3/17</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
