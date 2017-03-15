@@ -18,7 +18,9 @@ hr.match-hr {
 }
 
 .pending-info {
-  margin-bottom: 20px;
+  background-color: #f4f2f2;
+  padding: 20px;
+  margin-bottom: 60px;
 
   h4 {
     margin: 0;
@@ -44,7 +46,7 @@ hr.match-hr {
     align-self: center;
     
     .profile-pic {
-      background-color: #888;
+      background-color: #ddd;
       border-radius: 50%;
       border: solid 1px $grey-color;
       margin: 0 auto;
@@ -123,10 +125,18 @@ hr.match-hr {
 
   .chat-col {
     width: 55%;
+
+    h4 {
+      color: #f4f2f2;
+    }
   }
   
   .confirmed-activity-col {
     float: right;
+
+    h4 {
+      color: #f4f2f2;
+    }
 
     .panel {
       height: auto;
