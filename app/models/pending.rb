@@ -75,5 +75,5 @@ class Pending < ApplicationRecord
     Pending.where(id: same_date)
 
   end
-  
+
 end

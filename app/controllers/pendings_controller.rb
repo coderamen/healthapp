@@ -1,7 +1,7 @@
 class PendingsController < ApplicationController
   before_action :require_login
   before_action :require_user_details
-  
+
   def index
     current_user_authorised?(params[:user_id], root_path)
 
@@ -45,7 +45,7 @@ class PendingsController < ApplicationController
 
   def destroy
     current_user_authorised?(params[:user_id], root_path)
-    
+
     pending = Pending.find(params[:id])
 
     pending.delete_related_matches_matchstatuses
@@ -63,7 +63,7 @@ class PendingsController < ApplicationController
     if params[:pending][:activity_id] == "0"
       # condition for when an other activity is specified or none
       if params[:pending][:activity] != ""
-        activity_id = Activity.get_id(params[:pending][:activity]) 
+        activity_id = Activity.get_id(params[:pending][:activity])
         return_hash[:activity_id] = activity_id
       else
         return false

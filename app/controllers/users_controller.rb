@@ -69,7 +69,6 @@ class UsersController < Clearance::UsersController
 
   def destroy
     current_user_authorised?(params[:id], root_path)
-
 		user = User.find_by_id(params[:id])
 		sign_out
 		user.authentications.delete_all
