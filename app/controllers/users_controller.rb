@@ -59,7 +59,7 @@ class UsersController < Clearance::UsersController
 
     if @user.update(update_hash)
       flash[:success] = "Update successful"
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       flash[:danger] = "Update unsuccessful"
       redirect_to edit_user_path(@user)
