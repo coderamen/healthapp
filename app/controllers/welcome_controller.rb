@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
 
 
   def dashboard
+    @user = current_user
     @pending = Pending.new
   end
 end
