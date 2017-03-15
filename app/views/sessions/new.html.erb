@@ -4,13 +4,12 @@
     <%= image_tag("fitbuds-clear_bg-new-grey.png")%>
   </div>
   <% if signed_in? %>
-    <a href="#">Vision</a>
-    <a href="#">Contact Us</a>
+    <%= link_to "Dashboard", dashboard_path(current_user.id) %>
+    <a href="#">Contacts</a>
     <%= link_to "Back", root_path %>
   <% else %>
     <%= link_to "User Signup", new_user_path %>
-    <a href="#">Vision</a>
-    <a href="#">Contact Us</a>
+    <a href="#">Contacts</a>
     <%= link_to "Back", root_path %>
     <% end %>
 </div>
