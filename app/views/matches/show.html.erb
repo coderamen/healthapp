@@ -40,7 +40,7 @@
           <% if them.avatar? %>
             <%= image_tag them.avatar.large_avatar.url %>
           <% else %>
-            <div class="profile-pic"></div>
+            <%= image_tag "default_profile.jpg" %>
           <% end %>
             
         </div>

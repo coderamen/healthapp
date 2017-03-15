@@ -10,7 +10,7 @@
             <% if current_user.avatar? %>
               <%= image_tag current_user.avatar.small_avatar.url, width: "70px", height: "70px" %>
             <% else %>
-              <div style="background-color: #aaa; width: 70px; height: 70px; border-radius: 50%"; ></div>
+              <%= image_tag "default_profile.jpg", width: "70px", height: "70px" %>
             <% end %>
           </div>
           <div class="user-info">
