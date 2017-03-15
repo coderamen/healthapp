@@ -31,7 +31,15 @@
 @import "bootstrap-timepicker";
 @import "chat";
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  background: #DEDCDE;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
   height: auto;
 }
 
