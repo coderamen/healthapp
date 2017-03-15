@@ -1,15 +1,3 @@
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: #DEDCDE;
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
 // topbar
 
 .brand {
@@ -121,7 +109,7 @@ body {
   width: 230px;
   background: #fff;
   position: fixed;
-  top: 60px;
+  // top: 60px;
   height: 100%;
   overflow: hidden;
   z-index: 1;
@@ -371,3 +359,55 @@ body {
 //   padding-left: 15px;
 //   padding-right: 15px;
 // }
+
+
+.well {
+
+  table.dahsboard-matches {
+    width: 80%;
+    margin: 0 auto;
+
+    td {
+      height: 30px;
+    }
+
+    .match-user-name {
+      height: 60px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .match-attr {
+      font-weight: 700;
+    }
+
+    .match-details {
+      padding-left: 20px;      
+    }
+  }
+}
+
+div.pending-form-panel {
+  position: relative;
+  top: 190px;
+
+  .dashboard-pending-row {
+    height: 0 !important;
+
+    .col-md-12 {
+      width: 100%;
+
+      h4 {
+        font-weight: 300;
+
+        i {
+          vertical-align: middle; 
+          line-height: 18px; 
+          font-size: 22px; 
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
