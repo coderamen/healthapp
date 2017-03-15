@@ -1,20 +1,6 @@
-<!-- edit user here front end team! -->
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="sidebar-logo">
-    <%= image_tag("fitbuds-clear_bg-new-grey.png")%>
-  </div>
-  <!-- <div id="avatar"><%= image_tag("default.png")%></div> -->
-  <h3 id="username"><%= @user.name %></h3>
-  <a href="#">Dashboard</a>
-  <a href="#">Vission</a>
-  <a href="#">Contact</a>
-  <%= link_to "Back to main", root_path %>
-</div>
-
 <div class="jumbotron edit_user_bg">
   <div class="container-fluid" >
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="f-logo"><%= image_tag("f-clear_bg.png") %></span>
+    <span style="font-size:30px;cursor:pointer" id="f-logo"><%= link_to image_tag("f-clear_bg.png"), root_path%></span>
 
     <div id="main">
       <h1 id="edit_profile">Edit Profile</h1>
@@ -57,18 +43,3 @@
     </div>
   </div>
 </div>
-
-
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    // document.getElementById("main").fadeOut();
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    // document.getElementById("main").fadeIn();
-}
-</script>

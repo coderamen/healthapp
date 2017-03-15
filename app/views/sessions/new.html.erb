@@ -5,12 +5,10 @@
   </div>
   <% if signed_in? %>
     <%= link_to "Dashboard", dashboard_path(current_user.id) %>
-    <a href="#">Contacts</a>
-    <%= link_to "Back", root_path %>
+    <%= link_to "Back to Main", root_path %>
   <% else %>
     <%= link_to "User Signup", new_user_path %>
-    <a href="#">Contacts</a>
-    <%= link_to "Back", root_path %>
+    <%= link_to "Back to Main", root_path %>
     <% end %>
 </div>
 
