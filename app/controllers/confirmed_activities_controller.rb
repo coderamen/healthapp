@@ -47,6 +47,11 @@ class ConfirmedActivitiesController < ApplicationController
       confirmed_activity.user2_confirm = true
     end
 
+    confirmed_activity.save
+
+    confirmed_activity.mark_both_pendings_success
+    redirect_to user_match_path(current_user, match)
+
   end
 
   private
